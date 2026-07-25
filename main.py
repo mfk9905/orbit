@@ -13,7 +13,7 @@ from app.core.container import ServiceContainer
 from app.core.logging.logger import setup_logging, get_logger
 from app.core.config.settings import SettingsManager
 from app.core.platform.platform_manager import PlatformManager
-from app.core.events.event_bus import EventBus
+from app.core.events.event_bus import EventBus, ConfigUpdatedEvent
 from app.core.hooks.hotkey_manager import HotkeyManager
 
 from app.services.settings_service import SettingsService
@@ -92,6 +92,34 @@ def main() -> int:
 
     radial_view = RadialMenuView(view_model, parent=overlay_window)
     radial_view.hide()
+
+    def on_config_updated(event: ConfigUpdatedEvent) -> None:
+        nonlocal radius
+        if event.key == "radius":
+            try:
+                r = float(event.value)
+                radius = r
+                view_model.set_radius(r)
+                radial_view.set_radius(r)
+                logger.info(f"Live updated radial menu radius to {r}")
+            except Exception as e:
+                logger.error(f"Failed live update radius: {e}")
+        elif event.key == "opacity":
+            try:
+                op = float(event.value)
+                radial_view.setWindowOpacity(op)
+                logger.info(f"Live updated window opacity to {op}")
+            except Exception as e:
+                logger.error(f"Failed live update opacity: {e}")
+        elif event.key == "animation_speed":
+            try:
+                sp = int(event.value)
+                radial_view.set_animation_speed(sp)
+                logger.info(f"Live updated animation speed to {sp}ms")
+            except Exception as e:
+                logger.error(f"Failed live update animation speed: {e}")
+
+    event_bus.subscribe(ConfigUpdatedEvent, on_config_updated)
 
     primary_hk = settings_service.get("primary_hotkey", "ctrl+space")
     secondary_hk = settings_service.get("secondary_hotkey", "button4")

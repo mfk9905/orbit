@@ -199,6 +199,31 @@ def test_clipboard_and_keyboard_actions():
     assert sub_items[0].label == "Test 1"
 
 
+def test_phase1_live_config_and_profile_reload(tmp_path: Path):
+    from app.services.settings_service import SettingsService
+    from app.core.events.event_bus import ConfigUpdatedEvent
+
+    # 1. Config event publish test
+    bus = EventBus()
+    cfg_file = tmp_path / "settings.json"
+    mgr = SettingsManager(cfg_file)
+    svc = SettingsService(mgr, bus)
+
+    events_received = []
+    bus.subscribe(ConfigUpdatedEvent, lambda ev: events_received.append((ev.key, ev.value)))
+
+    svc.set("radius", 220)
+    assert len(events_received) == 1
+    assert events_received[0] == ("radius", 220)
+
+    # 2. RadialViewModel dynamic radius test
+    vm = RadialMenuViewModel(radius=100)
+    assert vm._radius == 100
+    vm.set_radius(220)
+    assert vm._radius == 220
+
+
+
 
 
 

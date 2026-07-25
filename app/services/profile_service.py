@@ -33,6 +33,7 @@ class ProfileService:
 
     def load_all_profiles(self) -> None:
         """Loads all JSON profile files from directory."""
+        self._profiles.clear()
         for filepath in self.profiles_dir.glob("*.json"):
             try:
                 with open(filepath, "r", encoding="utf-8") as f:

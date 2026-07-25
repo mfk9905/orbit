@@ -375,7 +375,20 @@ class SettingsWindow(QMainWindow):
         form = QFormLayout(group)
 
         size_combo = QComboBox()
-        size_combo.addItems(["Standart (Orta Boyut)", "Küçük", "Büyük"])
+        size_combo.addItems(["Küçük (140px)", "Standart (180px)", "Büyük (230px)"])
+        cur_radius = self.settings_service.get("radius", 180)
+        if cur_radius <= 150:
+            size_combo.setCurrentIndex(0)
+        elif cur_radius >= 210:
+            size_combo.setCurrentIndex(2)
+        else:
+            size_combo.setCurrentIndex(1)
+
+        def _on_size_changed(idx: int) -> None:
+            r_map = {0: 140, 1: 180, 2: 230}
+            self.settings_service.set("radius", r_map.get(idx, 180))
+
+        size_combo.currentIndexChanged.connect(_on_size_changed)
         form.addRow("Menü Boyutu:", size_combo)
 
         opacity_spin = QDoubleSpinBox()
@@ -386,7 +399,20 @@ class SettingsWindow(QMainWindow):
         form.addRow("Saydamlık Seviyesi:", opacity_spin)
 
         anim_combo = QComboBox()
-        anim_combo.addItems(["Hızlı (Akıcı)", "Normal", "Yavaş"])
+        anim_combo.addItems(["Hızlı (150 ms)", "Normal (240 ms)", "Yavaş (380 ms)"])
+        cur_speed = self.settings_service.get("animation_speed", 240)
+        if cur_speed <= 180:
+            anim_combo.setCurrentIndex(0)
+        elif cur_speed >= 300:
+            anim_combo.setCurrentIndex(2)
+        else:
+            anim_combo.setCurrentIndex(1)
+
+        def _on_anim_changed(idx: int) -> None:
+            s_map = {0: 150, 1: 240, 2: 380}
+            self.settings_service.set("animation_speed", s_map.get(idx, 240))
+
+        anim_combo.currentIndexChanged.connect(_on_anim_changed)
         form.addRow("Açılış Animasyonu Hızı:", anim_combo)
 
         blur_check = QCheckBox("Arka Planı Bulanıklaştır (Cam Efekti)")

@@ -63,6 +63,16 @@ class RadialMenuView(QWidget):
         self._scale_factor = 0.0
         self.update()
 
+    def set_radius(self, radius: float, inner_radius: float = 55.0) -> None:
+        """Dynamically update view rendering radius."""
+        self._radius = radius
+        self._inner_radius = inner_radius
+        self.update()
+
+    def set_animation_speed(self, duration_ms: int) -> None:
+        """Dynamically update opening animation duration in milliseconds."""
+        self._anim.setDuration(max(50, duration_ms))
+
     def _on_slice_hovered(self, index: int) -> None:
         """Trigger repaint on hover state changes."""
         self.update()

@@ -92,6 +92,12 @@ class RadialMenuViewModel(QObject):
         """Sets screen coordinates of menu center."""
         self._center = QPointF(x, y)
 
+    def set_radius(self, radius: float, inner_radius: float = 55.0) -> None:
+        """Dynamically update menu radius."""
+        self._radius = radius
+        self._inner_radius = inner_radius
+        self.profile_updated.emit()
+
     @property
     def items(self) -> List[SliceItem]:
         if self._items_override is not None:
