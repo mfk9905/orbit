@@ -1,0 +1,160 @@
+{
+    "name": "Varsayılan",
+    "accent_color": "#2ED573",
+    "description": "Varsayılan akıllı eylem çemberi",
+    "items": [
+        {
+            "id": "item_1",
+            "label": "Terminal",
+            "icon": "terminal",
+            "color": "#2ED573",
+            "tooltip": "Sistem Terminalini Aç",
+            "action": {
+                "type": "AppAction",
+                "id": "a1",
+                "label": "Terminal",
+                "icon": "",
+                "params": {
+                    "command": "wt || cmd.exe /c start cmd || konsole || gnome-terminal || xterm"
+                }
+            }
+        },
+        {
+            "id": "item_2",
+            "label": "Tarayıcı",
+            "icon": "globe",
+            "color": "#2ED573",
+            "tooltip": "İnternet Tarayıcısını Aç",
+            "action": {
+                "type": "UrlAction",
+                "id": "a2",
+                "label": "Tarayıcı",
+                "icon": "",
+                "params": {
+                    "url": "https://google.com"
+                }
+            }
+        },
+        {
+            "id": "item_3",
+            "label": "Ses Ayarı",
+            "icon": "volume-2",
+            "color": "#2ED573",
+            "tooltip": "Fare Tekerleği ile Ses Ayarla (Yukarı/Aşağı)",
+            "action": {
+                "type": "WheelAction",
+                "id": "a3_vol",
+                "label": "Ses Ayarı",
+                "icon": "",
+                "params": {
+                    "mode": "volume"
+                }
+            }
+        },
+        {
+            "id": "item_4",
+            "label": "Pencere Yönetimi",
+            "icon": "layout",
+            "color": "#2ED573",
+            "tooltip": "Pencere Boyutlandırma & Hizalama Alt Menüsü",
+            "action": {
+                "type": "SubRingAction",
+                "id": "a4_win",
+                "label": "Pencere Yönetimi",
+                "icon": "",
+                "items": [
+                    {
+                        "id": "w1",
+                        "label": "Küçült",
+                        "icon": "minus",
+                        "color": "#2ED573",
+                        "tooltip": "Pencereyi Küçült",
+                        "action": {
+                            "type": "WindowControlAction",
+                            "id": "wa1",
+                            "label": "Küçült",
+                            "params": {
+                                "command": "minimize"
+                            }
+                        }
+                    },
+                    {
+                        "id": "w2",
+                        "label": "Büyüt",
+                        "icon": "square",
+                        "color": "#2ED573",
+                        "tooltip": "Ekranı Kapla",
+                        "action": {
+                            "type": "WindowControlAction",
+                            "id": "wa2",
+                            "label": "Büyüt",
+                            "params": {
+                                "command": "maximize"
+                            }
+                        }
+                    },
+                    {
+                        "id": "w3",
+                        "label": "Sola Yasla",
+                        "icon": "arrow-left",
+                        "color": "#2ED573",
+                        "tooltip": "Pencereyi Sola Yasla",
+                        "action": {
+                            "type": "WindowControlAction",
+                            "id": "wa3",
+                            "label": "Sola Yasla",
+                            "params": {
+                                "command": "snap_left"
+                            }
+                        }
+                    },
+                    {
+                        "id": "w4",
+                        "label": "Sağa Yasla",
+                        "icon": "arrow-right",
+                        "color": "#2ED573",
+                        "tooltip": "Pencereyi Sağa Yasla",
+                        "action": {
+                            "type": "WindowControlAction",
+                            "id": "wa4",
+                            "label": "Sağa Yasla",
+                            "params": {
+                                "command": "snap_right"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "item_5",
+            "label": "Pano Geçmişi",
+            "icon": "clipboard",
+            "color": "#FFA502",
+            "tooltip": "Son Kopyalanan Metinler Alt Menüsü",
+            "action": {
+                "type": "ClipboardSubRingAction",
+                "id": "a5_clip",
+                "label": "Pano Geçmişi",
+                "icon": "",
+                "params": {}
+            }
+        },
+        {
+            "id": "item_7",
+            "label": "Ekran Klavyesi",
+            "icon": "edit-3",
+            "color": "#2ED573",
+            "tooltip": "Windows Ekran Klavyesini Aç",
+            "action": {
+                "type": "KeyboardAction",
+                "id": "a7",
+                "label": "Ekran Klavyesi",
+                "icon": "",
+                "params": {
+                    "mode": "osk"
+                }
+            }
+        }
+    ]
+}

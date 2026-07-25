@@ -1,0 +1,138 @@
+{
+    "name": "Excel",
+    "accent_color": "#217346",
+    "description": "Microsoft Excel özel eylem çemberi",
+    "app_bindings": [
+        "excel.exe"
+    ],
+    "items": [
+        {
+            "id": "ex_1",
+            "label": "Kaydet",
+            "icon": "save",
+            "color": "#217346",
+            "tooltip": "Belgeyi Kaydet (Ctrl+S)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "ea1",
+                "label": "Kaydet",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+s"
+                }
+            }
+        },
+        {
+            "id": "ex_2",
+            "label": "Filtrele",
+            "icon": "filter",
+            "color": "#217346",
+            "tooltip": "Filtre Ekle/Kaldır (Ctrl+Shift+L)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "ea2",
+                "label": "Filtrele",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+shift+l"
+                }
+            }
+        },
+        {
+            "id": "ex_3",
+            "label": "Hızlı Toplam",
+            "icon": "plus-circle",
+            "color": "#217346",
+            "tooltip": "Otomatik Toplam (Alt+=)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "ea3",
+                "label": "Toplam",
+                "icon": "",
+                "params": {
+                    "keys": "alt+="
+                }
+            }
+        },
+        {
+            "id": "ex_4",
+            "label": "Hücre Biçimi",
+            "icon": "settings",
+            "color": "#217346",
+            "tooltip": "Hücre Biçimlendir (Ctrl+1)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "ea4",
+                "label": "Biçimlendir",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+1"
+                }
+            }
+        },
+        {
+            "id": "ex_5",
+            "label": "Geri Al",
+            "icon": "corner-up-left",
+            "color": "#217346",
+            "tooltip": "Geri Al (Ctrl+Z)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "ea5",
+                "label": "Geri Al",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+z"
+                }
+            }
+        },
+        {
+            "id": "ex_6",
+            "label": "Kopyala",
+            "icon": "copy",
+            "color": "#217346",
+            "tooltip": "Metni Kopyala (Ctrl+C)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "ea6",
+                "label": "Kopyala",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+c"
+                }
+            }
+        },
+        {
+            "id": "ex_7",
+            "label": "Yapıştır",
+            "icon": "clipboard",
+            "color": "#217346",
+            "tooltip": "Panodan Yapıştır (Ctrl+V)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "ea7",
+                "label": "Yapıştır",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+v"
+                }
+            }
+        },
+        {
+            "id": "ex_8",
+            "label": "Hücre Düzenle",
+            "icon": "edit-2",
+            "color": "#217346",
+            "tooltip": "Seçili Hücreyi Düzenle (F2)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "ea8",
+                "label": "Düzenle",
+                "icon": "",
+                "params": {
+                    "keys": "f2"
+                }
+            }
+        }
+    ]
+}

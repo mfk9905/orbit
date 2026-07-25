@@ -1,0 +1,142 @@
+{
+    "name": "Web Browser",
+    "accent_color": "#FF4757",
+    "description": "Web tarayıcıları (Chrome, Edge, Firefox) için dairesel kısayol çemberi",
+    "app_bindings": [
+        "chrome.exe",
+        "msedge.exe",
+        "firefox.exe",
+        "opera.exe",
+        "brave.exe"
+    ],
+    "items": [
+        {
+            "id": "b1",
+            "label": "Yeni Sekme",
+            "icon": "plus",
+            "color": "#FF4757",
+            "tooltip": "Yeni Sekme Aç (Ctrl+T)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "ba1",
+                "label": "Yeni Sekme",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+t"
+                }
+            }
+        },
+        {
+            "id": "b2",
+            "label": "Geri Getir",
+            "icon": "rotate-ccw",
+            "color": "#FF4757",
+            "tooltip": "Kapanan Sekmeyi Aç (Ctrl+Shift+T)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "ba2",
+                "label": "Sekme Geri",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+shift+t"
+                }
+            }
+        },
+        {
+            "id": "b3",
+            "label": "Yenile",
+            "icon": "refresh-cw",
+            "color": "#FF4757",
+            "tooltip": "Sayfayı Yenile (F5)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "ba3",
+                "label": "Yenile",
+                "icon": "",
+                "params": {
+                    "keys": "f5"
+                }
+            }
+        },
+        {
+            "id": "b4",
+            "label": "Geliştirici",
+            "icon": "tool",
+            "color": "#FF4757",
+            "tooltip": "İncele / Geliştirici Araçları (F12)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "ba4",
+                "label": "İncele",
+                "icon": "",
+                "params": {
+                    "keys": "f12"
+                }
+            }
+        },
+        {
+            "id": "b5",
+            "label": "Sonraki Sekme",
+            "icon": "chevron-right",
+            "color": "#FF4757",
+            "tooltip": "Sonraki Sekmeye Geç (Ctrl+Tab)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "ba5",
+                "label": "Sonraki Sekme",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+tab"
+                }
+            }
+        },
+        {
+            "id": "b6",
+            "label": "Önceki Sekme",
+            "icon": "chevron-left",
+            "color": "#FF4757",
+            "tooltip": "Önceki Sekmeye Geç (Ctrl+Shift+Tab)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "ba6",
+                "label": "Önceki Sekme",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+shift+tab"
+                }
+            }
+        },
+        {
+            "id": "b7",
+            "label": "Yer İmi Ekle",
+            "icon": "bookmark",
+            "color": "#FF4757",
+            "tooltip": "Sayfayı Favorilere Ekle (Ctrl+D)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "ba7",
+                "label": "Favori",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+d"
+                }
+            }
+        },
+        {
+            "id": "b8",
+            "label": "Sekme Kapat",
+            "icon": "x",
+            "color": "#FF4757",
+            "tooltip": "Aktif Sekmeyi Kapat (Ctrl+W)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "ba8",
+                "label": "Kapat",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+w"
+                }
+            }
+        }
+    ]
+}

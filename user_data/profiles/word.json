@@ -1,0 +1,138 @@
+{
+    "name": "Word",
+    "accent_color": "#2B579A",
+    "description": "Microsoft Word özel eylem çemberi",
+    "app_bindings": [
+        "winword.exe"
+    ],
+    "items": [
+        {
+            "id": "word_1",
+            "label": "Kaydet",
+            "icon": "save",
+            "color": "#2B579A",
+            "tooltip": "Belgeyi Kaydet (Ctrl+S)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "wa1",
+                "label": "Kaydet",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+s"
+                }
+            }
+        },
+        {
+            "id": "word_2",
+            "label": "Kalın",
+            "icon": "bold",
+            "color": "#2B579A",
+            "tooltip": "Kalın Yazı Tipi (Ctrl+B)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "wa2",
+                "label": "Kalın",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+b"
+                }
+            }
+        },
+        {
+            "id": "word_3",
+            "label": "İtalik",
+            "icon": "italic",
+            "color": "#2B579A",
+            "tooltip": "İtalik Yazı Tipi (Ctrl+I)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "wa3",
+                "label": "İtalik",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+i"
+                }
+            }
+        },
+        {
+            "id": "word_4",
+            "label": "Altı Çizili",
+            "icon": "underline",
+            "color": "#2B579A",
+            "tooltip": "Altı Çizili Yazı Tipi (Ctrl+U)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "wa4",
+                "label": "Altı Çizili",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+u"
+                }
+            }
+        },
+        {
+            "id": "word_5",
+            "label": "Geri Al",
+            "icon": "corner-up-left",
+            "color": "#2B579A",
+            "tooltip": "Geri Al (Ctrl+Z)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "wa5",
+                "label": "Geri Al",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+z"
+                }
+            }
+        },
+        {
+            "id": "word_6",
+            "label": "Bul",
+            "icon": "search",
+            "color": "#2B579A",
+            "tooltip": "Metin Bul (Ctrl+F)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "wa6",
+                "label": "Bul",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+f"
+                }
+            }
+        },
+        {
+            "id": "word_7",
+            "label": "Kopyala",
+            "icon": "copy",
+            "color": "#2B579A",
+            "tooltip": "Metni Kopyala (Ctrl+C)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "wa7",
+                "label": "Kopyala",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+c"
+                }
+            }
+        },
+        {
+            "id": "word_8",
+            "label": "Yapıştır",
+            "icon": "clipboard",
+            "color": "#2B579A",
+            "tooltip": "Panodan Yapıştır (Ctrl+V)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "wa8",
+                "label": "Yapıştır",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+v"
+                }
+            }
+        }
+    ]
+}

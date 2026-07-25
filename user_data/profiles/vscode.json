@@ -1,0 +1,202 @@
+{
+    "name": "VS Code",
+    "accent_color": "#007ACC",
+    "description": "Visual Studio Code özel dairesel eylem menüsü",
+    "app_bindings": [
+        "code.exe",
+        "code"
+    ],
+    "items": [
+        {
+            "id": "v1",
+            "label": "Komut Paleti",
+            "icon": "command",
+            "color": "#007ACC",
+            "tooltip": "Komut Paletini Aç (Ctrl+Shift+P)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "va1",
+                "label": "Komut Paleti",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+shift+p"
+                }
+            }
+        },
+        {
+            "id": "v_sub1",
+            "label": "Kod Araçları",
+            "icon": "tools",
+            "color": "#007ACC",
+            "tooltip": "Kod Düzenleme ve Gelişmiş Araçlar Alt Menüsü",
+            "action": {
+                "type": "SubRingAction",
+                "id": "act_sub1",
+                "label": "Kod Araçları",
+                "icon": "",
+                "items": [
+                    {
+                        "id": "vs1",
+                        "label": "Kodu Formatla",
+                        "icon": "code",
+                        "color": "#007ACC",
+                        "tooltip": "Kodu Formatla (Shift+Alt+F)",
+                        "action": {
+                            "type": "ShortcutAction",
+                            "id": "vsa1",
+                            "label": "Formatla",
+                            "icon": "",
+                            "params": {
+                                "keys": "shift+alt+f"
+                            }
+                        }
+                    },
+                    {
+                        "id": "vs2",
+                        "label": "Yorum Yap",
+                        "icon": "message-square",
+                        "color": "#007ACC",
+                        "tooltip": "Satır Açıklaması (Ctrl+/)",
+                        "action": {
+                            "type": "ShortcutAction",
+                            "id": "vsa2",
+                            "label": "Yorum",
+                            "icon": "",
+                            "params": {
+                                "keys": "ctrl+/"
+                            }
+                        }
+                    },
+                    {
+                        "id": "vs3",
+                        "label": "Taşı Yukarı",
+                        "icon": "arrow-up",
+                        "color": "#007ACC",
+                        "tooltip": "Satırı Yukarı Taşı (Alt+Up)",
+                        "action": {
+                            "type": "ShortcutAction",
+                            "id": "vsa3",
+                            "label": "Taşı Yukarı",
+                            "icon": "",
+                            "params": {
+                                "keys": "alt+up"
+                            }
+                        }
+                    },
+                    {
+                        "id": "vs4",
+                        "label": "Taşı Aşağı",
+                        "icon": "arrow-down",
+                        "color": "#007ACC",
+                        "tooltip": "Satırı Aşağı Taşı (Alt+Down)",
+                        "action": {
+                            "type": "ShortcutAction",
+                            "id": "vsa4",
+                            "label": "Taşı Aşağı",
+                            "icon": "",
+                            "params": {
+                                "keys": "alt+down"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "v3",
+            "label": "Terminal",
+            "icon": "terminal",
+            "color": "#007ACC",
+            "tooltip": "Entegre Terminali Aç/Kapat (Ctrl+`)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "va3",
+                "label": "Terminal",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+`"
+                }
+            }
+        },
+        {
+            "id": "v4",
+            "label": "Arama Yap",
+            "icon": "search",
+            "color": "#007ACC",
+            "tooltip": "Projede Arama Yap (Ctrl+Shift+F)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "va4",
+                "label": "Arama",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+shift+f"
+                }
+            }
+        },
+        {
+            "id": "v5",
+            "label": "Hata Ayıkla",
+            "icon": "play",
+            "color": "#007ACC",
+            "tooltip": "Hata Ayıklama Başlat (F5)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "va5",
+                "label": "Hata Ayıkla",
+                "icon": "",
+                "params": {
+                    "keys": "f5"
+                }
+            }
+        },
+        {
+            "id": "v6",
+            "label": "Git Menüsü",
+            "icon": "git",
+            "color": "#007ACC",
+            "tooltip": "Git Kaynak Kontrolü (Ctrl+Shift+G)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "va6",
+                "label": "Git",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+shift+g"
+                }
+            }
+        },
+        {
+            "id": "v7",
+            "label": "Editör Böl",
+            "icon": "columns",
+            "color": "#007ACC",
+            "tooltip": "Editör Penceresini Böl (Ctrl+\\)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "va7",
+                "label": "Böl",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+\\"
+                }
+            }
+        },
+        {
+            "id": "v8",
+            "label": "Sekme Kapat",
+            "icon": "x",
+            "color": "#007ACC",
+            "tooltip": "Aktif Sekmeyi Kapat (Ctrl+W)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "va8",
+                "label": "Kapat",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+w"
+                }
+            }
+        }
+    ]
+}

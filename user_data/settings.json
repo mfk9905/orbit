@@ -1,0 +1,18 @@
+{
+    "theme": "dark",
+    "accent_color": "#2ED573",
+    "opacity": 0.9,
+    "animation_speed": 200,
+    "radius": 150,
+    "hotkey": "<ctrl>+<space>",
+    "mouse_hotkey": "button4",
+    "language": "en",
+    "slices_count": 8,
+    "blur_effect": true,
+    "autostart": false,
+    "enable_mouse4": false,
+    "middle_hold_seconds": 2.0,
+    "primary_hotkey": "button5",
+    "enable_hold_duration": true,
+    "hold_duration_seconds": 1.0
+}

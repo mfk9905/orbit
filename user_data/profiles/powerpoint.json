@@ -1,0 +1,146 @@
+{
+    "name": "PowerPoint",
+    "accent_color": "#B7472A",
+    "description": "Microsoft PowerPoint özel eylem çemberi",
+    "app_bindings": [
+        "powerpnt.exe"
+    ],
+    "items": [
+        {
+            "id": "ppt_1",
+            "label": "Kaydet",
+            "icon": "save",
+            "color": "#B7472A",
+            "tooltip": "Belgeyi Kaydet (Ctrl+S)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "pa1",
+                "label": "Kaydet",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+s"
+                }
+            }
+        },
+        {
+            "id": "ppt_2",
+            "label": "Sunumu Başlat",
+            "icon": "play",
+            "color": "#B7472A",
+            "tooltip": "Sunumu Başlat (F5)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "pa2",
+                "label": "Başlat",
+                "icon": "",
+                "params": {
+                    "keys": "f5"
+                }
+            }
+        },
+        {
+            "id": "ppt_3",
+            "label": "Yeni Slayt",
+            "icon": "file-plus",
+            "color": "#B7472A",
+            "tooltip": "Yeni Slayt Ekle (Ctrl+M)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "pa3",
+                "label": "Yeni Slayt",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+m"
+                }
+            }
+        },
+        {
+            "id": "ppt_4",
+            "label": "Şekil Ekle",
+            "icon": "square",
+            "color": "#B7472A",
+            "tooltip": "Şekil Ekle (Alt+N+SH)",
+            "action": {
+                "type": "MacroAction",
+                "id": "pa4",
+                "label": "Şekil",
+                "icon": "",
+                "params": {
+                    "steps": [
+                        { "type": "shortcut", "keys": "alt" },
+                        { "type": "delay", "ms": 50 },
+                        { "type": "shortcut", "keys": "n" },
+                        { "type": "delay", "ms": 50 },
+                        { "type": "shortcut", "keys": "s" },
+                        { "type": "delay", "ms": 50 },
+                        { "type": "shortcut", "keys": "h" }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "ppt_5",
+            "label": "Geri Al",
+            "icon": "corner-up-left",
+            "color": "#B7472A",
+            "tooltip": "Geri Al (Ctrl+Z)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "pa5",
+                "label": "Geri Al",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+z"
+                }
+            }
+        },
+        {
+            "id": "ppt_6",
+            "label": "Kopyala",
+            "icon": "copy",
+            "color": "#B7472A",
+            "tooltip": "Metni Kopyala (Ctrl+C)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "pa6",
+                "label": "Kopyala",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+c"
+                }
+            }
+        },
+        {
+            "id": "ppt_7",
+            "label": "Yapıştır",
+            "icon": "clipboard",
+            "color": "#B7472A",
+            "tooltip": "Panodan Yapıştır (Ctrl+V)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "pa7",
+                "label": "Yapıştır",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+v"
+                }
+            }
+        },
+        {
+            "id": "ppt_8",
+            "label": "Çoğalt",
+            "icon": "layers",
+            "color": "#B7472A",
+            "tooltip": "Seçili Öğeyi Çoğalt (Ctrl+D)",
+            "action": {
+                "type": "ShortcutAction",
+                "id": "pa8",
+                "label": "Çoğalt",
+                "icon": "",
+                "params": {
+                    "keys": "ctrl+d"
+                }
+            }
+        }
+    ]
+}

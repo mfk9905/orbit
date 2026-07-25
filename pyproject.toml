@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "orbit"
+version = "0.1.0"
+description = "Modern cross-platform radial menu application"
+readme = "README.md"
+authors = [
+    { name = "Antigravity Orbit Team" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "PySide6>=6.6.0",
+    "pynput>=1.7.6",
+    "qasync>=0.27.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0"
+]
+
+[project.scripts]
+orbit = "main:main"
+
+[tool.setuptools]
+py-modules = ["main"]
+
+[tool.setuptools.packages.find]
+include = ["app*"]

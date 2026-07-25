@@ -1,0 +1,136 @@
+{
+    "name": "Varsay\u0131lan",
+    "accent_color": "#2ED573",
+    "description": "Varsay\u0131lan 8 dilimli ak\u0131ll\u0131 eylem \u00e7emberi",
+    "app_bindings": [],
+    "items": [
+        {
+            "id": "item_1",
+            "label": "Terminal",
+            "icon": "terminal",
+            "color": "#2ED573",
+            "tooltip": "Sistem Terminalini A\u00e7",
+            "action": {
+                "type": "AppAction",
+                "id": "a1",
+                "label": "Terminal",
+                "icon": "",
+                "params": {
+                    "command": "wt || cmd.exe /c start cmd || konsole || gnome-terminal || xterm"
+                }
+            }
+        },
+        {
+            "id": "item_2",
+            "label": "Taray\u0131c\u0131",
+            "icon": "globe",
+            "color": "#2ED573",
+            "tooltip": "\u0130nternet Taray\u0131c\u0131s\u0131n\u0131 A\u00e7",
+            "action": {
+                "type": "UrlAction",
+                "id": "a2",
+                "label": "Taray\u0131c\u0131",
+                "icon": "",
+                "params": {
+                    "url": "https://google.com"
+                }
+            }
+        },
+        {
+            "id": "item_3",
+            "label": "Ses Ayar\u0131",
+            "icon": "volume-2",
+            "color": "#2ED573",
+            "tooltip": "Fare Tekerle\u011fi ile Ses Ayarla (Yukar\u0131/A\u015fa\u011f\u0131)",
+            "action": {
+                "type": "WheelAction",
+                "id": "a3_vol",
+                "label": "Ses Ayar\u0131",
+                "icon": "",
+                "params": {
+                    "mode": "volume"
+                }
+            }
+        },
+        {
+            "id": "item_4",
+            "label": "Pencere Y\u00f6netimi",
+            "icon": "layout",
+            "color": "#2ED573",
+            "tooltip": "Pencere Boyutland\u0131rma & Hizalama Alt Men\u00fcs\u00fc",
+            "action": {
+                "type": "SubRingAction",
+                "id": "a4_win",
+                "label": "Pencere Y\u00f6netimi",
+                "icon": "",
+                "params": {},
+                "items": [
+                    {
+                        "id": "w1",
+                        "label": "K\u00fc\u00e7\u00fclt",
+                        "icon": "minus",
+                        "color": "#2ED573",
+                        "tooltip": "Pencereyi K\u00fc\u00e7\u00fclt",
+                        "action": {
+                            "type": "WindowControlAction",
+                            "id": "wa1",
+                            "label": "K\u00fc\u00e7\u00fclt",
+                            "icon": "",
+                            "params": {
+                                "command": "minimize"
+                            }
+                        }
+                    },
+                    {
+                        "id": "w2",
+                        "label": "B\u00fcy\u00fct",
+                        "icon": "square",
+                        "color": "#2ED573",
+                        "tooltip": "Ekran\u0131 Kapla",
+                        "action": {
+                            "type": "WindowControlAction",
+                            "id": "wa2",
+                            "label": "B\u00fcy\u00fct",
+                            "icon": "",
+                            "params": {
+                                "command": "maximize"
+                            }
+                        }
+                    },
+                    {
+                        "id": "w3",
+                        "label": "Sola Yasla",
+                        "icon": "arrow-left",
+                        "color": "#2ED573",
+                        "tooltip": "Pencereyi Sola Yasla",
+                        "action": {
+                            "type": "WindowControlAction",
+                            "id": "wa3",
+                            "label": "Sola Yasla",
+                            "icon": "",
+                            "params": {
+                                "command": "snap_left"
+                            }
+                        }
+                    },
+                    {
+                        "id": "w4",
+                        "label": "Sa\u011fa Yasla",
+                        "icon": "arrow-right",
+                        "color": "#2ED573",
+                        "tooltip": "Pencereyi Sa\u011fa Yasla",
+                        "action": {
+                            "type": "WindowControlAction",
+                            "id": "wa4",
+                            "label": "Sa\u011fa Yasla",
+                            "icon": "",
+                            "params": {
+                                "command": "snap_right"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
