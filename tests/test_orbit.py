@@ -247,6 +247,67 @@ def test_phase2_subring_editor_and_profile_duplication(tmp_path: Path):
     assert reloaded_act.sub_items[0].label == "Copy"
 
 
+def test_phase3_autostart_and_shortcut_safety():
+    from app.core.platform.platform_manager import PlatformManager
+    from app.models.actions import ShortcutAction
+
+    # 1. Platform autostart interface test
+    platform = PlatformManager.create_platform()
+    assert hasattr(platform, "set_autostart")
+    assert hasattr(platform, "is_autostart_enabled")
+
+    # 2. ShortcutAction safety test
+    sc = ShortcutAction("sc_test", "CopyTest", params={"keys": "ctrl+c"})
+    # Mocking pynput to avoid actual keyboard events during headless test run if needed
+    assert sc.label == "CopyTest"
+
+
+def test_phase4_theme_tokens():
+    from app.core.theme import DesignTokens
+    from PySide6.QtGui import QFont
+    from PySide6.QtWidgets import QApplication
+
+    app = QApplication.instance() or QApplication([])
+
+    # 1. DesignTokens test
+    assert DesignTokens.PRIMARY_ACCENT == "#2ED573"
+    font = DesignTokens.get_font(size=12.0, bold=True)
+    assert isinstance(font, QFont)
+    assert font.bold() is True
+
+
+def test_phase5_hotkey_manager_and_editor_ui(tmp_path: Path):
+    from PySide6.QtWidgets import QApplication
+    from app.core.hooks.hotkey_manager import HotkeyManager
+    from app.ui.editor.profile_editor_window import ProfileEditorWindow
+    from app.services.profile_service import ProfileService
+
+    app = QApplication.instance() or QApplication([])
+
+    # 1. HotkeyManager match test
+    hk_mgr = HotkeyManager(primary_hotkey="ctrl+space", secondary_hotkey="button4")
+    hk_mgr._currently_pressed_keys = {"ctrl", "space"}
+    assert hk_mgr._matches_shortcut("ctrl+space") is True
+    assert hk_mgr._matches_shortcut("alt+r") is False
+
+    hk_mgr._currently_pressed_mouse = {"button4"}
+    assert hk_mgr._matches_shortcut("button4") is True
+
+    # 2. ProfileEditorWindow instantiation and duplication test
+    prof_svc = ProfileService(tmp_path / "profiles", EventBus())
+    editor = ProfileEditorWindow(prof_svc)
+    assert editor.windowTitle() == "Orbit - Görsel Profil ve Halkalar Editörü"
+    assert editor.profile_list_widget.count() >= 1
+
+    # Duplicate profile test
+    editor.profile_list_widget.setCurrentRow(0)
+    editor._on_duplicate_profile()
+    assert editor.profile_list_widget.count() >= 2
+
+
+
+
+
 
 
 

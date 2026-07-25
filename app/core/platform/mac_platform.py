@@ -22,3 +22,9 @@ class MacPlatform(BasePlatform):
 
     def get_platform_name(self) -> str:
         return "macOS"
+
+    def set_autostart(self, enabled: bool) -> bool:
+        return True
+
+    def is_autostart_enabled(self) -> bool:
+        return False

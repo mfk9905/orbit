@@ -29,3 +29,41 @@ class WindowsPlatform(BasePlatform):
 
     def get_platform_name(self) -> str:
         return "Windows 11"
+
+    def set_autostart(self, enabled: bool) -> bool:
+        """Configures Windows Registry autostart key."""
+        try:
+            import sys
+            import winreg
+            key_path = r"Software\Microsoft\Windows\CurrentVersion\Run"
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, key_path, 0, winreg.KEY_SET_VALUE) as key:
+                if enabled:
+                    python_exe = sys.executable
+                    script_path = sys.argv[0]
+                    if script_path.endswith(".py"):
+                        cmd = f'"{python_exe}" "{script_path}"'
+                    else:
+                        cmd = f'"{script_path}"'
+                    winreg.SetValueEx(key, "Orbit", 0, winreg.REG_SZ, cmd)
+                    logger.info(f"Windows Registry autostart enabled: {cmd}")
+                else:
+                    try:
+                        winreg.DeleteValue(key, "Orbit")
+                        logger.info("Windows Registry autostart disabled")
+                    except FileNotFoundError:
+                        pass
+            return True
+        except Exception as e:
+            logger.error(f"Failed to configure Windows autostart: {e}")
+            return False
+
+    def is_autostart_enabled(self) -> bool:
+        """Checks Windows Registry autostart key."""
+        try:
+            import winreg
+            key_path = r"Software\Microsoft\Windows\CurrentVersion\Run"
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, key_path, 0, winreg.KEY_READ) as key:
+                winreg.QueryValueEx(key, "Orbit")
+                return True
+        except Exception:
+            return False

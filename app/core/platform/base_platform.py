@@ -28,3 +28,13 @@ class BasePlatform(ABC):
     def get_platform_name(self) -> str:
         """Returns string identifier of the platform."""
         pass
+
+    @abstractmethod
+    def set_autostart(self, enabled: bool) -> bool:
+        """Configures OS startup entry."""
+        pass
+
+    @abstractmethod
+    def is_autostart_enabled(self) -> bool:
+        """Returns True if autostart is enabled."""
+        pass

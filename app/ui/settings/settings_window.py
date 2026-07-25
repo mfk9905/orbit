@@ -437,7 +437,19 @@ class SettingsWindow(QMainWindow):
 
         autostart_check = QCheckBox("Bilgisayar Açıldığında Orbit Otomatik Başlasın")
         autostart_check.setChecked(self.settings_service.get("autostart", False))
-        autostart_check.toggled.connect(lambda c: self.settings_service.set("autostart", c))
+
+        def _on_autostart_toggled(enabled: bool) -> None:
+            self.settings_service.set("autostart", enabled)
+            try:
+                from app.core.container import ServiceContainer
+                from app.core.platform.platform_manager import PlatformManager
+                platform = ServiceContainer.get_instance().resolve(type(PlatformManager.create_platform()))
+                if platform:
+                    platform.set_autostart(enabled)
+            except Exception as e:
+                logger.error(f"Failed to update platform autostart: {e}")
+
+        autostart_check.toggled.connect(_on_autostart_toggled)
         form.addRow(autostart_check)
 
         layout.addWidget(group)
