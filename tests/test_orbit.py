@@ -223,6 +223,31 @@ def test_phase1_live_config_and_profile_reload(tmp_path: Path):
     assert vm._radius == 220
 
 
+def test_phase2_subring_editor_and_profile_duplication(tmp_path: Path):
+    from app.models.actions import SubRingAction, ShortcutAction
+    from app.services.profile_service import ProfileService
+
+    # 1. Test SubRing nested sub-item dictionary conversion
+    sub1 = SliceItem("s1", "Copy", "copy", "#2ED573", ShortcutAction("a1", "Copy", params={"keys": "ctrl+c"}))
+    sub2 = SliceItem("s2", "Paste", "clipboard", "#2ED573", ShortcutAction("a2", "Paste", params={"keys": "ctrl+v"}))
+    sub_action = SubRingAction("sr1", "Clipboard SubRing", items=[sub1, sub2])
+
+    parent_item = SliceItem("p1", "Tools", "tools", "#3498DB", sub_action)
+    prof = Profile("ParentProfile", [parent_item])
+
+    prof_svc = ProfileService(tmp_path / "profiles", EventBus())
+    prof_svc.save_profile("parent_prof", prof)
+
+    # Reload from storage
+    reloaded = prof_svc._profiles["parent_prof"]
+    assert len(reloaded.items) == 1
+    reloaded_act = reloaded.items[0].action
+    assert isinstance(reloaded_act, SubRingAction)
+    assert len(reloaded_act.sub_items) == 2
+    assert reloaded_act.sub_items[0].label == "Copy"
+
+
+
 
 
 

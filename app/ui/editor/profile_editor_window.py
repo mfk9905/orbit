@@ -1,6 +1,6 @@
 """
 Visual Profile Editor Window for Orbit Radial Menu (PySide6).
-Allows creating, editing, and binding profiles to applications with full GUI.
+Allows creating, editing, and binding profiles to applications with full GUI and nested SubRing support.
 """
 
 import json
@@ -17,20 +17,33 @@ from app.models.actions import (
     AppAction, UrlAction, ShellAction, ShortcutAction, TextAction,
     MacroAction, WheelAction, WindowControlAction, SubRingAction, action_factory
 )
+from app.core.icons.svg_library import SVG_ICONS
 from app.services.profile_service import ProfileService
 from app.core.logging.logger import get_logger
 
 logger = get_logger("orbit.ui.editor")
 
+PRESET_COLORS = [
+    ("#2ED573", "Yeşil"),
+    ("#3498DB", "Mavi"),
+    ("#E74C3C", "Kırmızı"),
+    ("#F1C40F", "Sarı"),
+    ("#9B59B6", "Mor"),
+    ("#E67E22", "Turuncu"),
+    ("#1ABC9C", "Turkuaz"),
+    ("#FFA502", "Kehribar")
+]
+
 
 class SliceItemDialog(QDialog):
-    """Dialog to create or edit a single SliceItem and its Action."""
+    """Dialog to create or edit a single SliceItem and its Action (supports nested SubRings)."""
 
     def __init__(self, item: SliceItem | None = None, parent: QWidget | None = None) -> None:
         super().__init__(parent)
         self.setWindowTitle("Dilim / Eylem Düzenleyici")
-        self.resize(450, 480)
+        self.resize(520, 560)
         self.item = item
+        self.sub_items: List[SliceItem] = []
         self._init_ui()
         if item:
             self._load_item_data(item)
@@ -44,13 +57,21 @@ class SliceItemDialog(QDialog):
 
         self.icon_input = QComboBox()
         self.icon_input.setEditable(True)
-        self.icon_input.addItems([
-            "terminal", "globe", "code", "search", "command", "volume-2", "zap", "tools",
-            "copy", "clipboard", "play", "git", "plus", "minus", "square", "x", "home",
-            "arrow-left", "arrow-right", "arrow-up", "arrow-down", "settings", "layout", "columns", "cpu", "type"
-        ])
+        self.icon_input.addItems(list(SVG_ICONS.keys()))
 
+        # Color input with visual preset buttons
+        color_layout = QHBoxLayout()
         self.color_input = QLineEdit("#2ED573")
+        color_layout.addWidget(self.color_input)
+
+        for hex_code, color_name in PRESET_COLORS:
+            btn = QPushButton()
+            btn.setFixedSize(22, 22)
+            btn.setToolTip(color_name)
+            btn.setStyleSheet(f"background-color: {hex_code}; border: 1px solid #ffffff; border-radius: 4px;")
+            btn.clicked.connect(lambda _, c=hex_code: self.color_input.setText(c))
+            color_layout.addWidget(btn)
+
         self.tooltip_input = QLineEdit()
 
         self.action_type = QComboBox()
@@ -68,7 +89,7 @@ class SliceItemDialog(QDialog):
 
         form.addRow("Dilim Etiketi:", self.label_input)
         form.addRow("Vektör İkon:", self.icon_input)
-        form.addRow("Vurgu Rengi:", self.color_input)
+        form.addRow("Vurgu Rengi:", color_layout)
         form.addRow("İpucu (Tooltip):", self.tooltip_input)
         form.addRow("Eylem Tipi:", self.action_type)
         form.addRow(self.param1_label, self.param1_input)
@@ -76,8 +97,33 @@ class SliceItemDialog(QDialog):
 
         layout.addLayout(form)
 
+        # --- Nested Sub-Ring Items UI (Visible only when SubRingAction selected) ---
+        self.sub_ring_group = QGroupBox("Alt Halka Dilimleri (Sub-Items)")
+        sub_layout = QVBoxLayout(self.sub_ring_group)
+
+        self.sub_list_widget = QListWidget()
+        sub_layout.addWidget(self.sub_list_widget)
+
+        sub_btn_bar = QHBoxLayout()
+        add_sub_btn = QPushButton("+ Alt Dilim Ekle")
+        add_sub_btn.clicked.connect(self._on_add_sub_item)
+        edit_sub_btn = QPushButton("Düzenle")
+        edit_sub_btn.clicked.connect(self._on_edit_sub_item)
+        del_sub_btn = QPushButton("Sil")
+        del_sub_btn.clicked.connect(self._on_delete_sub_item)
+
+        sub_btn_bar.addWidget(add_sub_btn)
+        sub_btn_bar.addWidget(edit_sub_btn)
+        sub_btn_bar.addWidget(del_sub_btn)
+        sub_layout.addLayout(sub_btn_bar)
+
+        layout.addWidget(self.sub_ring_group)
+        self.sub_ring_group.hide()
+
+        # Dialog buttons
         btn_box = QHBoxLayout()
         save_btn = QPushButton("Kaydet")
+        save_btn.setStyleSheet("background-color: #2ED573; color: #0A140F; font-weight: bold; padding: 6px 16px;")
         save_btn.clicked.connect(self.accept)
         cancel_btn = QPushButton("İptal")
         cancel_btn.clicked.connect(self.reject)
@@ -88,42 +134,98 @@ class SliceItemDialog(QDialog):
         self._on_action_type_changed("AppAction")
 
     def _on_action_type_changed(self, act_type: str) -> None:
-        if act_type == "AppAction":
+        if act_type == "SubRingAction":
+            self.param1_label.hide()
+            self.param1_input.hide()
+            self.param2_label.hide()
+            self.param2_input.hide()
+            self.sub_ring_group.show()
+        elif act_type == "AppAction":
+            self.sub_ring_group.hide()
+            self.param1_label.show()
+            self.param1_input.show()
             self.param1_label.setText("Uygulama Komutu:")
             self.param1_input.setPlaceholderText("wt || cmd.exe /c start cmd || code")
             self.param2_label.hide()
             self.param2_input.hide()
         elif act_type == "UrlAction":
+            self.sub_ring_group.hide()
+            self.param1_label.show()
+            self.param1_input.show()
             self.param1_label.setText("Web Adresi (URL):")
             self.param1_input.setPlaceholderText("https://google.com")
             self.param2_label.hide()
             self.param2_input.hide()
         elif act_type == "ShortcutAction":
+            self.sub_ring_group.hide()
+            self.param1_label.show()
+            self.param1_input.show()
             self.param1_label.setText("Kısayol Tuşları:")
             self.param1_input.setPlaceholderText("ctrl+c, ctrl+shift+p, alt+f4")
             self.param2_label.hide()
             self.param2_input.hide()
         elif act_type == "TextAction":
+            self.sub_ring_group.hide()
+            self.param1_label.show()
+            self.param1_input.show()
             self.param1_label.setText("Yazdırılacak Metin:")
             self.param1_input.setPlaceholderText("Otomatik yazılacak metin...")
             self.param2_label.hide()
             self.param2_input.hide()
         elif act_type == "WheelAction":
+            self.sub_ring_group.hide()
+            self.param1_label.show()
+            self.param1_input.show()
             self.param1_label.setText("Mod (volume/zoom/shortcut):")
             self.param1_input.setPlaceholderText("volume veya zoom")
             self.param2_label.show()
+            self.param2_input.show()
             self.param2_label.setText("Kısayol (Up/Down):")
             self.param2_input.setPlaceholderText("ctrl+up / ctrl+down")
         elif act_type == "WindowControlAction":
+            self.sub_ring_group.hide()
+            self.param1_label.show()
+            self.param1_input.show()
             self.param1_label.setText("Komut (minimize/maximize/snap_left/snap_right):")
             self.param1_input.setPlaceholderText("minimize")
             self.param2_label.hide()
             self.param2_input.hide()
         else:
+            self.sub_ring_group.hide()
+            self.param1_label.show()
+            self.param1_input.show()
             self.param1_label.setText("Komut / Parametre:")
             self.param1_input.setPlaceholderText("")
             self.param2_label.hide()
             self.param2_input.hide()
+
+    def _update_sub_list(self) -> None:
+        self.sub_list_widget.clear()
+        for sub in self.sub_items:
+            t = type(sub.action).__name__
+            self.sub_list_widget.addItem(f"[{sub.icon}] {sub.label} ({t})")
+
+    def _on_add_sub_item(self) -> None:
+        dlg = SliceItemDialog(parent=self)
+        if dlg.exec() == QDialog.Accepted:
+            new_sub = dlg.get_slice_item()
+            self.sub_items.append(new_sub)
+            self._update_sub_list()
+
+    def _on_edit_sub_item(self) -> None:
+        row = self.sub_list_widget.currentRow()
+        if 0 <= row < len(self.sub_items):
+            old_sub = self.sub_items[row]
+            dlg = SliceItemDialog(item=old_sub, parent=self)
+            if dlg.exec() == QDialog.Accepted:
+                self.sub_items[row] = dlg.get_slice_item()
+                self._update_sub_list()
+
+    def _on_delete_sub_item(self) -> None:
+        row = self.sub_list_widget.currentRow()
+        if 0 <= row < len(self.sub_items):
+            del self.sub_items[row]
+            self._update_sub_list()
 
     def _load_item_data(self, item: SliceItem) -> None:
         self.label_input.setText(item.label)
@@ -135,7 +237,13 @@ class SliceItemDialog(QDialog):
         act_type = type(act).__name__
         self.action_type.setCurrentText(act_type)
 
-        if isinstance(act, AppAction):
+        if isinstance(act, SubRingAction):
+            self.sub_items = [
+                SliceItem.from_dict(sub.to_dict()) if hasattr(sub, "to_dict") else sub
+                for sub in getattr(act, "sub_items", [])
+            ]
+            self._update_sub_list()
+        elif isinstance(act, AppAction):
             self.param1_input.setText(act.params.get("command", ""))
         elif isinstance(act, UrlAction):
             self.param1_input.setText(act.params.get("url", ""))
@@ -154,7 +262,9 @@ class SliceItemDialog(QDialog):
         act_type = self.action_type.currentText()
         p1 = self.param1_input.text().strip()
 
-        if act_type == "AppAction":
+        if act_type == "SubRingAction":
+            action = SubRingAction("act", label, icon=icon, params={}, items=self.sub_items)
+        elif act_type == "AppAction":
             action = AppAction("act", label, icon=icon, params={"command": p1})
         elif act_type == "UrlAction":
             action = UrlAction("act", label, icon=icon, params={"url": p1})
@@ -182,7 +292,7 @@ class ProfileEditorWindow(QMainWindow):
         super().__init__(parent)
         self.profile_service = profile_service
         self.setWindowTitle("Orbit - Görsel Profil ve Halkalar Editörü")
-        self.resize(900, 600)
+        self.resize(920, 620)
         self.current_profile: Optional[Profile] = None
         self._init_ui()
         self._load_profiles()
@@ -205,9 +315,16 @@ class ProfileEditorWindow(QMainWindow):
         btn_bar = QHBoxLayout()
         new_prof_btn = QPushButton("Yeni Profil")
         new_prof_btn.clicked.connect(self._on_new_profile)
+
+        dup_prof_btn = QPushButton("Kopyala")
+        dup_prof_btn.clicked.connect(self._on_duplicate_profile)
+
         del_prof_btn = QPushButton("Sil")
+        del_prof_btn.setStyleSheet("background-color: #E74C3C; color: #ffffff;")
         del_prof_btn.clicked.connect(self._on_delete_profile)
+
         btn_bar.addWidget(new_prof_btn)
+        btn_bar.addWidget(dup_prof_btn)
         btn_bar.addWidget(del_prof_btn)
         left_layout.addLayout(btn_bar)
 
@@ -254,12 +371,12 @@ class ProfileEditorWindow(QMainWindow):
 
         # Save Button
         save_prof_btn = QPushButton("Profili Kaydet & Uygula")
-        save_prof_btn.setStyleSheet("background-color: #2ED573; color: #0A140F; font-weight: bold; padding: 8px;")
+        save_prof_btn.setStyleSheet("background-color: #2ED573; color: #0A140F; font-weight: bold; padding: 10px;")
         save_prof_btn.clicked.connect(self._on_save_profile)
         right_layout.addWidget(save_prof_btn)
 
         splitter.addWidget(right_box)
-        splitter.setSizes([300, 600])
+        splitter.setSizes([280, 640])
 
         main_layout.addWidget(splitter)
 
@@ -288,7 +405,11 @@ class ProfileEditorWindow(QMainWindow):
         if self.current_profile:
             for item in self.current_profile.items:
                 act_type = type(item.action).__name__
-                text = f"[{item.icon}] {item.label}  ({act_type})"
+                if isinstance(item.action, SubRingAction):
+                    count = len(item.action.sub_items)
+                    text = f"[{item.icon}] {item.label}  ➔ Alt Halka ({count} eleman)"
+                else:
+                    text = f"[{item.icon}] {item.label}  ({act_type})"
                 self.slice_list_widget.addItem(text)
 
     def _on_new_profile(self) -> None:
@@ -296,18 +417,40 @@ class ProfileEditorWindow(QMainWindow):
         self.profile_service.save_profile("yeni_profil", new_prof)
         self._load_profiles()
 
+    def _on_duplicate_profile(self) -> None:
+        if not self.current_profile:
+            return
+        dup_name = f"{self.current_profile.name} (Kopya)"
+        dup_key = f"{self.current_profile.name.lower()}_kopya"
+        dup_prof = Profile(
+            dup_name,
+            [SliceItem.from_dict(it.to_dict()) for it in self.current_profile.items],
+            accent_color=self.current_profile.accent_color,
+            description=f"{self.current_profile.description} (Kopyalandı)",
+            app_bindings=self.current_profile.app_bindings.copy()
+        )
+        self.profile_service.save_profile(dup_key, dup_prof)
+        self._load_profiles()
+
     def _on_delete_profile(self) -> None:
         if not self.current_profile or self.current_profile.name.lower() in ("varsayılan", "default"):
             QMessageBox.warning(self, "Uyarı", "Varsayılan profil silinemez!")
             return
-        # Delete profile logic
-        key = self.current_profile.name.lower()
-        filepath = self.profile_service.profiles_dir / f"{key}.json"
-        if filepath.exists():
-            filepath.unlink()
-        if key in self.profile_service._profiles:
-            del self.profile_service._profiles[key]
-        self._load_profiles()
+
+        reply = QMessageBox.question(
+            self, "Profil Silme Onayı",
+            f"'{self.current_profile.name}' profilini silmek istediğinize emin misiniz?",
+            QMessageBox.Yes | QMessageBox.No
+        )
+        if reply == QMessageBox.Yes:
+            key = self.current_profile.name.lower()
+            filepath = self.profile_service.profiles_dir / f"{key}.json"
+            if filepath.exists():
+                filepath.unlink()
+            if key in self.profile_service._profiles:
+                del self.profile_service._profiles[key]
+            self.current_profile = None
+            self._load_profiles()
 
     def _on_add_slice(self) -> None:
         if not self.current_profile:
@@ -344,7 +487,7 @@ class ProfileEditorWindow(QMainWindow):
         desc = self.prof_desc_input.text().strip()
         color = self.prof_color_input.text().strip()
         apps_raw = self.prof_apps_input.text().strip()
-        apps = [a.strip() for a in apps_raw.split(",") if a.strip()]
+        apps = [a.strip().lower() for a in apps_raw.split(",") if a.strip()]
 
         self.current_profile.name = name
         self.current_profile.description = desc
