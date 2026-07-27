@@ -1,18 +1,19 @@
 {
-    "name": "Varsayılan",
+    "name": "Varsay\u0131lan",
     "accent_color": "#2ED573",
-    "description": "Logitech Actions Ring tarzı akıllı eylem çemberi",
+    "description": "Logitech Actions Ring tarz\u0131 ak\u0131ll\u0131 eylem \u00e7emberi",
+    "app_bindings": [],
     "items": [
         {
-            "id": "item_1",
-            "label": "Ekran Alıntısı",
+            "id": "slice_ekran al\u0131nt\u0131s\u0131 arac\u0131",
+            "label": "Ekran Al\u0131nt\u0131s\u0131 Arac\u0131",
             "icon": "camera",
-            "color": "#E74C3C",
-            "tooltip": "Windows Ekran Alıntısı Aracı (Win+Shift+S)",
+            "color": "#FF4757",
+            "tooltip": "Ekran Al\u0131nt\u0131s\u0131 Arac\u0131",
             "action": {
                 "type": "SystemToolAction",
-                "id": "a1_snip",
-                "label": "Ekran Alıntısı",
+                "id": "act_ekran al\u0131nt\u0131s\u0131 arac\u0131",
+                "label": "Ekran Al\u0131nt\u0131s\u0131 Arac\u0131",
                 "icon": "camera",
                 "params": {
                     "command": "snipping_tool"
@@ -24,12 +25,13 @@
             "label": "Medya & Ses",
             "icon": "music",
             "color": "#1ABC9C",
-            "tooltip": "Ses Kontrolü ve Medya Oynatıcı Alt Menüsü",
+            "tooltip": "Ses Kontrol\u00fc ve Medya Oynat\u0131c\u0131 Alt Men\u00fcs\u00fc",
             "action": {
                 "type": "SubRingAction",
                 "id": "a2_media",
                 "label": "Medya & Ses",
                 "icon": "music",
+                "params": {},
                 "items": [
                     {
                         "id": "m1",
@@ -41,6 +43,7 @@
                             "type": "MediaAction",
                             "id": "ma1",
                             "label": "Oynat / Durdur",
+                            "icon": "",
                             "params": {
                                 "command": "play_pause"
                             }
@@ -48,14 +51,15 @@
                     },
                     {
                         "id": "m2",
-                        "label": "Sonraki Parça",
+                        "label": "Sonraki Par\u00e7a",
                         "icon": "skip-forward",
                         "color": "#1ABC9C",
-                        "tooltip": "Sonraki Parça",
+                        "tooltip": "Sonraki Par\u00e7a",
                         "action": {
                             "type": "MediaAction",
                             "id": "ma2",
-                            "label": "Sonraki Parça",
+                            "label": "Sonraki Par\u00e7a",
+                            "icon": "",
                             "params": {
                                 "command": "next_track"
                             }
@@ -63,14 +67,15 @@
                     },
                     {
                         "id": "m3",
-                        "label": "Önceki Parça",
+                        "label": "\u00d6nceki Par\u00e7a",
                         "icon": "skip-back",
                         "color": "#1ABC9C",
-                        "tooltip": "Önceki Parça",
+                        "tooltip": "\u00d6nceki Par\u00e7a",
                         "action": {
                             "type": "MediaAction",
                             "id": "ma3",
-                            "label": "Önceki Parça",
+                            "label": "\u00d6nceki Par\u00e7a",
+                            "icon": "",
                             "params": {
                                 "command": "prev_track"
                             }
@@ -78,14 +83,15 @@
                     },
                     {
                         "id": "m4",
-                        "label": "Sesi Kapat / Aç",
+                        "label": "Sesi Kapat / A\u00e7",
                         "icon": "volume-x",
                         "color": "#1ABC9C",
-                        "tooltip": "Sesi Kapat veya Aç (Mute)",
+                        "tooltip": "Sesi Kapat veya A\u00e7 (Mute)",
                         "action": {
                             "type": "MediaAction",
                             "id": "ma4",
-                            "label": "Sesi Kapat / Aç",
+                            "label": "Sesi Kapat / A\u00e7",
+                            "icon": "",
                             "params": {
                                 "command": "volume_mute"
                             }
@@ -96,11 +102,12 @@
                         "label": "Tekerlek Ses Modu",
                         "icon": "mouse",
                         "color": "#1ABC9C",
-                        "tooltip": "Fare Tekerleği ile Ses Ayarla",
+                        "tooltip": "Fare Tekerle\u011fi ile Ses Ayarla",
                         "action": {
                             "type": "WheelAction",
                             "id": "ma5",
                             "label": "Tekerlek Ses Modu",
+                            "icon": "",
                             "params": {
                                 "mode": "volume"
                             }
@@ -111,26 +118,28 @@
         },
         {
             "id": "item_3",
-            "label": "Sistem Araçları",
+            "label": "Sistem Ara\u00e7lar\u0131",
             "icon": "tools",
             "color": "#3498DB",
-            "tooltip": "Renk Seçici, Dosya Gezgini ve Görev Yöneticisi Alt Menüsü",
+            "tooltip": "Renk Se\u00e7ici, Dosya Gezgini ve G\u00f6rev Y\u00f6neticisi Alt Men\u00fcs\u00fc",
             "action": {
                 "type": "SubRingAction",
                 "id": "a3_tools",
-                "label": "Sistem Araçları",
+                "label": "Sistem Ara\u00e7lar\u0131",
                 "icon": "tools",
+                "params": {},
                 "items": [
                     {
                         "id": "t1",
-                        "label": "Pano Geçmişi",
+                        "label": "Pano Ge\u00e7mi\u015fi",
                         "icon": "clipboard",
                         "color": "#3498DB",
-                        "tooltip": "Windows Pano Geçmişini Aç (Win+V)",
+                        "tooltip": "Windows Pano Ge\u00e7mi\u015fini A\u00e7 (Win+V)",
                         "action": {
                             "type": "ShortcutAction",
                             "id": "ta1_clip",
-                            "label": "Pano Geçmişi",
+                            "label": "Pano Ge\u00e7mi\u015fi",
+                            "icon": "",
                             "params": {
                                 "keys": "cmd+v"
                             }
@@ -138,14 +147,15 @@
                     },
                     {
                         "id": "t2",
-                        "label": "Görev Yöneticisi",
+                        "label": "G\u00f6rev Y\u00f6neticisi",
                         "icon": "cpu",
                         "color": "#3498DB",
-                        "tooltip": "Görev Yöneticisini Aç (Ctrl+Shift+Esc)",
+                        "tooltip": "G\u00f6rev Y\u00f6neticisini A\u00e7 (Ctrl+Shift+Esc)",
                         "action": {
                             "type": "SystemToolAction",
                             "id": "ta2",
-                            "label": "Görev Yöneticisi",
+                            "label": "G\u00f6rev Y\u00f6neticisi",
+                            "icon": "",
                             "params": {
                                 "command": "task_manager"
                             }
@@ -156,11 +166,12 @@
                         "label": "Dosya Gezgini",
                         "icon": "folder",
                         "color": "#3498DB",
-                        "tooltip": "Dosya Gezgini Aç (Win+E)",
+                        "tooltip": "Dosya Gezgini A\u00e7 (Win+E)",
                         "action": {
                             "type": "SystemToolAction",
                             "id": "ta3",
                             "label": "Dosya Gezgini",
+                            "icon": "",
                             "params": {
                                 "command": "file_explorer"
                             }
@@ -168,14 +179,15 @@
                     },
                     {
                         "id": "t4",
-                        "label": "Bilgisayarı Kilitle",
+                        "label": "Bilgisayar\u0131 Kilitle",
                         "icon": "lock",
                         "color": "#3498DB",
                         "tooltip": "Oturumu Kilitle (Win+L)",
                         "action": {
                             "type": "SystemToolAction",
                             "id": "ta4",
-                            "label": "Bilgisayarı Kilitle",
+                            "label": "Bilgisayar\u0131 Kilitle",
+                            "icon": "",
                             "params": {
                                 "command": "lock_screen"
                             }
@@ -186,26 +198,28 @@
         },
         {
             "id": "item_4",
-            "label": "Pencere Yönetimi",
+            "label": "Pencere Y\u00f6netimi",
             "icon": "layout",
             "color": "#9B59B6",
-            "tooltip": "Pencere Boyutlandırma, Yaslama & Sanal Masaüstü Alt Menüsü",
+            "tooltip": "Pencere Boyutland\u0131rma, Yaslama & Sanal Masa\u00fcst\u00fc Alt Men\u00fcs\u00fc",
             "action": {
                 "type": "SubRingAction",
                 "id": "a4_win",
-                "label": "Pencere Yönetimi",
+                "label": "Pencere Y\u00f6netimi",
                 "icon": "layout",
+                "params": {},
                 "items": [
                     {
                         "id": "w1",
-                        "label": "Küçült",
+                        "label": "K\u00fc\u00e7\u00fclt",
                         "icon": "minus",
                         "color": "#9B59B6",
-                        "tooltip": "Pencereyi Küçült",
+                        "tooltip": "Pencereyi K\u00fc\u00e7\u00fclt",
                         "action": {
                             "type": "WindowControlAction",
                             "id": "wa1",
-                            "label": "Küçült",
+                            "label": "K\u00fc\u00e7\u00fclt",
+                            "icon": "",
                             "params": {
                                 "command": "minimize"
                             }
@@ -213,14 +227,15 @@
                     },
                     {
                         "id": "w2",
-                        "label": "Büyüt",
+                        "label": "B\u00fcy\u00fct",
                         "icon": "square",
                         "color": "#9B59B6",
-                        "tooltip": "Ekranı Kapla",
+                        "tooltip": "Ekran\u0131 Kapla",
                         "action": {
                             "type": "WindowControlAction",
                             "id": "wa2",
-                            "label": "Büyüt",
+                            "label": "B\u00fcy\u00fct",
+                            "icon": "",
                             "params": {
                                 "command": "maximize"
                             }
@@ -236,6 +251,7 @@
                             "type": "WindowControlAction",
                             "id": "wa3",
                             "label": "Sola Yasla",
+                            "icon": "",
                             "params": {
                                 "command": "snap_left"
                             }
@@ -243,14 +259,15 @@
                     },
                     {
                         "id": "w4",
-                        "label": "Sağa Yasla",
+                        "label": "Sa\u011fa Yasla",
                         "icon": "arrow-right",
                         "color": "#9B59B6",
-                        "tooltip": "Pencereyi Sağa Yasla",
+                        "tooltip": "Pencereyi Sa\u011fa Yasla",
                         "action": {
                             "type": "WindowControlAction",
                             "id": "wa4",
-                            "label": "Sağa Yasla",
+                            "label": "Sa\u011fa Yasla",
+                            "icon": "",
                             "params": {
                                 "command": "snap_right"
                             }
@@ -258,14 +275,15 @@
                     },
                     {
                         "id": "w5",
-                        "label": "Görev Görünümü",
+                        "label": "G\u00f6rev G\u00f6r\u00fcn\u00fcm\u00fc",
                         "icon": "layers",
                         "color": "#9B59B6",
-                        "tooltip": "Tüm Pencereleri Gör (Win+Tab)",
+                        "tooltip": "T\u00fcm Pencereleri G\u00f6r (Win+Tab)",
                         "action": {
                             "type": "WindowControlAction",
                             "id": "wa5",
-                            "label": "Görev Görünümü",
+                            "label": "G\u00f6rev G\u00f6r\u00fcn\u00fcm\u00fc",
+                            "icon": "",
                             "params": {
                                 "command": "task_view"
                             }
@@ -276,16 +294,34 @@
         },
         {
             "id": "item_5",
-            "label": "Pano Geçmişi",
+            "label": "Pano Ge\u00e7mi\u015fi",
             "icon": "clipboard",
             "color": "#FFA502",
-            "tooltip": "Son Kopyalanan Metinler Alt Menüsü",
+            "tooltip": "Son Kopyalanan Metinler Alt Men\u00fcs\u00fc",
             "action": {
                 "type": "ClipboardSubRingAction",
                 "id": "a5_clip",
-                "label": "Pano Geçmişi",
+                "label": "Pano Ge\u00e7mi\u015fi",
                 "icon": "clipboard",
-                "params": {}
+                "params": {},
+                "items": [
+                    {
+                        "id": "clip_empty",
+                        "label": "Pano Bo\u015f",
+                        "icon": "clipboard",
+                        "color": "#747D8C",
+                        "tooltip": "Panoda hen\u00fcz kopyalanm\u0131\u015f \u00f6\u011fe yok",
+                        "action": {
+                            "type": "TextAction",
+                            "id": "act_clip_empty",
+                            "label": "Bo\u015f",
+                            "icon": "",
+                            "params": {
+                                "text": ""
+                            }
+                        }
+                    }
+                ]
             }
         },
         {
@@ -293,7 +329,7 @@
             "label": "Terminal",
             "icon": "terminal",
             "color": "#2ED573",
-            "tooltip": "Sistem Terminalini Aç",
+            "tooltip": "Sistem Terminalini A\u00e7",
             "action": {
                 "type": "AppAction",
                 "id": "a6_term",

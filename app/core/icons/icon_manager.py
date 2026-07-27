@@ -45,9 +45,10 @@ class IconManager:
         return None
 
     @classmethod
-    def render_icon(cls, painter: QPainter, icon_name: str, target_rect: QRectF, color: QColor) -> bool:
+    def render_icon(cls, painter: QPainter, icon_name: str, target_rect: QRectF, color: QColor | str) -> bool:
         """Renders vector SVG icon centered inside target_rect."""
-        renderer = cls.get_renderer(icon_name, color.name())
+        color_hex = color.name() if isinstance(color, QColor) else str(color)
+        renderer = cls.get_renderer(icon_name, color_hex)
         if renderer and renderer.isValid():
             renderer.render(painter, target_rect)
             return True

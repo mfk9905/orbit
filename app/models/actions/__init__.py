@@ -12,6 +12,8 @@ from app.models.actions.macro_action import MacroAction
 from app.models.actions.wheel_action import WheelAction
 from app.models.actions.window_control_action import WindowControlAction
 from app.models.actions.keyboard_action import KeyboardAction
+from app.models.actions.media_action import MediaAction
+from app.models.actions.system_tool_action import SystemToolAction
 from app.models.actions.factory import action_factory
 
 __all__ = [
@@ -26,5 +28,7 @@ __all__ = [
     "WheelAction",
     "WindowControlAction",
     "KeyboardAction",
+    "MediaAction",
+    "SystemToolAction",
     "action_factory"
 ]

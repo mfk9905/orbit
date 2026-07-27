@@ -125,20 +125,22 @@ def main() -> int:
     secondary_hk = settings_service.get("secondary_hotkey", "button4")
     enable_hold = settings_service.get("enable_hold_duration", False)
     hold_sec = float(settings_service.get("hold_duration_seconds", 1.0))
+    enable_corner = settings_service.get("enable_corner_hotspot", False)
     hotkey_mgr = HotkeyManager(
         primary_hotkey=primary_hk,
         secondary_hotkey=secondary_hk,
         enable_hold_duration=enable_hold,
-        hold_duration_seconds=hold_sec
+        hold_duration_seconds=hold_sec,
+        enable_corner_hotspot=enable_corner
     )
 
     settings_window = SettingsWindow(settings_service, profile_service, hotkey_mgr=hotkey_mgr)
-    editor_window = ProfileEditorWindow(profile_service)
 
     def dismiss_menu() -> None:
         radial_view.hide_menu()
         radial_view.hide()
         overlay_window.hide()
+        hotkey_mgr.reset_active_state()
 
     def execute_slice(item: SliceItem) -> None:
         logger.info(f"Executing selected slice action: {item.label}")
@@ -148,7 +150,6 @@ def main() -> int:
     def on_hotkey_trigger(raw_x: int, raw_y: int) -> None:
         """Called when hotkey is pressed."""
         if overlay_window.isVisible():
-            # If already visible, toggle dismiss
             logger.info("Hotkey pressed while active -> dismissing menu.")
             dismiss_menu()
             return
@@ -158,12 +159,10 @@ def main() -> int:
         screen = QGuiApplication.screenAt(cursor_pos) or QGuiApplication.primaryScreen()
         screen_geo = screen.geometry() if screen else QGuiApplication.primaryScreen().geometry()
 
-        # Clamp center so pie ring (radius=180 + 35 padding) stays 100% inside current screen
         padding = radius + 35
         cx = max(screen_geo.left() + padding, min(cursor_pos.x(), screen_geo.right() - padding))
         cy = max(screen_geo.top() + padding, min(cursor_pos.y(), screen_geo.bottom() - padding))
 
-        # Auto-switch profile based on active foreground window
         active_exe = ActiveWindowService.get_active_executable()
         matched_profile = profile_service.get_profile_for_app(active_exe)
         view_model.set_profile(matched_profile)
@@ -171,7 +170,6 @@ def main() -> int:
         logger.info(f"Hotkey triggered at ({cx}, {cy}) for active app '{active_exe}' using profile '{matched_profile.name}'")
         overlay_window.show_at_screen()
 
-        # Make radial view fill overlay window for 100% full screen click detection
         radial_view.setGeometry(overlay_window.rect())
         view_model.set_center(cx, cy)
 
@@ -183,7 +181,6 @@ def main() -> int:
         logger.info(f"Hotkey released after {duration:.2f}s")
         selected_item = view_model.hovered_item
 
-        # Only execute if a slice was actively being hovered during hold release
         if duration >= 0.2 and selected_item:
             execute_slice(selected_item)
         else:
@@ -192,7 +189,6 @@ def main() -> int:
     def on_cursor_move(cx: int, cy: int) -> None:
         """Cursor tracking update."""
         if radial_view.isVisible():
-            # Accurate Qt cursor position tracking
             from PySide6.QtGui import QCursor
             pos = QCursor.pos()
             view_model.update_cursor_position(pos.x(), pos.y())
@@ -210,8 +206,6 @@ def main() -> int:
         logger.info("Reloading profiles and configuration...")
         profile_service.load_all_profiles()
         view_model.set_profile(profile_service.get_active_profile())
-
-    editor_window.profiles_updated.connect(handle_reload)
 
     def handle_restart() -> None:
         logger.info("Restarting Orbit application...")
@@ -232,7 +226,7 @@ def main() -> int:
         on_reload=handle_reload,
         on_restart=handle_restart,
         on_quit=handle_quit,
-        on_open_editor=lambda: editor_window.show()
+        on_open_editor=lambda: settings_window.show()
     )
 
 

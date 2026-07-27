@@ -305,6 +305,25 @@ def test_phase5_hotkey_manager_and_editor_ui(tmp_path: Path):
     assert editor.profile_list_widget.count() >= 2
 
 
+def test_settings_window_instantiation(tmp_path: Path):
+    from PySide6.QtWidgets import QApplication
+    from app.ui.settings.settings_window import SettingsWindow
+    from app.services.settings_service import SettingsService
+    from app.services.profile_service import ProfileService
+
+    app = QApplication.instance() or QApplication([])
+    bus = EventBus()
+    cfg_file = tmp_path / "settings.json"
+    mgr = SettingsManager(cfg_file)
+    settings_svc = SettingsService(mgr, bus)
+    prof_svc = ProfileService(tmp_path / "profiles", bus)
+
+    win = SettingsWindow(settings_svc, prof_svc)
+    assert win.windowTitle() == "Orbit - Kontrol Merkezi & Halkalar Editörü"
+    assert win.sidebar.count() == 5
+
+
+
 
 
 

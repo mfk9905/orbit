@@ -171,28 +171,28 @@ class RadialMenuView(QWidget):
         from app.models.actions import SubRingAction
         from app.core.icons.icon_manager import IconManager
 
-        # 1. Draw outer subtle glow background ring
-        glow_grad = QRadialGradient(0, 0, self._radius + 28)
-        glow_grad.setColorAt(0.0, QColor(46, 213, 115, 38))
-        glow_grad.setColorAt(0.7, QColor(46, 213, 115, 8))
+        # 1. Draw outer subtle glow background ring (Actions Ring style)
+        glow_grad = QRadialGradient(0, 0, self._radius + 32)
+        glow_grad.setColorAt(0.0, QColor(0, 242, 254, 45))
+        glow_grad.setColorAt(0.5, QColor(46, 213, 115, 20))
         glow_grad.setColorAt(1.0, QColor(0, 0, 0, 0))
         painter.setBrush(glow_grad)
         painter.setPen(Qt.NoPen)
-        painter.drawEllipse(QPointF(0, 0), self._radius + 28, self._radius + 28)
+        painter.drawEllipse(QPointF(0, 0), self._radius + 32, self._radius + 32)
 
-        # 2. Draw each slice segment with gaps
-        gap_deg = 2.0 if count > 1 else 0.0
+        # 2. Draw each slice segment with floating pod gaps
+        gap_deg = 3.5 if count > 1 else 0.0
 
         for i, item in enumerate(items):
             is_hovered = (i == hovered_idx)
-            r_outer = self._radius + (15 if is_hovered else 0)
-            r_inner = self._inner_radius + 4.0
+            r_outer = self._radius + (16 if is_hovered else 0)
+            r_inner = self._inner_radius + 6.0
 
             raw_start, raw_span = self.viewModel.get_slice_angles(i)
             start_deg = raw_start + (gap_deg / 2.0)
             span_deg = raw_span - gap_deg
 
-            # Build Pie Arc Path with gap
+            # Build Floating Pod Arc Path
             path = QPainterPath()
             outer_rect = QRectF(-r_outer, -r_outer, r_outer * 2, r_outer * 2)
             inner_rect = QRectF(-r_inner, -r_inner, r_inner * 2, r_inner * 2)
@@ -202,15 +202,14 @@ class RadialMenuView(QWidget):
             path.arcTo(inner_rect, start_deg + span_deg, -span_deg)
             path.closeSubpath()
 
-            # Colors & Glassmorphism Styling
+            # Actions Ring Color Scheme
             if is_hovered:
-                # Custom accent color if set on item or profile
                 item_color = QColor(item.color) if item.color else QColor("#2ED573")
                 fill_color = item_color
-                border_pen = QPen(QColor("#FFFFFF"), 2.5)
+                border_pen = QPen(QColor("#FFFFFF"), 2.8)
             else:
-                fill_color = QColor(20, 26, 34, 235)
-                border_pen = QPen(QColor(55, 65, 78, 180), 1.5)
+                fill_color = QColor(18, 24, 34, 235)
+                border_pen = QPen(QColor(42, 54, 79, 200), 1.5)
 
             # Volume animation override
             anim_active = False
@@ -223,7 +222,7 @@ class RadialMenuView(QWidget):
                     alpha = int(255 * (1.0 - elapsed/0.6))
                     anim_color = QColor(46, 213, 115, alpha) if dir > 0 else QColor(255, 71, 87, alpha)
                     border_pen = QPen(anim_color, 4.0)
-                    fill_color = QColor(20, 26, 34, 255) # Opaque background during animation
+                    fill_color = QColor(18, 24, 34, 255)
                     from PySide6.QtCore import QTimer
                     QTimer.singleShot(30, self.update)
 
@@ -237,12 +236,12 @@ class RadialMenuView(QWidget):
             ix = r_mid * math.cos(mid_deg)
             iy = -r_mid * math.sin(mid_deg)
 
-            icon_color = QColor(10, 20, 15) if is_hovered else QColor(240, 245, 250)
+            icon_color = QColor("#0A140F") if is_hovered else QColor("#F1F5F9")
 
-            # Render Vector SVG Icon if available
+            # Render Vector SVG Icon
             has_icon = bool(item.icon)
             if has_icon:
-                icon_rect = QRectF(ix - 10, iy - 20, 20, 20)
+                icon_rect = QRectF(ix - 12, iy - 22, 24, 24)
                 IconManager.render_icon(painter, item.icon, icon_rect, icon_color)
 
             display_label = item.label + " ▶" if isinstance(item.action, SubRingAction) else item.label
@@ -252,18 +251,18 @@ class RadialMenuView(QWidget):
                 display_label = "+ Sesi Aç" if dir > 0 else "- Sesi Kıs"
                 icon_color = anim_color
                 
-            font_size = 8.0 if len(display_label) > 12 else 9.0
-            painter.setFont(QFont("Outfit", font_size, QFont.Bold if is_hovered else QFont.DemiBold))
+            font_size = 8.5 if len(display_label) > 12 else 9.5
+            painter.setFont(QFont("Segoe UI", font_size, QFont.Bold if is_hovered else QFont.DemiBold))
             painter.setPen(icon_color)
 
             if has_icon:
-                rect_text = QRectF(ix - 45, iy + 2, 90, 22)
+                rect_text = QRectF(ix - 48, iy + 4, 96, 22)
             else:
-                rect_text = QRectF(ix - 45, iy - 14, 90, 28)
+                rect_text = QRectF(ix - 48, iy - 14, 96, 28)
 
             painter.drawText(rect_text, Qt.TextWordWrap | Qt.AlignCenter, display_label)
 
-        # 4. Center Core Circle & Active Tooltip / Back / Genel Menü display
+        # 4. Actions Ring Center Core Circle
         core_path = QPainterPath()
         core_path.addEllipse(QPointF(0, 0), self._inner_radius, self._inner_radius)
 
@@ -272,16 +271,16 @@ class RadialMenuView(QWidget):
         is_app_at_root = self.viewModel.is_at_root and self.viewModel.is_app_profile
 
         if (is_sub_ring or is_app_at_root) and is_center_hovered:
-            core_fill = QBrush(QColor("#2ED573"))
-            core_pen = QPen(QColor("#FFFFFF"), 2.5)
-            center_color = QColor("#0A140F")
+            core_fill = QBrush(QColor("#00F2FE"))
+            core_pen = QPen(QColor("#FFFFFF"), 3.0)
+            center_color = QColor("#042F1A")
         elif is_center_hovered:
-            core_fill = QBrush(QColor(35, 45, 55, 240))
-            core_pen = QPen(QColor("#FFFFFF"), 2)
+            core_fill = QBrush(QColor(28, 36, 51, 250))
+            core_pen = QPen(QColor("#00F2FE"), 2.5)
             center_color = QColor("#2ED573")
         else:
-            core_fill = QBrush(QColor(16, 20, 26, 245))
-            core_pen = QPen(QColor("#2ED573"), 2)
+            core_fill = QBrush(QColor(16, 20, 29, 250))
+            core_pen = QPen(QColor("#2ED573"), 2.0)
             center_color = QColor("#2ED573")
 
         painter.fillPath(core_path, core_fill)
@@ -292,26 +291,26 @@ class RadialMenuView(QWidget):
         rect_core = QRectF(-self._inner_radius + 4, -self._inner_radius + 4, (self._inner_radius - 4) * 2, (self._inner_radius - 4) * 2)
 
         if is_sub_ring:
-            IconManager.render_icon(painter, "arrow-left", QRectF(-9, -20, 18, 18), center_color)
-            painter.setFont(QFont("Outfit", 9.5, QFont.Bold))
+            IconManager.render_icon(painter, "arrow-left", QRectF(-10, -22, 20, 20), center_color)
+            painter.setFont(QFont("Segoe UI", 10.0, QFont.Bold))
             painter.setPen(center_color)
-            painter.drawText(QRectF(-40, 2, 80, 20), Qt.AlignCenter, "Geri")
+            painter.drawText(QRectF(-40, 4, 80, 20), Qt.AlignCenter, "Geri")
         elif is_app_at_root:
-            IconManager.render_icon(painter, "home", QRectF(-9, -20, 18, 18), center_color)
-            painter.setFont(QFont("Outfit", 9.0, QFont.Bold))
+            IconManager.render_icon(painter, "home", QRectF(-10, -22, 20, 20), center_color)
+            painter.setFont(QFont("Segoe UI", 9.5, QFont.Bold))
             painter.setPen(center_color)
-            painter.drawText(QRectF(-45, 2, 90, 20), Qt.AlignCenter, "Genel Menü")
+            painter.drawText(QRectF(-45, 4, 90, 20), Qt.AlignCenter, "Genel Menü")
         elif hovered_idx != -1 and self.viewModel.hovered_item:
             hovered_item = self.viewModel.hovered_item
             if hovered_item.icon:
-                IconManager.render_icon(painter, hovered_item.icon, QRectF(-9, -22, 18, 18), center_color)
-                rect_tooltip = QRectF(-self._inner_radius + 4, 0, (self._inner_radius - 4) * 2, self._inner_radius - 4)
+                IconManager.render_icon(painter, hovered_item.icon, QRectF(-10, -22, 20, 20), center_color)
+                rect_tooltip = QRectF(-self._inner_radius + 4, 2, (self._inner_radius - 4) * 2, self._inner_radius - 6)
             else:
                 rect_tooltip = rect_core
 
             tooltip_text = hovered_item.tooltip
             font_size = 8.0 if len(tooltip_text) > 16 else 8.5
-            painter.setFont(QFont("Outfit", font_size, QFont.DemiBold))
+            painter.setFont(QFont("Segoe UI", font_size, QFont.Bold))
             painter.setPen(center_color)
             painter.drawText(rect_tooltip, Qt.TextWordWrap | Qt.AlignCenter, tooltip_text)
 

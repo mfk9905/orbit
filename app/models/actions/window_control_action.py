@@ -20,6 +20,12 @@ class WindowControlAction(BaseAction):
             return ShortcutAction("w_left", "left", params={"keys": "cmd+left"}).execute()
         elif command == "snap_right":
             return ShortcutAction("w_right", "right", params={"keys": "cmd+right"}).execute()
+        elif command in ("next_desktop", "desktop_right"):
+            return ShortcutAction("w_next_desk", "next_desk", params={"keys": "cmd+ctrl+right"}).execute()
+        elif command in ("prev_desktop", "desktop_left"):
+            return ShortcutAction("w_prev_desk", "prev_desk", params={"keys": "cmd+ctrl+left"}).execute()
+        elif command in ("task_view", "app_switcher"):
+            return ShortcutAction("w_task_view", "task_view", params={"keys": "cmd+tab"}).execute()
         elif command == "close":
             return ShortcutAction("w_close", "close", params={"keys": "alt+f4"}).execute()
         return False

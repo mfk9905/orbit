@@ -1,22 +1,27 @@
 """
-Modern KDE Plasma-inspired Settings Window for Orbit (Türkçe - Son Kullanıcı Odaklı).
-Features intuitive card layouts, simple controls, hold duration options, and live hotkey binding.
+Orbit Control Center - Unified Professional Settings & Profile Editor (Logitech Options+ Inspired).
+Combines Hotkey configuration, Appearance settings, and Live Radial Menu Slice Editor.
 """
 
+from typing import Optional
 from PySide6.QtWidgets import (
     QMainWindow, QWidget, QHBoxLayout, QVBoxLayout, QListWidget, QListWidgetItem,
     QStackedWidget, QLabel, QSpinBox, QDoubleSpinBox, QComboBox, QCheckBox,
-    QPushButton, QGroupBox, QFormLayout, QFrame, QMessageBox, QLineEdit
+    QPushButton, QGroupBox, QFormLayout, QFrame, QMessageBox, QLineEdit, QSplitter
 )
 from PySide6.QtCore import Qt, QSize
 from PySide6.QtGui import QFont, QColor, QIcon
 from app.services.settings_service import ISettingsService
 from app.services.profile_service import ProfileService
-from app.ui.settings.slice_editor_dialog import SliceEditorDialog
+from app.ui.theme.design_system import OrbitTheme
+from app.ui.widgets.live_radial_preview import LiveRadialPreviewWidget
+from app.ui.widgets.action_card_picker import ActionCardPickerWidget
 from app.ui.settings.hotkey_recorder_dialog import HotkeyRecorderDialog
+from app.models.profile import Profile, SliceItem
+from app.models.actions import action_factory
 from app.core.logging.logger import get_logger
 
-logger = get_logger("orbit.ui.settings")
+logger = get_logger("orbit.ui.settings_window")
 
 
 def format_hotkey_display(hk_str: str) -> str:
@@ -25,11 +30,6 @@ def format_hotkey_display(hk_str: str) -> str:
         return "ATANMADI"
 
     raw = hk_str.lower().strip()
-    if raw == "button4":
-        return "FARE YAN TUŞ 4 (GERİ)"
-    if raw == "button5":
-        return "FARE YAN TUŞ 5 (İLERİ)"
-
     parts = raw.split("+")
     tr_parts = []
     for p in parts:
@@ -44,6 +44,14 @@ def format_hotkey_display(hk_str: str) -> str:
             tr_parts.append("SUPER (WINDOWS)")
         elif p == "space":
             tr_parts.append("BOŞLUK TUŞU")
+        elif p in ("button3", "middle"):
+            tr_parts.append("ORTA FARE TUŞU (TEKERLEK)")
+        elif p == "button4":
+            tr_parts.append("FARE YAN TUŞ 4")
+        elif p == "button5":
+            tr_parts.append("FARE YAN TUŞ 5")
+        elif p == "right":
+            tr_parts.append("FARE SAĞ TUŞ")
         else:
             tr_parts.append(p.upper())
 
@@ -51,7 +59,7 @@ def format_hotkey_display(hk_str: str) -> str:
 
 
 class SettingsWindow(QMainWindow):
-    """KDE-styled Settings Window with end-user friendly card navigation."""
+    """Unified Orbit Control Center Dashboard."""
 
     def __init__(self, settings_service: ISettingsService, profile_service: ProfileService, hotkey_mgr=None) -> None:
         super().__init__()
@@ -59,150 +67,401 @@ class SettingsWindow(QMainWindow):
         self.profile_service = profile_service
         self.hotkey_mgr = hotkey_mgr
 
-        self.setWindowTitle("Orbit - Kolay Kontrol ve Ayar Merkezi")
-        self.resize(860, 580)
-        self._apply_dark_theme()
+        self.setWindowTitle("Orbit - Kontrol Merkezi & Halkalar Editörü")
+        self.resize(1080, 700)
+        self.setMinimumSize(920, 620)
+        self.setStyleSheet(OrbitTheme.MAIN_STYLESHEET)
+
+        self._active_profile: Optional[Profile] = None
+        self._selected_slice_index: int = -1
+        self._subring_nav_stack = []
 
         self._init_ui()
-
-    def _apply_dark_theme(self) -> None:
-        """Applies KDE Plasma dark mode stylesheet."""
-        self.setStyleSheet("""
-            QMainWindow {
-                background-color: #1b1e23;
-                color: #eff0f1;
-            }
-            QListWidget#sidebar {
-                background-color: #232629;
-                border: 1px solid #31363b;
-                border-radius: 8px;
-                outline: none;
-                font-size: 14px;
-            }
-            QListWidget#sidebar::item {
-                padding: 14px 16px;
-                color: #bdc3c7;
-                border-radius: 6px;
-                margin: 4px 6px;
-            }
-            QListWidget#sidebar::item:hover {
-                background-color: #2a2e32;
-                color: #ffffff;
-            }
-            QListWidget#sidebar::item:selected {
-                background-color: #2ED573;
-                color: #0b2214;
-                font-weight: bold;
-            }
-            QListWidget#slice_list {
-                background-color: #232629;
-                border: 1px solid #31363b;
-                border-radius: 8px;
-                font-size: 13px;
-            }
-            QListWidget#slice_list::item {
-                padding: 12px 16px;
-                color: #ffffff;
-                border-bottom: 1px solid #2a2e32;
-            }
-            QListWidget#slice_list::item:selected {
-                background-color: #2ED573;
-                color: #0b2214;
-                font-weight: bold;
-            }
-            QLabel {
-                color: #eff0f1;
-            }
-            QGroupBox {
-                font-size: 14px;
-                font-weight: bold;
-                border: 1px solid #31363b;
-                border-radius: 10px;
-                margin-top: 14px;
-                padding-top: 18px;
-                background-color: #212529;
-            }
-            QGroupBox::title {
-                subcontrol-origin: margin;
-                left: 16px;
-                padding: 0 6px;
-                color: #2ED573;
-            }
-            QComboBox, QSpinBox, QDoubleSpinBox, QLineEdit {
-                background-color: #2a2e32;
-                border: 1px solid #31363b;
-                border-radius: 6px;
-                padding: 8px;
-                color: #ffffff;
-                font-size: 13px;
-            }
-            QPushButton {
-                background-color: #2ED573;
-                color: #0b2214;
-                font-size: 13px;
-                font-weight: bold;
-                border: none;
-                border-radius: 6px;
-                padding: 10px 18px;
-            }
-            QPushButton:hover {
-                background-color: #26af5f;
-            }
-            QPushButton#btn_secondary {
-                background-color: #34495e;
-                color: #ffffff;
-            }
-            QPushButton#btn_secondary:hover {
-                background-color: #2c3e50;
-            }
-            QPushButton#btn_danger {
-                background-color: #e74c3c;
-                color: #ffffff;
-            }
-            QPushButton#btn_danger:hover {
-                background-color: #c0392b;
-            }
-        """)
+        self._load_active_profile()
 
     def _init_ui(self) -> None:
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
 
         layout = QHBoxLayout(central_widget)
-        layout.setContentsMargins(10, 10, 10, 10)
-        layout.setSpacing(10)
+        layout.setContentsMargins(14, 14, 14, 14)
+        layout.setSpacing(14)
 
+        # Left Sidebar Navigation
         self.sidebar = QListWidget()
         self.sidebar.setObjectName("sidebar")
-        self.sidebar.setFixedWidth(220)
+        self.sidebar.setFixedWidth(240)
 
         self.pages = QStackedWidget()
 
         layout.addWidget(self.sidebar)
         layout.addWidget(self.pages)
 
-        # Create Pages
-        self._add_page("Kısayol Tuşları", self._create_hotkeys_page())
-        self._add_page("Menü Düzenleyici", self._create_profiles_page())
-        self._add_page("Görünüm & Boyut", self._create_appearance_page())
-        self._add_page("Genel Ayarlar", self._create_general_page())
-        self._add_page("Nasıl Kullanılır?", self._create_about_page())
+        # Build Navigation Pages
+        self._add_page("🎯  Halka & Dilim Düzenleyici", self._create_editor_page())
+        self._add_page("⌨️  Kısayol Tuşları", self._create_hotkeys_page())
+        self._add_page("🎨  Görünüm & Efektler", self._create_appearance_page())
+        self._add_page("⚙️  Genel Ayarlar", self._create_general_page())
+        self._add_page("❓  Kullanım Rehberi", self._create_about_page())
 
         self.sidebar.currentRowChanged.connect(self.pages.setCurrentIndex)
         self.sidebar.setCurrentRow(0)
 
     def _add_page(self, title: str, widget: QWidget) -> None:
         item = QListWidgetItem(title)
-        item.setSizeHint(QSize(200, 46))
+        item.setSizeHint(QSize(220, 48))
         self.sidebar.addItem(item)
         self.pages.addWidget(widget)
 
+    def _load_active_profile(self) -> None:
+        self._active_profile = self.profile_service.get_active_profile()
+        if hasattr(self, "live_preview"):
+            self.live_preview.set_profile(self._active_profile, self._selected_slice_index)
+        self._refresh_slice_list()
+
+    def _refresh_profile_combo(self) -> None:
+        if not hasattr(self, "cmb_profile_select"):
+            return
+        self.cmb_profile_select.blockSignals(True)
+        self.cmb_profile_select.clear()
+        profiles = list(self.profile_service._profiles.values())
+        for prof in profiles:
+            self.cmb_profile_select.addItem(prof.name, prof.name)
+        active = self.profile_service.get_active_profile()
+        if active:
+            idx = self.cmb_profile_select.findData(active.name)
+            if idx >= 0:
+                self.cmb_profile_select.setCurrentIndex(idx)
+        self.cmb_profile_select.blockSignals(False)
+
+    def _on_profile_combo_changed(self, index: int) -> None:
+        prof_name = self.cmb_profile_select.itemData(index)
+        if prof_name and prof_name in self.profile_service._profiles:
+            self._active_profile = self.profile_service._profiles[prof_name]
+            self._subring_nav_stack.clear()
+            self._selected_slice_index = -1
+            if hasattr(self, "live_preview"):
+                self.live_preview.set_profile(self._active_profile, -1)
+            self._refresh_slice_list()
+
+    @property
+    def _current_items(self) -> list:
+        if self._subring_nav_stack:
+            return self._subring_nav_stack[-1][1]
+        return self._active_profile.items if self._active_profile else []
+
+    def _create_editor_page(self) -> QWidget:
+        page = QWidget()
+        layout = QHBoxLayout(page)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(12)
+
+        # Left Section: Slice Controls & Card Picker
+        left_panel = QWidget()
+        left_layout = QVBoxLayout(left_panel)
+        left_layout.setContentsMargins(0, 0, 0, 0)
+
+        # Breadcrumb & SubRing Back Navigation Bar
+        nav_bar = QHBoxLayout()
+        self.lbl_breadcrumb = QLabel("📍 Halka Konumu: Ana Halka")
+        self.lbl_breadcrumb.setFont(QFont("Segoe UI", 10, QFont.Bold))
+        self.lbl_breadcrumb.setStyleSheet("color: #2ED573;")
+
+        self.btn_subring_back = QPushButton("← Geri (Ana Halka)")
+        self.btn_subring_back.setObjectName("btn_secondary")
+        self.btn_subring_back.setVisible(False)
+        self.btn_subring_back.clicked.connect(self._on_pop_subring)
+
+        nav_bar.addWidget(self.lbl_breadcrumb, 1)
+        nav_bar.addWidget(self.btn_subring_back)
+        left_layout.addLayout(nav_bar)
+
+        # Profile Selector Row
+        prof_bar = QHBoxLayout()
+        lbl_prof_title = QLabel("Aktif Profil:")
+        lbl_prof_title.setFont(QFont("Segoe UI", 10, QFont.Bold))
+        self.cmb_profile_select = QComboBox()
+        self._refresh_profile_combo()
+        self.cmb_profile_select.currentIndexChanged.connect(self._on_profile_combo_changed)
+
+        prof_bar.addWidget(lbl_prof_title)
+        prof_bar.addWidget(self.cmb_profile_select, 1)
+        left_layout.addLayout(prof_bar)
+
+        # Slice List & Action Buttons
+        self.slice_list = QListWidget()
+        self.slice_list.setObjectName("slice_list")
+        self.slice_list.setFixedHeight(140)
+        self.slice_list.currentRowChanged.connect(self._on_slice_list_selection_changed)
+        left_layout.addWidget(self.slice_list)
+
+        btn_row = QHBoxLayout()
+        btn_add = QPushButton("+ Yeni Dilim")
+        btn_add.clicked.connect(self._on_add_blank_slice)
+
+        self.btn_enter_subring = QPushButton("📂 Alt Menüyü Düzenle ➔")
+        self.btn_enter_subring.setObjectName("btn_secondary")
+        self.btn_enter_subring.setVisible(False)
+        self.btn_enter_subring.clicked.connect(self._on_enter_selected_subring)
+
+        btn_delete = QPushButton("Sil")
+        btn_delete.setObjectName("btn_danger")
+        btn_delete.clicked.connect(self._on_delete_slice)
+
+        btn_row.addWidget(btn_add)
+        btn_row.addWidget(self.btn_enter_subring)
+        btn_row.addWidget(btn_delete)
+        left_layout.addLayout(btn_row)
+
+        # Visual Card Picker
+        lbl_cards = QLabel("Görsel Eylem Kataloğu (1-Tıkla Atama):")
+        lbl_cards.setFont(QFont("Segoe UI", 10, QFont.Bold))
+        lbl_cards.setStyleSheet("color: #00F2FE; margin-top: 6px;")
+        left_layout.addWidget(lbl_cards)
+
+        self.card_picker = ActionCardPickerWidget()
+        self.card_picker.action_preset_selected.connect(self._on_card_preset_selected)
+        left_layout.addWidget(self.card_picker, 1)
+
+        # Right Section: Interactive Live Radial Preview
+        right_panel = QWidget()
+        right_layout = QVBoxLayout(right_panel)
+        right_layout.setContentsMargins(0, 0, 0, 0)
+
+        group_preview = QGroupBox("Canlı Etkileşimli Menü Önizlemesi")
+        prev_box = QVBoxLayout(group_preview)
+
+        self.live_preview = LiveRadialPreviewWidget()
+        self.live_preview.slice_selected.connect(self._on_live_slice_clicked)
+        self.live_preview.center_clicked.connect(self._on_pop_subring)
+        prev_box.addWidget(self.live_preview, 1)
+
+        # Selected Slice Quick Customization Box
+        self.group_quick_edit = QGroupBox("Seçili Dilim Özelleştirme")
+        quick_form = QFormLayout(self.group_quick_edit)
+
+        self.txt_slice_label = QLineEdit()
+        self.txt_slice_label.setPlaceholderText("Dilim Başlığı")
+        self.txt_slice_label.textChanged.connect(self._on_slice_field_edited)
+        quick_form.addRow("Başlık:", self.txt_slice_label)
+
+        self.txt_slice_icon = QLineEdit()
+        self.txt_slice_icon.setPlaceholderText("Vektör İkon (camera, copy, play, terminal vb.)")
+        self.txt_slice_icon.textChanged.connect(self._on_slice_field_edited)
+        quick_form.addRow("İkon:", self.txt_slice_icon)
+
+        self.txt_slice_color = QLineEdit("#2ED573")
+        self.txt_slice_color.textChanged.connect(self._on_slice_field_edited)
+        quick_form.addRow("Vurgu Rengi:", self.txt_slice_color)
+
+        self.txt_slice_param = QLineEdit()
+        self.txt_slice_param.setPlaceholderText("Komut / IP Adresi / Kısayol Tuşu (Örn: ping -t -a 8.8.8.8)")
+        self.txt_slice_param.textChanged.connect(self._on_slice_field_edited)
+        quick_form.addRow("Komut / IP Parametresi:", self.txt_slice_param)
+
+        prev_box.addWidget(self.group_quick_edit)
+        right_layout.addWidget(group_preview)
+
+        # Splitter Layout
+        splitter = QSplitter(Qt.Horizontal)
+        splitter.addWidget(left_panel)
+        splitter.addWidget(right_panel)
+        splitter.setSizes([540, 480])
+
+        layout.addWidget(splitter)
+        return page
+
+    def _refresh_slice_list(self) -> None:
+        self.slice_list.blockSignals(True)
+        self.slice_list.clear()
+        items = self._current_items
+        for idx, item in enumerate(items, 1):
+            t = type(item.action).__name__
+            display = f"{idx}. [{item.icon}]  {item.label}  ({t})"
+            self.slice_list.addItem(display)
+        self.slice_list.blockSignals(False)
+
+        if self._subring_nav_stack:
+            path_str = " ➔ ".join([title for title, _ in self._subring_nav_stack])
+            self.lbl_breadcrumb.setText(f"📍 Halka Konumu: Ana Halka ➔ {path_str}")
+            self.btn_subring_back.setVisible(True)
+        else:
+            self.lbl_breadcrumb.setText("📍 Halka Konumu: Ana Halka")
+            self.btn_subring_back.setVisible(False)
+
+        if hasattr(self, "live_preview"):
+            self.live_preview.set_items(items, self._selected_slice_index)
+
+    def _on_slice_list_selection_changed(self, row: int) -> None:
+        self._selected_slice_index = row
+        self.live_preview.set_selected_index(row)
+
+        items = self._current_items
+        if 0 <= row < len(items):
+            item = items[row]
+            self.txt_slice_label.blockSignals(True)
+            self.txt_slice_icon.blockSignals(True)
+            self.txt_slice_color.blockSignals(True)
+            self.txt_slice_param.blockSignals(True)
+
+            self.txt_slice_label.setText(item.label)
+            self.txt_slice_icon.setText(item.icon)
+            self.txt_slice_color.setText(item.color)
+
+            # Extract parameter string if applicable
+            params = item.action.params if hasattr(item.action, "params") else {}
+            param_val = params.get("command") or params.get("url") or params.get("keys") or params.get("mode") or params.get("text") or ""
+            self.txt_slice_param.setText(str(param_val))
+
+            from app.models.actions import SubRingAction
+            self.btn_enter_subring.setVisible(isinstance(item.action, SubRingAction))
+
+            self.txt_slice_label.blockSignals(False)
+            self.txt_slice_icon.blockSignals(False)
+            self.txt_slice_color.blockSignals(False)
+            self.txt_slice_param.blockSignals(False)
+        else:
+            self.btn_enter_subring.setVisible(False)
+
+    def _on_enter_selected_subring(self) -> None:
+        items = self._current_items
+        if 0 <= self._selected_slice_index < len(items):
+            item = items[self._selected_slice_index]
+            from app.models.actions import SubRingAction
+            if isinstance(item.action, SubRingAction):
+                self._subring_nav_stack.append((item.label, item.action.sub_items))
+                self._selected_slice_index = -1
+                self._refresh_slice_list()
+
+    def _on_pop_subring(self) -> None:
+        if self._subring_nav_stack:
+            self._subring_nav_stack.pop()
+            self._selected_slice_index = -1
+            self._refresh_slice_list()
+
+    def _on_live_slice_clicked(self, index: int, item: SliceItem) -> None:
+        self.slice_list.setCurrentRow(index)
+
+    def _on_slice_field_edited(self) -> None:
+        items = self._current_items
+        if not (0 <= self._selected_slice_index < len(items)):
+            return
+
+        item = items[self._selected_slice_index]
+        item.label = self.txt_slice_label.text().strip() or item.label
+        item.icon = self.txt_slice_icon.text().strip() or item.icon
+        item.color = self.txt_slice_color.text().strip() or item.color
+
+        param_str = self.txt_slice_param.text().strip()
+        if param_str and hasattr(item.action, "params"):
+            tname = type(item.action).__name__
+            pkey = "command"
+            if tname == "UrlAction":
+                pkey = "url"
+            elif tname == "ShortcutAction":
+                pkey = "keys"
+            elif tname == "WheelAction":
+                pkey = "mode"
+            elif tname == "TextAction":
+                pkey = "text"
+            item.action.params[pkey] = param_str
+
+        if self._active_profile:
+            self.profile_service.save_profile(self._active_profile.name, self._active_profile)
+        self.live_preview.update()
+        self._refresh_slice_list()
+        self.slice_list.setCurrentRow(self._selected_slice_index)
+
+    def _on_card_preset_selected(self, card_data: dict) -> None:
+        items = self._current_items
+
+        label = card_data["title"]
+        act_type = card_data["type"]
+        param_val = card_data["param"]
+        icon = card_data["icon"]
+        color = card_data["color"]
+
+        param_key_map = {
+            "AppAction": "command",
+            "UrlAction": "url",
+            "ShellAction": "command",
+            "ShortcutAction": "keys",
+            "TextAction": "text",
+            "SystemToolAction": "command",
+            "MediaAction": "command",
+            "WindowControlAction": "command",
+            "WheelAction": "mode"
+        }
+        pkey = param_key_map.get(act_type, "command")
+
+        new_action = action_factory({
+            "type": act_type,
+            "id": f"act_{label.lower()}",
+            "label": label,
+            "icon": icon,
+            "params": {pkey: param_val}
+        })
+
+        new_slice = SliceItem(
+            slice_id=f"slice_{label.lower()}",
+            label=label,
+            icon=icon,
+            color=color,
+            action=new_action,
+            tooltip=label
+        )
+
+        if 0 <= self._selected_slice_index < len(items):
+            items[self._selected_slice_index] = new_slice
+        else:
+            items.append(new_slice)
+            self._selected_slice_index = len(items) - 1
+
+        if self._active_profile:
+            self.profile_service.save_profile(self._active_profile.name, self._active_profile)
+        self._refresh_slice_list()
+        self.slice_list.setCurrentRow(self._selected_slice_index)
+
+    def _on_add_blank_slice(self) -> None:
+        items = self._current_items
+
+        idx = len(items) + 1
+        new_action = action_factory({"type": "SystemToolAction", "id": f"a_{idx}", "label": f"Yeni Dilim {idx}", "params": {"command": "snipping_tool"}})
+        new_item = SliceItem(f"slice_{idx}", f"Dilim {idx}", "camera", "#2ED573", new_action, f"Yeni Dilim {idx}")
+
+        items.append(new_item)
+        self._selected_slice_index = len(items) - 1
+        if self._active_profile:
+            self.profile_service.save_profile(self._active_profile.name, self._active_profile)
+        self._refresh_slice_list()
+        self.slice_list.setCurrentRow(self._selected_slice_index)
+
+    def _on_delete_slice(self) -> None:
+        items = self._current_items
+        if not (0 <= self._selected_slice_index < len(items)):
+            return
+
+        item = items[self._selected_slice_index]
+        reply = QMessageBox.question(
+            self, "Silme Onayı",
+            f"'{item.label}' dilimini silmek istediğinize emin misiniz?",
+            QMessageBox.Yes | QMessageBox.No
+        )
+        if reply == QMessageBox.Yes:
+            items.pop(self._selected_slice_index)
+            self._selected_slice_index = max(0, self._selected_slice_index - 1)
+            if self._active_profile:
+                self.profile_service.save_profile(self._active_profile.name, self._active_profile)
+            self._refresh_slice_list()
+
+    # --- 2. HOTKEYS PAGE ---
     def _create_hotkeys_page(self) -> QWidget:
         page = QWidget()
         layout = QVBoxLayout(page)
 
-        desc = QLabel("Orbit menüsünü ekrana getirmek için kullanacağınız tuşları aşağıdan kolayca belirleyebilirsiniz:")
+        desc = QLabel("Orbit menüsünü ekrana getirmek için kullanacağınız tuşları ve fare yöntemlerini kolayca belirleyin:")
         desc.setWordWrap(True)
+        desc.setStyleSheet("color: #94A3B8; font-size: 13px;")
         layout.addWidget(desc)
 
         # Primary Shortcut Card
@@ -211,8 +470,8 @@ class SettingsWindow(QMainWindow):
 
         p_hk = format_hotkey_display(self.settings_service.get('primary_hotkey', 'ctrl+space'))
         self.lbl_primary_hk = QLabel(f"Şu Anki Tuşunuz:  [ {p_hk} ]")
-        self.lbl_primary_hk.setFont(QFont("Outfit", 12, QFont.Bold))
-        self.lbl_primary_hk.setStyleSheet("color: #2ED573; background-color: #1a231e; padding: 10px; border-radius: 6px;")
+        self.lbl_primary_hk.setFont(QFont("Segoe UI", 12, QFont.Bold))
+        self.lbl_primary_hk.setStyleSheet("color: #2ED573; background-color: #10141D; padding: 12px; border-radius: 8px; border: 1px solid #232D3F;")
         vbox1.addWidget(self.lbl_primary_hk)
 
         btn_record_primary = QPushButton("Tuşu Değiştir (Yeni Tuş Seç)...")
@@ -226,10 +485,9 @@ class SettingsWindow(QMainWindow):
         vbox2 = QVBoxLayout(group2)
 
         s_hk = format_hotkey_display(self.settings_service.get('secondary_hotkey', 'button4'))
-
         self.lbl_secondary_hk = QLabel(f"Şu Anki Tuşunuz:  [ {s_hk} ]")
-        self.lbl_secondary_hk.setFont(QFont("Outfit", 12, QFont.Bold))
-        self.lbl_secondary_hk.setStyleSheet("color: #3498db; background-color: #1a202a; padding: 10px; border-radius: 6px;")
+        self.lbl_secondary_hk.setFont(QFont("Segoe UI", 12, QFont.Bold))
+        self.lbl_secondary_hk.setStyleSheet("color: #00F2FE; background-color: #10141D; padding: 12px; border-radius: 8px; border: 1px solid #232D3F;")
         vbox2.addWidget(self.lbl_secondary_hk)
 
         btn_record_secondary = QPushButton("Yedek Tuşu Değiştir...")
@@ -238,6 +496,23 @@ class SettingsWindow(QMainWindow):
         vbox2.addWidget(btn_record_secondary)
 
         layout.addWidget(group2)
+
+        # Mouse & Corner Hotspot Options
+        group_corner = QGroupBox("Fare & Ekran Köşesi Sıcak Noktası (Klavyesiz Orbit'i Aç)")
+        form_corner = QFormLayout(group_corner)
+
+        self.chk_corner_hotspot = QCheckBox("Ekranın Sol Üst Köşesine Fare Götürüldüğünde Orbit'i Aç")
+        self.chk_corner_hotspot.setChecked(self.settings_service.get("enable_corner_hotspot", False))
+
+        def _on_corner_toggled(enabled: bool) -> None:
+            self.settings_service.set("enable_corner_hotspot", enabled)
+            if self.hotkey_mgr:
+                self.hotkey_mgr.set_corner_hotspot(enabled)
+
+        self.chk_corner_hotspot.toggled.connect(_on_corner_toggled)
+        form_corner.addRow(self.chk_corner_hotspot)
+
+        layout.addWidget(group_corner)
 
         # Optional Hold Duration Settings Group
         group_hold = QGroupBox("İsteğe Bağlı Basılı Tutarak Açma Ayarları")
@@ -256,7 +531,6 @@ class SettingsWindow(QMainWindow):
         form_hold.addRow("Gerekli Basılı Tutma Süresi (Saniye):", self.spin_hold_duration)
 
         layout.addWidget(group_hold)
-
         layout.addStretch()
         return page
 
@@ -290,83 +564,7 @@ class SettingsWindow(QMainWindow):
             if self.hotkey_mgr:
                 self.hotkey_mgr.set_hotkeys(self.settings_service.get("primary_hotkey", "ctrl+space"), new_hk)
 
-    def _create_profiles_page(self) -> QWidget:
-        page = QWidget()
-        layout = QVBoxLayout(page)
-
-        group = QGroupBox("Dairesel Menü Elemanlarınız")
-        vbox = QVBoxLayout(group)
-
-        vbox.addWidget(QLabel("Ekrandaki dairesel menünüzde yer alan hızlı erişim seçenekleri:"))
-        self.slice_list = QListWidget()
-        self.slice_list.setObjectName("slice_list")
-        self.slice_list.setFixedHeight(230)
-        vbox.addWidget(self.slice_list)
-
-        btn_row = QHBoxLayout()
-        btn_add = QPushButton("+ Yeni Hızlı Erişim Ekle")
-        btn_add.clicked.connect(self._on_add_slice)
-
-        btn_edit = QPushButton("Seçileni Düzenle")
-        btn_edit.setObjectName("btn_secondary")
-        btn_edit.clicked.connect(self._on_edit_slice)
-
-        btn_delete = QPushButton("Sil")
-        btn_delete.setObjectName("btn_danger")
-        btn_delete.clicked.connect(self._on_delete_slice)
-
-        btn_row.addWidget(btn_add)
-        btn_row.addWidget(btn_edit)
-        btn_row.addWidget(btn_delete)
-        vbox.addLayout(btn_row)
-
-        layout.addWidget(group)
-        self._refresh_slice_list()
-        return page
-
-    def _refresh_slice_list(self) -> None:
-        self.slice_list.clear()
-        profile = self.profile_service.get_active_profile()
-        for idx, item in enumerate(profile.items, 1):
-            display = f"{idx}. {item.label}   ➔   {item.tooltip}"
-            list_item = QListWidgetItem(display)
-            self.slice_list.addItem(list_item)
-
-    def _on_add_slice(self) -> None:
-        dialog = SliceEditorDialog(parent=self)
-        if dialog.exec() == SliceEditorDialog.Accepted:
-            new_item = dialog.get_slice_item()
-            profile = self.profile_service.get_active_profile()
-            profile.items.append(new_item)
-            self.profile_service.save_profile(profile.name, profile)
-            self._refresh_slice_list()
-
-    def _on_edit_slice(self) -> None:
-        row = self.slice_list.currentRow()
-        profile = self.profile_service.get_active_profile()
-        if 0 <= row < len(profile.items):
-            current_item = profile.items[row]
-            dialog = SliceEditorDialog(slice_item=current_item, parent=self)
-            if dialog.exec() == SliceEditorDialog.Accepted:
-                updated_item = dialog.get_slice_item()
-                profile.items[row] = updated_item
-                self.profile_service.save_profile(profile.name, profile)
-                self._refresh_slice_list()
-
-    def _on_delete_slice(self) -> None:
-        row = self.slice_list.currentRow()
-        profile = self.profile_service.get_active_profile()
-        if 0 <= row < len(profile.items):
-            reply = QMessageBox.question(
-                self, "Silme Onayı",
-                f"'{profile.items[row].label}' elemanını menüden kaldırmak istediğinize emin misiniz?",
-                QMessageBox.Yes | QMessageBox.No
-            )
-            if reply == QMessageBox.Yes:
-                profile.items.pop(row)
-                self.profile_service.save_profile(profile.name, profile)
-                self._refresh_slice_list()
-
+    # --- 3. APPEARANCE PAGE ---
     def _create_appearance_page(self) -> QWidget:
         page = QWidget()
         layout = QVBoxLayout(page)
@@ -424,6 +622,7 @@ class SettingsWindow(QMainWindow):
         layout.addStretch()
         return page
 
+    # --- 4. GENERAL SETTINGS PAGE ---
     def _create_general_page(self) -> QWidget:
         page = QWidget()
         layout = QVBoxLayout(page)
@@ -456,12 +655,13 @@ class SettingsWindow(QMainWindow):
         layout.addStretch()
         return page
 
+    # --- 5. ABOUT PAGE ---
     def _create_about_page(self) -> QWidget:
         page = QWidget()
         layout = QVBoxLayout(page)
 
         title = QLabel("Orbit Dairesel Menüye Hoş Geldiniz!")
-        title.setFont(QFont("Outfit", 16, QFont.Bold))
+        title.setFont(QFont("Segoe UI", 16, QFont.Bold))
         title.setStyleSheet("color: #2ED573;")
 
         guide = QLabel(
@@ -472,7 +672,7 @@ class SettingsWindow(QMainWindow):
             "<i>Orbit, günlük bilgisayar kullanımınızı hızlandırmak için tasarlandı.</i>"
         )
         guide.setWordWrap(True)
-        guide.setFont(QFont("Outfit", 11))
+        guide.setFont(QFont("Segoe UI", 11))
 
         layout.addWidget(title)
         layout.addWidget(guide)

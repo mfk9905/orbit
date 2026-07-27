@@ -15,7 +15,8 @@ from PySide6.QtGui import QColor, QFont
 from app.models.profile import Profile, SliceItem
 from app.models.actions import (
     AppAction, UrlAction, ShellAction, ShortcutAction, TextAction,
-    MacroAction, WheelAction, WindowControlAction, SubRingAction, action_factory
+    MacroAction, WheelAction, WindowControlAction, SubRingAction,
+    MediaAction, SystemToolAction, action_factory
 )
 from app.core.icons.svg_library import SVG_ICONS
 from app.services.profile_service import ProfileService
@@ -41,7 +42,7 @@ class SliceItemDialog(QDialog):
     def __init__(self, item: SliceItem | None = None, parent: QWidget | None = None) -> None:
         super().__init__(parent)
         self.setWindowTitle("Dilim / Eylem Düzenleyici")
-        self.resize(520, 560)
+        self.resize(540, 580)
         self.item = item
         self.sub_items: List[SliceItem] = []
         self._init_ui()
@@ -77,7 +78,8 @@ class SliceItemDialog(QDialog):
         self.action_type = QComboBox()
         self.action_type.addItems([
             "AppAction", "UrlAction", "ShellAction", "ShortcutAction", "TextAction",
-            "MacroAction", "WheelAction", "WindowControlAction", "SubRingAction"
+            "MacroAction", "WheelAction", "WindowControlAction", "MediaAction",
+            "SystemToolAction", "SubRingAction"
         ])
         self.action_type.currentTextChanged.connect(self._on_action_type_changed)
 
@@ -186,8 +188,24 @@ class SliceItemDialog(QDialog):
             self.sub_ring_group.hide()
             self.param1_label.show()
             self.param1_input.show()
-            self.param1_label.setText("Komut (minimize/maximize/snap_left/snap_right):")
+            self.param1_label.setText("Komut (minimize/maximize/snap_left/snap_right/next_desktop/prev_desktop/task_view):")
             self.param1_input.setPlaceholderText("minimize")
+            self.param2_label.hide()
+            self.param2_input.hide()
+        elif act_type == "MediaAction":
+            self.sub_ring_group.hide()
+            self.param1_label.show()
+            self.param1_input.show()
+            self.param1_label.setText("Medya Komutu (volume_up/volume_down/volume_mute/play_pause/next_track/prev_track):")
+            self.param1_input.setPlaceholderText("play_pause")
+            self.param2_label.hide()
+            self.param2_input.hide()
+        elif act_type == "SystemToolAction":
+            self.sub_ring_group.hide()
+            self.param1_label.show()
+            self.param1_input.show()
+            self.param1_label.setText("Sistem Komutu (snipping_tool/color_picker/task_manager/file_explorer/lock_screen/show_desktop):")
+            self.param1_input.setPlaceholderText("snipping_tool")
             self.param2_label.hide()
             self.param2_input.hide()
         else:
@@ -253,6 +271,10 @@ class SliceItemDialog(QDialog):
             self.param1_input.setText(act.params.get("text", ""))
         elif isinstance(act, WheelAction):
             self.param1_input.setText(act.params.get("mode", "volume"))
+        elif isinstance(act, MediaAction):
+            self.param1_input.setText(act.params.get("command", "play_pause"))
+        elif isinstance(act, SystemToolAction):
+            self.param1_input.setText(act.params.get("command", "snipping_tool"))
 
     def get_slice_item(self) -> SliceItem:
         label = self.label_input.text().strip() or "Dilim"
@@ -276,6 +298,10 @@ class SliceItemDialog(QDialog):
             action = WheelAction("act", label, icon=icon, params={"mode": p1 or "volume"})
         elif act_type == "WindowControlAction":
             action = WindowControlAction("act", label, icon=icon, params={"command": p1 or "minimize"})
+        elif act_type == "MediaAction":
+            action = MediaAction("act", label, icon=icon, params={"command": p1 or "play_pause"})
+        elif act_type == "SystemToolAction":
+            action = SystemToolAction("act", label, icon=icon, params={"command": p1 or "snipping_tool"})
         else:
             action = AppAction("act", label, icon=icon, params={"command": p1})
 

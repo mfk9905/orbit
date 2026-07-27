@@ -14,5 +14,6 @@
     "middle_hold_seconds": 2.0,
     "primary_hotkey": "ctrl+space",
     "enable_hold_duration": false,
-    "hold_duration_seconds": 1.0
+    "hold_duration_seconds": 1.0,
+    "enable_corner_hotspot": true
 }

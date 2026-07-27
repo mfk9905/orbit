@@ -29,13 +29,16 @@ class HotkeyManager:
         primary_hotkey: str = "ctrl+space",
         secondary_hotkey: str = "button4",
         enable_hold_duration: bool = False,
-        hold_duration_seconds: float = 1.0
+        hold_duration_seconds: float = 1.0,
+        enable_corner_hotspot: bool = False
     ) -> None:
         self.signals = HotkeySignalBridge()
         self.primary_hotkey = primary_hotkey.lower().strip()
         self.secondary_hotkey = secondary_hotkey.lower().strip()
         self.enable_hold_duration = enable_hold_duration
         self.hold_duration_seconds = hold_duration_seconds
+        self.enable_corner_hotspot = enable_corner_hotspot
+        self._last_corner_trigger: float = 0.0
 
         self._keyboard_listener: Optional[keyboard.Listener] = None
         self._mouse_listener: Optional[mouse.Listener] = None
@@ -54,6 +57,11 @@ class HotkeyManager:
         self.primary_hotkey = primary.lower().strip()
         self.secondary_hotkey = secondary.lower().strip()
         logger.info(f"Hotkeys updated -> Primary: '{self.primary_hotkey}', Secondary: '{self.secondary_hotkey}'")
+
+    def set_corner_hotspot(self, enabled: bool) -> None:
+        """Dynamically enable or disable screen corner hotspot activation."""
+        self.enable_corner_hotspot = enabled
+        logger.info(f"Screen corner hotspot updated -> Enabled: {enabled}")
 
     def set_hold_options(self, enabled: bool, duration_seconds: float) -> None:
         """Dynamically update hold duration trigger options."""
@@ -115,15 +123,23 @@ class HotkeyManager:
         return str(key).lower().replace("key.", "")
 
     def _matches_shortcut(self, target_shortcut: str) -> bool:
-        """Checks if currently pressed keys match target shortcut string (e.g. 'ctrl+space')."""
+        """Checks if currently pressed keys match target shortcut string (e.g. 'ctrl+space' or 'ctrl+button3')."""
         if not target_shortcut:
             return False
 
-        if target_shortcut in ("button4", "button5"):
-            return target_shortcut in self._currently_pressed_mouse
+        parts = set(p.strip().lower() for p in target_shortcut.split("+"))
+        mouse_parts = {p for p in parts if p in ("button3", "button4", "button5", "right", "middle")}
+        key_parts = parts - mouse_parts
 
-        target_parts = set(p.strip() for p in target_shortcut.split("+"))
-        return target_parts.issubset(self._currently_pressed_keys) and len(self._currently_pressed_keys) >= len(target_parts)
+        if mouse_parts:
+            if not mouse_parts.issubset(self._currently_pressed_mouse):
+                return False
+
+        if key_parts:
+            if not key_parts.issubset(self._currently_pressed_keys):
+                return False
+
+        return True
 
     def _on_key_press(self, key) -> None:
         k_name = self._normalize_key_name(key)
@@ -138,13 +154,21 @@ class HotkeyManager:
         self._trigger_release()
 
     def _identify_mouse_button(self, button) -> str:
-        """Robustly identifies mouse side button names across Linux X11/Wayland drivers."""
+        """Robustly identifies mouse button names including middle button."""
         if button == mouse.Button.x1:
             return "button4"
         if button == mouse.Button.x2:
             return "button5"
+        if button == mouse.Button.middle:
+            return "button3"
+        if button == mouse.Button.right:
+            return "right"
 
         btn_str = str(button).lower()
+        if "middle" in btn_str or "button3" in btn_str:
+            return "button3"
+        if "right" in btn_str:
+            return "right"
         if "x1" in btn_str or "button4" in btn_str or "button(8)" in btn_str:
             return "button4"
         if "x2" in btn_str or "button5" in btn_str or "button(9)" in btn_str:
@@ -208,6 +232,19 @@ class HotkeyManager:
                 duration = time.time() - self._press_timestamp
                 self.signals.menu_released.emit(duration)
 
+    def reset_active_state(self) -> None:
+        """Resets active listening state when radial menu is dismissed or closed."""
+        self._is_active = False
+        self._currently_pressed_keys.clear()
+        self._currently_pressed_mouse.clear()
+
     def _on_mouse_move(self, x: float, y: float) -> None:
+        if self.enable_corner_hotspot and not self._is_active:
+            now = time.time()
+            if (x <= 8 and y <= 8) and (now - self._last_corner_trigger > 0.4):
+                self._last_corner_trigger = now
+                logger.info(f"Screen Corner Hotspot triggered at ({x}, {y})")
+                self._activate_menu()
+
         if self._is_active:
             self.signals.cursor_moved.emit(int(x), int(y))
