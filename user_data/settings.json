@@ -12,7 +12,7 @@
     "autostart": false,
     "enable_mouse4": false,
     "middle_hold_seconds": 2.0,
-    "primary_hotkey": "button5",
-    "enable_hold_duration": true,
+    "primary_hotkey": "ctrl+space",
+    "enable_hold_duration": false,
     "hold_duration_seconds": 1.0
 }
