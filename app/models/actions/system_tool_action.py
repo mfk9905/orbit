@@ -36,6 +36,29 @@ class SystemToolAction(BaseAction):
             return ShortcutAction("act", "Emoji", params={"keys": "cmd+."}).execute()
         elif command in ("calculator", "calc"):
             return AppAction("act", "Calc", params={"command": "calc.exe || calc"}).execute()
+        elif command in ("ping", "ping_tool", "ping_dialog"):
+            try:
+                from PySide6.QtWidgets import QApplication
+                from app.ui.dialogs.ping_dialog import PingDialog
+
+                initial_host = self.params.get("host") or self.params.get("target") or "8.8.8.8"
+                # Keep reference on QApplication if available
+                app_inst = QApplication.instance()
+                dialog = PingDialog(initial_host=initial_host)
+                if app_inst:
+                    if not hasattr(app_inst, "_active_dialogs"):
+                        app_inst._active_dialogs = []
+                    app_inst._active_dialogs.append(dialog)
+                    dialog.finished.connect(lambda: app_inst._active_dialogs.remove(dialog) if dialog in getattr(app_inst, "_active_dialogs", []) else None)
+                dialog.show()
+                dialog.raise_()
+                dialog.activateWindow()
+                return True
+
+            except Exception as e:
+                logger.error(f"Failed to open PingDialog: {e}", exc_info=True)
+                return False
         else:
             logger.error(f"Unknown SystemToolAction command: '{command}'")
             return False
+

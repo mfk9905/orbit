@@ -323,6 +323,45 @@ def test_settings_window_instantiation(tmp_path: Path):
     assert win.sidebar.count() == 5
 
 
+def test_ping_tool_dialog_and_action():
+    from PySide6.QtWidgets import QApplication
+    from app.ui.dialogs.ping_dialog import PingDialog
+    from app.models.actions import SystemToolAction
+
+    app = QApplication.instance() or QApplication([])
+
+    dialog = PingDialog(initial_host="8.8.8.8")
+    assert dialog.windowTitle() == "Orbit Ping - Canlı Ağ Monitörü (ping -a -t)"
+    assert dialog.txt_target.text() == "8.8.8.8"
+    assert dialog.packet_count == 0
+    assert dialog.btn_start.isEnabled() is True
+    assert dialog.btn_stop.isEnabled() is False
+
+    # Test output parser for English and Turkish ping outputs
+    dialog._parse_ping_line("Pinging google.com [142.250.185.78] with 32 bytes of data:")
+    assert "google.com" in dialog.resolved_target
+    assert "142.250.185.78" in dialog.resolved_target
+
+    dialog._parse_ping_line("Reply from 142.250.185.78: bytes=32 time=14ms TTL=117")
+    assert dialog.packet_count == 1
+    assert dialog.last_latency == "14 ms"
+
+    dialog._parse_ping_line("142.250.185.78 adresinden 32 bayt veri ile yanıt: bayt=32 süre=18ms TTL=117")
+    assert dialog.packet_count == 2
+    assert dialog.last_latency == "18 ms"
+
+    # Test SystemToolAction execution for ping_tool
+    action = SystemToolAction("act_ping", "Ping", params={"command": "ping_tool", "host": "1.1.1.1"})
+    assert action.execute() is True
+
+    # Test ShellAction fallback when command is cmd.exe /k ping -t -a
+    from app.models.actions import ShellAction
+    shell_action = ShellAction("act_shell_ping", "Ping Shell", params={"command": "cmd.exe /k ping -t -a"})
+    assert shell_action.execute() is True
+
+
+
+
 
 
 

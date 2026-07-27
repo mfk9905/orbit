@@ -5,15 +5,15 @@
     "app_bindings": [],
     "items": [
         {
-            "id": "slice_ekran al\u0131nt\u0131s\u0131 arac\u0131",
-            "label": "Ekran Al\u0131nt\u0131s\u0131 Arac\u0131",
+            "id": "item_1",
+            "label": "Ekran Al\u0131nt\u0131s\u0131",
             "icon": "camera",
-            "color": "#FF4757",
-            "tooltip": "Ekran Al\u0131nt\u0131s\u0131 Arac\u0131",
+            "color": "#E74C3C",
+            "tooltip": "Windows Ekran Al\u0131nt\u0131s\u0131 Arac\u0131 (Win+Shift+S)",
             "action": {
                 "type": "SystemToolAction",
-                "id": "act_ekran al\u0131nt\u0131s\u0131 arac\u0131",
-                "label": "Ekran Al\u0131nt\u0131s\u0131 Arac\u0131",
+                "id": "a1_snip",
+                "label": "Ekran Al\u0131nt\u0131s\u0131",
                 "icon": "camera",
                 "params": {
                     "command": "snipping_tool"
@@ -293,35 +293,19 @@
             }
         },
         {
-            "id": "item_5",
-            "label": "Pano Ge\u00e7mi\u015fi",
-            "icon": "clipboard",
-            "color": "#FFA502",
-            "tooltip": "Son Kopyalanan Metinler Alt Men\u00fcs\u00fc",
+            "id": "slice_otomatik ip ping arac\u0131",
+            "label": "Otomatik IP Ping Arac\u0131",
+            "icon": "terminal",
+            "color": "#2ED573",
+            "tooltip": "Otomatik IP Ping Arac\u0131",
             "action": {
-                "type": "ClipboardSubRingAction",
-                "id": "a5_clip",
-                "label": "Pano Ge\u00e7mi\u015fi",
-                "icon": "clipboard",
-                "params": {},
-                "items": [
-                    {
-                        "id": "clip_empty",
-                        "label": "Pano Bo\u015f",
-                        "icon": "clipboard",
-                        "color": "#747D8C",
-                        "tooltip": "Panoda hen\u00fcz kopyalanm\u0131\u015f \u00f6\u011fe yok",
-                        "action": {
-                            "type": "TextAction",
-                            "id": "act_clip_empty",
-                            "label": "Bo\u015f",
-                            "icon": "",
-                            "params": {
-                                "text": ""
-                            }
-                        }
-                    }
-                ]
+                "type": "ShellAction",
+                "id": "act_otomatik ip ping arac\u0131",
+                "label": "Otomatik IP Ping Arac\u0131",
+                "icon": "terminal",
+                "params": {
+                    "command": "cmd.exe /k ping -t -a 8.8.8.8"
+                }
             }
         },
         {

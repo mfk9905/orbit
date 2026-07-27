@@ -235,16 +235,19 @@ class HotkeyManager:
     def reset_active_state(self) -> None:
         """Resets active listening state when radial menu is dismissed or closed."""
         self._is_active = False
+        self._last_dismiss_timestamp = time.time()
         self._currently_pressed_keys.clear()
         self._currently_pressed_mouse.clear()
 
     def _on_mouse_move(self, x: float, y: float) -> None:
         if self.enable_corner_hotspot and not self._is_active:
             now = time.time()
-            if (x <= 8 and y <= 8) and (now - self._last_corner_trigger > 0.4):
+            last_dismiss = getattr(self, "_last_dismiss_timestamp", 0.0)
+            if (x <= 15 and y <= 15) and (now - self._last_corner_trigger > 2.0) and (now - last_dismiss > 1.0):
                 self._last_corner_trigger = now
                 logger.info(f"Screen Corner Hotspot triggered at ({x}, {y})")
                 self._activate_menu()
 
         if self._is_active:
             self.signals.cursor_moved.emit(int(x), int(y))
+

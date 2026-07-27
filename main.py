@@ -181,10 +181,17 @@ def main() -> int:
         logger.info(f"Hotkey released after {duration:.2f}s")
         selected_item = view_model.hovered_item
 
+        if selected_item:
+            from app.models.actions import WheelAction
+            if isinstance(selected_item.action, WheelAction):
+                logger.info("Selected item is WheelAction -> keeping radial menu open for interactive scrolling.")
+                return
+
         if duration >= 0.2 and selected_item:
             execute_slice(selected_item)
         else:
             logger.info("Keeping radial menu open until click or dismiss.")
+
 
     def on_cursor_move(cx: int, cy: int) -> None:
         """Cursor tracking update."""
