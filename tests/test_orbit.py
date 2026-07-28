@@ -458,6 +458,52 @@ def test_radial_window_switcher():
         assert isinstance(title, str)
 
 
+def test_sub_ring_edge_clamping():
+    from PySide6.QtCore import QRectF
+    from app.models.actions import SubRingAction, AppAction
+    from app.models.profile import Profile, SliceItem
+    from app.ui.radial_menu.radial_menu_model import RadialMenuViewModel
+
+    sub2_item = SliceItem("sub2", "Sub 2", "icon", "#007ACC", AppAction("a2", "A2"))
+    sub1_item = SliceItem("sub1", "Sub 1", "icon", "#007ACC", SubRingAction("s_act2", "Sub 2 Ring", items=[sub2_item]))
+    root_item = SliceItem("root1", "Tools", "tools", "#007ACC", SubRingAction("s_act1", "Sub 1 Ring", items=[sub1_item]))
+
+    prof = Profile("VS Code", [root_item])
+    vm = RadialMenuViewModel(radius=180, inner_radius=38)
+    vm.set_profile(prof)
+
+    screen_geo = QRectF(0, 0, 1920, 1080)
+    # Simulate triggering hotkey at top-left corner (10, 10)
+    vm.set_center(10, 10, screen_geo=screen_geo)
+
+    # 1. Level 0 single-ring clamping check
+    p = 180 + 35  # 215
+    assert vm._center.x() == p
+    assert vm._center.y() == p
+    assert vm.items[0].label == "Tools"
+
+    # 2. Push level 1 sub-ring (Genel Menü or custom sub-ring) -> replaces ring items cleanly
+    vm.push_sub_ring("Sub 1 Ring", [sub1_item], parent_index=0)
+    assert vm._center.x() == p
+    assert vm._center.y() == p
+    assert vm.items[0].label == "Sub 1"
+
+    # 3. Push level 2 sub-ring -> replaces ring items cleanly
+    vm.push_sub_ring("Sub 2 Ring", [sub2_item], parent_index=0)
+    assert vm._center.x() == p
+    assert vm._center.y() == p
+    assert vm.items[0].label == "Sub 2"
+
+    # 4. Pop sub-ring back to level 1
+    assert vm.pop_sub_ring() is True
+    assert vm.items[0].label == "Sub 1"
+    assert vm.pop_sub_ring() is True
+    assert vm.items[0].label == "Tools"
+    assert vm._center.x() == p
+    assert vm._center.y() == p
+
+
+
 
 
 

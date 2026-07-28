@@ -6,12 +6,12 @@ Encapsulates state logic, slice geometry calculations, and hover detection.
 from app.core.config.settings import logger
 import math
 from typing import List, Optional, Tuple
-from PySide6.QtCore import QObject, Signal, QPointF
+from PySide6.QtCore import QObject, Signal, QPointF, QRectF
 from app.models.profile import Profile, SliceItem
 
 
 class RadialMenuViewModel(QObject):
-    """ViewModel maintaining state and mathematics for nautilus spiral radial slices and sub-rings."""
+    """ViewModel maintaining state and mathematics for clean single-ring radial slices and sub-rings."""
 
     slice_hovered = Signal(int)  # Emits hovered slice index of active level (-1 if none)
     profile_updated = Signal()
@@ -23,6 +23,8 @@ class RadialMenuViewModel(QObject):
         # _nav_stack holds sub-rings: list of dicts {"label": str, "items": List[SliceItem], "parent_index": int}
         self._nav_stack: List[dict] = []
         self._center = QPointF(0, 0)
+        self._target_center: Optional[QPointF] = None
+        self._screen_geo: Optional[QRectF] = None
         self._radius = radius
         self._inner_radius = inner_radius
         self._hovered_level: int = 0
@@ -50,22 +52,12 @@ class RadialMenuViewModel(QObject):
         self._hovered_level = 0
         self._hovered_index = -1
         self._center_hovered = False
+        self._reclamp_center()
         self.profile_updated.emit()
 
     def push_sub_ring(self, label: str, items: List[SliceItem], parent_index: int = -1) -> bool:
-        """Navigates into a sub-ring, opening a new outer arc layer."""
+        """Navigates into a sub-ring layer, replacing active ring items."""
         target_parent = parent_index if parent_index >= 0 else self._hovered_index
-        
-        # Check if clicking on an already open parent slice -> toggle/close sub-ring
-        if self._nav_stack:
-            last_sub = self._nav_stack[-1]
-            if last_sub.get("parent_index") == target_parent and len(self._nav_stack) == self._hovered_level:
-                logger.info(f"Sub-ring '{label}' is already open. Toggling back.")
-                return self.pop_sub_ring()
-
-        # Truncate any sub-rings deeper than current hovered level
-        if self._hovered_level < len(self._nav_stack):
-            self._nav_stack = self._nav_stack[:self._hovered_level]
 
         self._nav_stack.append({
             "label": label,
@@ -75,6 +67,7 @@ class RadialMenuViewModel(QObject):
         self._hovered_level = len(self._nav_stack)
         self._hovered_index = -1
         self._center_hovered = False
+        self._reclamp_center()
         self.profile_updated.emit()
         return True
 
@@ -85,6 +78,7 @@ class RadialMenuViewModel(QObject):
             self._hovered_level = len(self._nav_stack)
             self._hovered_index = -1
             self._center_hovered = False
+            self._reclamp_center()
             self.profile_updated.emit()
             return True
         return False
@@ -96,6 +90,7 @@ class RadialMenuViewModel(QObject):
             self._hovered_level = 0
             self._hovered_index = -1
             self._center_hovered = False
+            self._reclamp_center()
             self.profile_updated.emit()
 
     @property
@@ -106,14 +101,70 @@ class RadialMenuViewModel(QObject):
     def is_center_hovered(self) -> bool:
         return self._center_hovered
 
-    def set_center(self, x: float, y: float) -> None:
-        """Sets screen coordinates of menu center."""
-        self._center = QPointF(x, y)
+    def set_center(self, x: float, y: float, screen_geo: Optional[object] = None) -> None:
+        """Sets screen coordinates of menu center and clamps to screen bounds."""
+        self._target_center = QPointF(x, y)
+        if screen_geo is not None:
+            if hasattr(screen_geo, "x"):
+                self._screen_geo = QRectF(
+                    float(screen_geo.x()),
+                    float(screen_geo.y()),
+                    float(screen_geo.width()),
+                    float(screen_geo.height())
+                )
+            else:
+                self._screen_geo = QRectF(screen_geo)
+        elif self._screen_geo is None:
+            try:
+                from PySide6.QtGui import QGuiApplication
+                from PySide6.QtCore import QPoint
+                scr = QGuiApplication.screenAt(QPoint(int(x), int(y))) or QGuiApplication.primaryScreen()
+                if scr:
+                    sg = scr.geometry()
+                    self._screen_geo = QRectF(float(sg.x()), float(sg.y()), float(sg.width()), float(sg.height()))
+            except Exception:
+                pass
+        self._reclamp_center()
+
+    def _reclamp_center(self) -> None:
+        """Re-clamps menu center to screen geometry based on menu radius."""
+        if not hasattr(self, "_target_center") or self._target_center is None:
+            return
+        if not hasattr(self, "_screen_geo") or self._screen_geo is None:
+            self._center = QPointF(self._target_center)
+            return
+
+        tx = self._target_center.x()
+        ty = self._target_center.y()
+
+        padding = self._radius + 35.0
+
+        s_left = float(self._screen_geo.x())
+        s_right = s_left + float(self._screen_geo.width())
+        s_top = float(self._screen_geo.y())
+        s_bottom = s_top + float(self._screen_geo.height())
+
+        min_x = s_left + padding
+        max_x = s_right - padding
+        if min_x > max_x:
+            cx = (s_left + s_right) / 2.0
+        else:
+            cx = max(min_x, min(tx, max_x))
+
+        min_y = s_top + padding
+        max_y = s_bottom - padding
+        if min_y > max_y:
+            cy = (s_top + s_bottom) / 2.0
+        else:
+            cy = max(min_y, min(ty, max_y))
+
+        self._center = QPointF(cx, cy)
 
     def set_radius(self, radius: float, inner_radius: float = 38.0) -> None:
         """Dynamically update menu radius."""
         self._radius = radius
         self._inner_radius = inner_radius
+        self._reclamp_center()
         self.profile_updated.emit()
 
     @property
@@ -122,7 +173,7 @@ class RadialMenuViewModel(QObject):
 
     @property
     def items(self) -> List[SliceItem]:
-        """Returns items of active top-most navigation level."""
+        """Returns items of active navigation level."""
         if self._nav_stack:
             return self._nav_stack[-1]["items"]
         return self.root_items
@@ -141,9 +192,9 @@ class RadialMenuViewModel(QObject):
 
     @property
     def hovered_item(self) -> Optional[SliceItem]:
-        items_at_level = self.get_items_at_level(self._hovered_level)
-        if 0 <= self._hovered_index < len(items_at_level):
-            return items_at_level[self._hovered_index]
+        active_items = self.items
+        if 0 <= self._hovered_index < len(active_items):
+            return active_items[self._hovered_index]
         return None
 
     def get_items_at_level(self, level: int) -> List[SliceItem]:
@@ -153,24 +204,13 @@ class RadialMenuViewModel(QObject):
             return self._nav_stack[level - 1]["items"]
         return []
 
-    def get_level_radii(self, level: int) -> Tuple[float, float]:
-        """Calculates inner and outer radii for concentric spiral ring levels proportionally to self._radius."""
+    def get_level_radii(self, level: int = 0) -> Tuple[float, float]:
+        """Returns inner and outer radii for single ring display."""
         scale = max(0.5, self._radius / 180.0)
-        r_inner_base = self._inner_radius * scale
-        if level == 0:
-            return r_inner_base, r_inner_base + (87.0 * scale)
-        elif level == 1:
-            return 132.0 * scale, 205.0 * scale
-        else:
-            r_in = (205.0 + ((level - 1) * 75.0) + 7.0) * scale
-            r_out = r_in + (68.0 * scale)
-            return r_in, r_out
+        return self._inner_radius * scale, self._radius * scale
 
     def update_cursor_position(self, cursor_x: float, cursor_y: float) -> int:
-        """
-        Hit tests cursor across all active spiral ring levels.
-        Returns hovered_index (-1 if none or center).
-        """
+        """Hit tests cursor across active single ring slices."""
         dx = cursor_x - self._center.x()
         dy = cursor_y - self._center.y()
         distance = math.hypot(dx, dy)
@@ -180,86 +220,50 @@ class RadialMenuViewModel(QObject):
             if not self._center_hovered:
                 self._center_hovered = True
                 self.profile_updated.emit()
-            self._set_hovered(self._hovered_level, -1)
+            self._set_hovered(len(self._nav_stack), -1)
             return -1
         else:
             if self._center_hovered:
                 self._center_hovered = False
                 self.profile_updated.emit()
 
-        active_levels = len(self._nav_stack)
+        scale = max(0.5, self._radius / 180.0)
+        r_inner = self._inner_radius * scale
+        r_outer = self._radius * scale
 
-        # Hit test from outer-most level inward
-        for lvl in range(active_levels, -1, -1):
-            r_in, r_out = self.get_level_radii(lvl)
-            if r_in <= distance <= r_out + 12.0:
-                items_lvl = self.get_items_at_level(lvl)
-                count = len(items_lvl)
-                if count > 0:
-                    start_angle, total_span = self.get_level_arc_bounds(lvl)
-                    angle_rad = math.atan2(dy, dx)
-                    angle_deg = math.degrees(angle_rad)
-                    norm_angle = (angle_deg + 90) % 360
+        if r_inner <= distance <= r_outer + 14.0:
+            items_active = self.items
+            count = len(items_active)
+            if count > 0:
+                angle_rad = math.atan2(dy, dx)
+                angle_deg = math.degrees(angle_rad)
+                norm_angle = (angle_deg + 90) % 360
 
-                    if lvl == 0:
-                        slice_angle = 360.0 / count
-                        index = int(norm_angle // slice_angle) % count
-                        self._set_hovered(0, index)
-                        return index
-                    else:
-                        # Arc span for sub-ring level
-                        rel_angle = (norm_angle - start_angle) % 360
-                        if rel_angle <= total_span:
-                            slice_angle = total_span / count
-                            index = int(rel_angle // slice_angle)
-                            if 0 <= index < count:
-                                self._set_hovered(lvl, index)
-                                return index
+                slice_angle = 360.0 / count
+                index = int(norm_angle // slice_angle) % count
+                self._set_hovered(len(self._nav_stack), index)
+                return index
 
-        self._set_hovered(self._hovered_level, -1)
+        self._set_hovered(len(self._nav_stack), -1)
         return -1
-
-    def get_level_arc_bounds(self, level: int) -> Tuple[float, float]:
-        """Returns (start_angle_deg, total_span_deg) for a given spiral ring level."""
-        if level == 0:
-            return 0.0, 360.0
-
-        if 1 <= level <= len(self._nav_stack):
-            p_idx = self._nav_stack[level - 1]["parent_index"]
-            p_level = level - 1
-            p_start, p_span = self.get_level_arc_bounds(p_level)
-            p_count = len(self.get_items_at_level(p_level))
-            if p_count > 0:
-                p_item_span = p_span / p_count
-                p_mid_angle = p_start + (p_idx * p_item_span) + (p_item_span / 2.0)
-            else:
-                p_mid_angle = 180.0
-
-            # Sub-ring outer arc span: 220 degrees centered around parent item
-            arc_span = 220.0
-            arc_start = (p_mid_angle - arc_span / 2.0) % 360
-            return arc_start, arc_span
-
-        return 0.0, 360.0
 
     def get_slice_angles_for_level(self, level: int, index: int) -> Tuple[float, float]:
         """Returns start_angle and span_angle in degrees for QPainter (0 deg is 3 o'clock)."""
-        items_lvl = self.get_items_at_level(level)
+        items_lvl = self.items
         count = len(items_lvl)
         if count == 0:
             return 0.0, 0.0
 
-        start_angle, total_span = self.get_level_arc_bounds(level)
-        span_angle = total_span / count
-        item_start_norm = start_angle + (index * span_angle)
+        slice_span = 360.0 / count
+        item_start_norm = index * slice_span
 
-        # Convert top-clockwise degrees to QPainter counter-clockwise degrees (0 deg = 3 o'clock)
-        q_start = 90.0 - (item_start_norm + span_angle)
-        return q_start, span_angle
+        q_start = 90.0 - (item_start_norm + slice_span)
+        return q_start, slice_span
 
     def _set_hovered(self, level: int, index: int) -> None:
         if self._hovered_level != level or self._hovered_index != index:
             self._hovered_level = level
             self._hovered_index = index
             self.slice_hovered.emit(index)
+
 

@@ -184,19 +184,16 @@ def main() -> int:
         screen = QGuiApplication.screenAt(cursor_pos) or QGuiApplication.primaryScreen()
         screen_geo = screen.geometry() if screen else QGuiApplication.primaryScreen().geometry()
 
-        padding = radius + 35
-        cx = max(screen_geo.left() + padding, min(cursor_pos.x(), screen_geo.right() - padding))
-        cy = max(screen_geo.top() + padding, min(cursor_pos.y(), screen_geo.bottom() - padding))
-
         active_exe = ActiveWindowService.get_active_executable()
         matched_profile = profile_service.get_profile_for_app(active_exe)
         view_model.set_profile(matched_profile)
 
-        logger.info(f"Kısayol tetiklendi ({cx}, {cy}). Aktif uygulama: '{active_exe}', Profil: '{matched_profile.name}'")
         overlay_window.show_at_screen()
 
         radial_view.setGeometry(overlay_window.rect())
-        view_model.set_center(cx, cy)
+        view_model.set_center(cursor_pos.x(), cursor_pos.y(), screen_geo)
+
+        logger.info(f"Kısayol tetiklendi imleç ({cursor_pos.x()}, {cursor_pos.y()}) -> Merkez ({view_model._center.x()}, {view_model._center.y()}). Aktif uygulama: '{active_exe}', Profil: '{matched_profile.name}'")
 
         radial_view.show()
         radial_view.show_menu()

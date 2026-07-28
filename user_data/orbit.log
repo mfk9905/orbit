@@ -7882,3 +7882,308 @@
 [13:47:35] [INFO] [orbit] Kısayol tetiklendi (215, 215). Aktif uygulama: 'explorer.exe', Profil: 'Varsayılan'
 [13:47:36] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
 [13:47:37] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:04:02] [INFO] [orbit] Orbit Dairesel Menü Uygulaması Başlatılıyor...
+[14:04:02] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[14:04:02] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[14:04:02] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[14:04:02] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[14:04:02] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[14:04:02] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[14:04:02] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[14:04:02] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[14:04:02] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[14:04:02] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[14:04:02] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[14:04:02] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[14:04:02] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[14:04:02] [INFO] [orbit.ui.system_tray] Sistem Tepsi simgesi başlatıldı.
+[14:04:02] [INFO] [orbit] Orbit dairesel menü arka planda çalışıyor. Fare 4 veya Ctrl+Space ile aktif edebilirsiniz.
+[14:04:03] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (12, -41)
+[14:04:03] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (46, 0)
+[14:04:03] [INFO] [orbit] Kısayol tetiklendi (215, 215). Aktif uygulama: 'antigravity ide.exe', Profil: 'Varsayılan'
+[14:04:05] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[14:04:07] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[14:04:10] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[14:04:11] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent spiral layer
+[14:04:12] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:04:13] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (15, -40)
+[14:04:13] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (37, 0)
+[14:04:13] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:04:13] [INFO] [orbit] Kısayol tetiklendi (215, 215). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:04:17] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:04:18] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 1
+[14:04:26] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:04:49] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-12, 25)
+[14:04:49] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (0, 33)
+[14:04:49] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:04:49] [INFO] [orbit] Kısayol tetiklendi (215, 215). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:04:50] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:04:56] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent spiral layer
+[14:04:57] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:04:58] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent spiral layer
+[14:07:11] [INFO] [orbit] Orbit Dairesel Menü Uygulaması Başlatılıyor...
+[14:07:11] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[14:07:11] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[14:07:11] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[14:07:11] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[14:07:11] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[14:07:11] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[14:07:11] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[14:07:11] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[14:07:11] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[14:07:11] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[14:07:11] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[14:07:11] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[14:07:11] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[14:07:11] [INFO] [orbit.ui.system_tray] Sistem Tepsi simgesi başlatıldı.
+[14:07:11] [INFO] [orbit] Orbit dairesel menü arka planda çalışıyor. Fare 4 veya Ctrl+Space ile aktif edebilirsiniz.
+[14:07:12] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-53, -8)
+[14:07:12] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (0, 45)
+[14:07:12] [INFO] [orbit] Kısayol tetiklendi imleç (0, 36) -> Merkez (215.0, 215.0). Aktif uygulama: 'antigravity ide.exe', Profil: 'Varsayılan'
+[14:07:14] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:07:14] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (10, -38)
+[14:07:14] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (60, 11)
+[14:07:14] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:07:14] [INFO] [orbit] Kısayol tetiklendi imleç (48, 9) -> Merkez (215.0, 215.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:07:15] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:07:16] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 1
+[14:07:20] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 1
+[14:07:23] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pencere Yönetimi' from level 1
+[14:07:26] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent spiral layer
+[14:07:28] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:09:54] [INFO] [orbit] Orbit Dairesel Menü Uygulaması Başlatılıyor...
+[14:09:54] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[14:09:54] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[14:09:54] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[14:09:54] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[14:09:54] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[14:09:54] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[14:09:54] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[14:09:54] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[14:09:54] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[14:09:54] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[14:09:54] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[14:09:54] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[14:09:54] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[14:09:54] [INFO] [orbit.ui.system_tray] Sistem Tepsi simgesi başlatıldı.
+[14:09:54] [INFO] [orbit] Orbit dairesel menü arka planda çalışıyor. Fare 4 veya Ctrl+Space ile aktif edebilirsiniz.
+[14:09:54] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-53, -5)
+[14:09:54] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (0, 45)
+[14:09:54] [INFO] [orbit] Kısayol tetiklendi imleç (0, 36) -> Merkez (215.0, 215.0). Aktif uygulama: 'antigravity ide.exe', Profil: 'Varsayılan'
+[14:09:57] [INFO] [orbit.ui.radial_view] Opening sub-ring layer 'Sistem Araçları'
+[14:09:57] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent layer
+[14:09:58] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:09:59] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-16, -1)
+[14:09:59] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (0, 35)
+[14:09:59] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:09:59] [INFO] [orbit] Kısayol tetiklendi imleç (0, 28) -> Merkez (215.0, 215.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:10:01] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:10:02] [INFO] [orbit.ui.radial_view] Opening sub-ring layer 'Sistem Araçları'
+[14:10:03] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent layer
+[14:10:04] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent layer
+[14:10:04] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:10:05] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent layer
+[14:10:06] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:10:06] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:10:07] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-2, 20)
+[14:10:07] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (14, 36)
+[14:10:07] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:10:07] [INFO] [orbit] Kısayol tetiklendi imleç (0, 16) -> Merkez (215.0, 215.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:10:09] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:10:10] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent layer
+[14:10:11] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:10:11] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-5, -4)
+[14:10:11] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (0, 0)
+[14:10:11] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:10:11] [INFO] [orbit] Kısayol tetiklendi imleç (0, 0) -> Merkez (215.0, 215.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:10:13] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:10:13] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:10:13] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-4, -3)
+[14:10:13] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (0, 0)
+[14:10:13] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:10:13] [INFO] [orbit] Kısayol tetiklendi imleç (0, 0) -> Merkez (215.0, 215.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:10:14] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:10:15] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:10:15] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (29, -10)
+[14:10:15] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (43, 0)
+[14:10:15] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:10:15] [INFO] [orbit] Kısayol tetiklendi imleç (34, 0) -> Merkez (215.0, 215.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:10:18] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:10:18] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:10:18] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1093, 397)
+[14:10:18] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:10:18] [INFO] [orbit] Kısayol tetiklendi imleç (874, 318) -> Merkez (874.0, 318.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:10:18] [INFO] [orbit] Kısayol tuşu 0.15s sonra bırakıldı.
+[14:10:18] [INFO] [orbit] Menü tıklama veya kapatılana kadar açık tutuluyor.
+[14:10:20] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1527, 368)
+[14:10:20] [INFO] [orbit] Menü açıkken kısayol basıldı -> kapatılıyor.
+[14:10:20] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:10:21] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1407, 393)
+[14:10:21] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:10:21] [INFO] [orbit] Kısayol tetiklendi imleç (1126, 314) -> Merkez (1126.0, 314.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:10:21] [INFO] [orbit] Kısayol tuşu 0.13s sonra bırakıldı.
+[14:10:21] [INFO] [orbit] Menü tıklama veya kapatılana kadar açık tutuluyor.
+[14:10:26] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:10:27] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:10:27] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1130, 418)
+[14:10:27] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:10:27] [INFO] [orbit] Kısayol tetiklendi imleç (904, 334) -> Merkez (904.0, 334.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:10:28] [INFO] [orbit] Kısayol tuşu 0.17s sonra bırakıldı.
+[14:10:28] [INFO] [orbit] Menü tıklama veya kapatılana kadar açık tutuluyor.
+[14:10:29] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:10:30] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent layer
+[14:10:34] [INFO] [orbit] Orbit uygulamasından çıkılıyor...
+[14:10:39] [INFO] [orbit] Orbit Dairesel Menü Uygulaması Başlatılıyor...
+[14:10:39] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[14:10:39] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[14:10:39] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[14:10:39] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[14:10:39] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[14:10:39] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[14:10:39] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[14:10:39] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[14:10:39] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[14:10:39] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[14:10:39] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[14:10:39] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[14:10:39] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[14:10:39] [INFO] [orbit.ui.system_tray] Sistem Tepsi simgesi başlatıldı.
+[14:10:39] [INFO] [orbit] Orbit dairesel menü arka planda çalışıyor. Fare 4 veya Ctrl+Space ile aktif edebilirsiniz.
+[14:10:40] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1038, 395)
+[14:10:40] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:10:40] [INFO] [orbit] Kısayol tetiklendi imleç (830, 316) -> Merkez (830.0, 316.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:10:41] [INFO] [orbit] Kısayol tuşu 0.10s sonra bırakıldı.
+[14:10:41] [INFO] [orbit] Menü tıklama veya kapatılana kadar açık tutuluyor.
+[14:10:42] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:10:43] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent layer
+[14:10:44] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:10:44] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-6, -1)
+[14:10:44] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (0, 0)
+[14:10:44] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:10:44] [INFO] [orbit] Kısayol tetiklendi imleç (0, 0) -> Merkez (215.0, 215.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:10:45] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:10:45] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:10:51] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (884, 828)
+[14:10:51] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:10:51] [INFO] [orbit] Kısayol tetiklendi imleç (707, 662) -> Merkez (707.0, 662.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:10:51] [INFO] [orbit] Kısayol tuşu 0.13s sonra bırakıldı.
+[14:10:51] [INFO] [orbit] Menü tıklama veya kapatılana kadar açık tutuluyor.
+[14:10:52] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:10:52] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent layer
+[14:10:53] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:10:55] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1246, 435)
+[14:10:55] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:10:55] [INFO] [orbit] Kısayol tetiklendi imleç (997, 348) -> Merkez (997.0, 348.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:10:56] [INFO] [orbit] Kısayol tuşu 0.14s sonra bırakıldı.
+[14:10:56] [INFO] [orbit] Menü tıklama veya kapatılana kadar açık tutuluyor.
+[14:10:56] [INFO] [orbit] Seçilen dilim eylemi çalıştırılıyor: Geliştirici
+[14:10:56] [INFO] [orbit.services.action] Executing action 'İncele' (ID: ba4)
+[14:10:56] [INFO] [orbit.actions.shortcut] Simulated shortcut: f12
+[14:10:58] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-49, 28)
+[14:10:58] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (0, 52)
+[14:10:58] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:10:58] [INFO] [orbit] Kısayol tetiklendi imleç (0, 22) -> Merkez (215.0, 215.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:11:01] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:11:02] [INFO] [orbit.ui.radial_view] Opening sub-ring layer 'Medya & Ses'
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:04] [INFO] [orbit] Kısayol tuşu 5.83s sonra bırakıldı.
+[14:11:04] [INFO] [orbit] Seçili öğe WheelAction -> Dairesel menü etkileşimli kaydırma için açık tutuluyor.
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:04] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:05] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:06] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[14:11:07] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:11:08] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-2, 13)
+[14:11:08] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (47, 36)
+[14:11:08] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:11:08] [INFO] [orbit] Kısayol tetiklendi imleç (0, 10) -> Merkez (215.0, 215.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:11:08] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:11:09] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (0, -1)
+[14:11:09] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (0, 0)
+[14:11:09] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:11:09] [INFO] [orbit] Kısayol tetiklendi imleç (0, 0) -> Merkez (215.0, 215.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:11:10] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:11:11] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (30, 22)
+[14:11:11] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (32, 22)
+[14:11:11] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:11:11] [INFO] [orbit] Kısayol tetiklendi imleç (26, 18) -> Merkez (215.0, 215.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:11:11] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:11:12] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-1, -1)
+[14:11:12] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (0, 0)
+[14:11:12] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:11:12] [INFO] [orbit] Kısayol tetiklendi imleç (0, 0) -> Merkez (215.0, 215.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:11:12] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[14:11:13] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:11:14] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-4, -2)
+[14:11:14] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (0, 0)
+[14:11:14] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:11:14] [INFO] [orbit] Kısayol tetiklendi imleç (0, 0) -> Merkez (215.0, 215.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:11:14] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[14:11:15] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (0, -1)
+[14:11:15] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (0, 0)
+[14:11:15] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[14:11:15] [INFO] [orbit] Kısayol tetiklendi imleç (0, 0) -> Merkez (215.0, 215.0). Aktif uygulama: 'brave.exe', Profil: 'Web Browser'
+[14:11:16] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
