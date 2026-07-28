@@ -19,6 +19,7 @@ class HotkeySignalBridge(QObject):
     menu_triggered = Signal(int, int)
     menu_released = Signal(float)  # Emits duration in seconds
     cursor_moved = Signal(int, int)
+    gesture_detected = Signal(str)  # Emits "up", "down", "left", or "right"
 
 
 class HotkeyManager:
@@ -30,7 +31,9 @@ class HotkeyManager:
         secondary_hotkey: str = "button4",
         enable_hold_duration: bool = False,
         hold_duration_seconds: float = 1.0,
-        enable_corner_hotspot: bool = False
+        enable_corner_hotspot: bool = False,
+        enable_mouse_gestures: bool = True,
+        gesture_drag_threshold: float = 45.0
     ) -> None:
         self.signals = HotkeySignalBridge()
         self.primary_hotkey = primary_hotkey.lower().strip()
@@ -38,7 +41,12 @@ class HotkeyManager:
         self.enable_hold_duration = enable_hold_duration
         self.hold_duration_seconds = hold_duration_seconds
         self.enable_corner_hotspot = enable_corner_hotspot
+        self.enable_mouse_gestures = enable_mouse_gestures
+        self.gesture_drag_threshold = gesture_drag_threshold
+
         self._last_corner_trigger: float = 0.0
+        self._drag_start_pos = (0.0, 0.0)
+        self._gesture_detected_direction: Optional[str] = None
 
         self._keyboard_listener: Optional[keyboard.Listener] = None
         self._mouse_listener: Optional[mouse.Listener] = None
@@ -68,6 +76,12 @@ class HotkeyManager:
         self.enable_hold_duration = enabled
         self.hold_duration_seconds = duration_seconds
         logger.info(f"Hold options updated -> Enabled: {enabled}, Duration: {duration_seconds}s")
+
+    def set_gesture_options(self, enabled: bool, threshold: float = 45.0) -> None:
+        """Dynamically update mouse gesture swipe options."""
+        self.enable_mouse_gestures = enabled
+        self.gesture_drag_threshold = threshold
+        logger.info(f"Mouse gesture options updated -> Enabled: {enabled}, Threshold: {threshold}px")
 
     def start(self) -> None:
         """Start background input listeners."""
@@ -220,6 +234,8 @@ class HotkeyManager:
             self._press_timestamp = time.time()
             m_controller = mouse.Controller()
             cur_x, cur_y = m_controller.position
+            self._drag_start_pos = (float(cur_x), float(cur_y))
+            self._gesture_detected_direction = None
             logger.info(f"Hotkey triggered globally at ({cur_x}, {cur_y})")
             self.signals.menu_triggered.emit(int(cur_x), int(cur_y))
 
@@ -230,11 +246,17 @@ class HotkeyManager:
             if not self._matches_shortcut(self.primary_hotkey) and not self._matches_shortcut(self.secondary_hotkey):
                 self._is_active = False
                 duration = time.time() - self._press_timestamp
-                self.signals.menu_released.emit(duration)
+                # If a gesture swipe was triggered during drag, skip menu selection
+                if self._gesture_detected_direction:
+                    logger.info(f"Trigger released after gesture swipe '{self._gesture_detected_direction.upper()}'")
+                    self._gesture_detected_direction = None
+                else:
+                    self.signals.menu_released.emit(duration)
 
     def reset_active_state(self) -> None:
         """Resets active listening state when radial menu is dismissed or closed."""
         self._is_active = False
+        self._gesture_detected_direction = None
         self._last_dismiss_timestamp = time.time()
         self._currently_pressed_keys.clear()
         self._currently_pressed_mouse.clear()
@@ -249,5 +271,20 @@ class HotkeyManager:
                 self._activate_menu()
 
         if self._is_active:
+            # Check for Mouse Swipe Gestures
+            if self.enable_mouse_gestures and not self._gesture_detected_direction:
+                import math
+                dx = x - self._drag_start_pos[0]
+                dy = y - self._drag_start_pos[1]
+                dist = math.hypot(dx, dy)
+                if dist >= self.gesture_drag_threshold:
+                    if abs(dx) > abs(dy):
+                        direction = "right" if dx > 0 else "left"
+                    else:
+                        direction = "down" if dy > 0 else "up"
+                    self._gesture_detected_direction = direction
+                    logger.info(f"Mouse gesture swipe detected: {direction.upper()} (dist: {dist:.1f}px)")
+                    self.signals.gesture_detected.emit(direction)
+
             self.signals.cursor_moved.emit(int(x), int(y))
 

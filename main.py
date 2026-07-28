@@ -126,12 +126,16 @@ def main() -> int:
     enable_hold = settings_service.get("enable_hold_duration", False)
     hold_sec = float(settings_service.get("hold_duration_seconds", 1.0))
     enable_corner = settings_service.get("enable_corner_hotspot", False)
+    enable_gestures = settings_service.get("enable_mouse_gestures", True)
+    gesture_thresh = float(settings_service.get("gesture_drag_threshold", 45.0))
     hotkey_mgr = HotkeyManager(
         primary_hotkey=primary_hk,
         secondary_hotkey=secondary_hk,
         enable_hold_duration=enable_hold,
         hold_duration_seconds=hold_sec,
-        enable_corner_hotspot=enable_corner
+        enable_corner_hotspot=enable_corner,
+        enable_mouse_gestures=enable_gestures,
+        gesture_drag_threshold=gesture_thresh
     )
 
     settings_window = SettingsWindow(settings_service, profile_service, hotkey_mgr=hotkey_mgr)
@@ -200,6 +204,20 @@ def main() -> int:
             pos = QCursor.pos()
             view_model.update_cursor_position(pos.x(), pos.y())
 
+    def on_gesture_detected(direction: str) -> None:
+        """Called when a mouse drag gesture swipe is detected."""
+        logger.info(f"Mouse gesture swipe detected in main: {direction.upper()}")
+        dismiss_menu()
+
+        gestures_cfg = settings_service.get("gestures", {})
+        act_dict = gestures_cfg.get(direction)
+        if act_dict:
+            from app.models.actions import action_factory
+            action = action_factory(act_dict)
+            action_service.execute(action)
+        else:
+            logger.warning(f"No gesture action configured for direction '{direction}'")
+
     radial_view.item_selected.connect(execute_slice)
     radial_view.dismiss_requested.connect(dismiss_menu)
     overlay_window.dismiss_requested.connect(dismiss_menu)
@@ -207,7 +225,21 @@ def main() -> int:
     hotkey_mgr.signals.menu_triggered.connect(on_hotkey_trigger)
     hotkey_mgr.signals.menu_released.connect(on_hotkey_release)
     hotkey_mgr.signals.cursor_moved.connect(on_cursor_move)
+    hotkey_mgr.signals.gesture_detected.connect(on_gesture_detected)
     hotkey_mgr.start()
+
+    def handle_config_updated(event: ConfigUpdatedEvent) -> None:
+        logger.info(f"Config updated event: {event.key} = {event.value}")
+        if event.key == "radius":
+            new_r = float(event.value)
+            view_model.set_radius(new_r)
+            radial_view.set_radius(new_r)
+        elif event.key == "opacity":
+            radial_view.setWindowOpacity(float(event.value))
+        elif event.key == "animation_speed":
+            radial_view.set_animation_speed(int(event.value))
+
+    event_bus.subscribe(ConfigUpdatedEvent, handle_config_updated)
 
     def handle_reload() -> None:
         logger.info("Reloading profiles and configuration...")

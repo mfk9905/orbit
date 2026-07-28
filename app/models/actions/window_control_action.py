@@ -26,6 +26,8 @@ class WindowControlAction(BaseAction):
             return ShortcutAction("w_prev_desk", "prev_desk", params={"keys": "cmd+ctrl+left"}).execute()
         elif command in ("task_view", "app_switcher"):
             return ShortcutAction("w_task_view", "task_view", params={"keys": "cmd+tab"}).execute()
+        elif command in ("alt_tab", "window_switcher"):
+            return ShortcutAction("w_alt_tab", "alt_tab", params={"keys": "ctrl+alt+tab"}).execute()
         elif command == "close":
             return ShortcutAction("w_close", "close", params={"keys": "alt+f4"}).execute()
         return False

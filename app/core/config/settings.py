@@ -21,7 +21,39 @@ DEFAULT_SETTINGS: Dict[str, Any] = {
     "language": "en",
     "slices_count": 8,
     "blur_effect": True,
-    "autostart": False
+    "autostart": False,
+    "enable_mouse_gestures": True,
+    "gesture_drag_threshold": 45.0,
+    "gestures": {
+        "up": {
+            "type": "WindowControlAction",
+            "id": "g_up",
+            "label": "Büyüt / Ekranı Kapla",
+            "icon": "square",
+            "params": {"command": "maximize"}
+        },
+        "down": {
+            "type": "WindowControlAction",
+            "id": "g_down",
+            "label": "Pencereyi Küçült",
+            "icon": "minus",
+            "params": {"command": "minimize"}
+        },
+        "left": {
+            "type": "WindowControlAction",
+            "id": "g_left",
+            "label": "Sola Yasla",
+            "icon": "arrow-left",
+            "params": {"command": "snap_left"}
+        },
+        "right": {
+            "type": "WindowControlAction",
+            "id": "g_right",
+            "label": "Sağa Yasla",
+            "icon": "arrow-right",
+            "params": {"command": "snap_right"}
+        }
+    }
 }
 
 

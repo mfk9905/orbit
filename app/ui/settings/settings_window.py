@@ -137,7 +137,8 @@ class SettingsWindow(QMainWindow):
     def _on_profile_combo_changed(self, index: int) -> None:
         prof_name = self.cmb_profile_select.itemData(index)
         if prof_name and prof_name in self.profile_service._profiles:
-            self._active_profile = self.profile_service._profiles[prof_name]
+            self.profile_service.set_active_profile(prof_name)
+            self._active_profile = self.profile_service.get_active_profile()
             self._subring_nav_stack.clear()
             self._selected_slice_index = -1
             if hasattr(self, "live_preview"):
@@ -512,7 +513,45 @@ class SettingsWindow(QMainWindow):
         self.chk_corner_hotspot.toggled.connect(_on_corner_toggled)
         form_corner.addRow(self.chk_corner_hotspot)
 
-        layout.addWidget(group_corner)
+        # Mouse Gestures (Hold & Drag) Options
+        group_gestures = QGroupBox("🖱️  Fare Jestleri (Basılı Tut + Sürükle Eylemleri)")
+        form_gestures = QFormLayout(group_gestures)
+
+        self.chk_enable_gestures = QCheckBox("Tuşa Basılı Tutup Fareyi Sürükleyerek Anlık Jest Çalıştır (Hold & Drag)")
+        self.chk_enable_gestures.setChecked(self.settings_service.get("enable_mouse_gestures", True))
+
+        self.spin_gesture_thresh = QSpinBox()
+        self.spin_gesture_thresh.setRange(20, 150)
+        self.spin_gesture_thresh.setSingleStep(5)
+        self.spin_gesture_thresh.setSuffix(" px")
+        self.spin_gesture_thresh.setValue(int(self.settings_service.get("gesture_drag_threshold", 45)))
+
+        def _on_gesture_cfg_changed() -> None:
+            g_enabled = self.chk_enable_gestures.isChecked()
+            g_thresh = float(self.spin_gesture_thresh.value())
+            self.settings_service.set("enable_mouse_gestures", g_enabled)
+            self.settings_service.set("gesture_drag_threshold", g_thresh)
+            if self.hotkey_mgr:
+                self.hotkey_mgr.set_gesture_options(g_enabled, g_thresh)
+
+        self.chk_enable_gestures.toggled.connect(_on_gesture_cfg_changed)
+        self.spin_gesture_thresh.valueChanged.connect(_on_gesture_cfg_changed)
+
+        form_gestures.addRow(self.chk_enable_gestures)
+        form_gestures.addRow("Sürükleme Eşik Mesafesi (Hassasiyet):", self.spin_gesture_thresh)
+
+        # Display current gesture direction shortcuts
+        lbl_gestures_summary = QLabel(
+            "📍 **Haritalanmış Jest Yönleri:**\n"
+            "• **Yukarı Sürükle:** Ekranı Kapla / Büyüt\n"
+            "• **Aşağı Sürükle:** Pencereyi Küçült\n"
+            "• **Sola Sürükle:** Pencereyi Sola Yasla\n"
+            "• **Sağa Sürükle:** Pencereyi Sağa Yasla"
+        )
+        lbl_gestures_summary.setStyleSheet("color: #00F2FE; margin-top: 4px;")
+        form_gestures.addRow(lbl_gestures_summary)
+
+        layout.addWidget(group_gestures)
 
         # Optional Hold Duration Settings Group
         group_hold = QGroupBox("İsteğe Bağlı Basılı Tutarak Açma Ayarları")
@@ -564,6 +603,17 @@ class SettingsWindow(QMainWindow):
             if self.hotkey_mgr:
                 self.hotkey_mgr.set_hotkeys(self.settings_service.get("primary_hotkey", "ctrl+space"), new_hk)
 
+    def _publish_config_change(self, key: str, value: any) -> None:
+        self.settings_service.set(key, value)
+        try:
+            from app.core.container import ServiceContainer
+            from app.core.events.event_bus import EventBus, ConfigUpdatedEvent
+            bus = ServiceContainer.get_instance().resolve(EventBus)
+            if bus:
+                bus.publish(ConfigUpdatedEvent(key, value))
+        except Exception as e:
+            logger.debug(f"EventBus publish debug: {e}")
+
     # --- 3. APPEARANCE PAGE ---
     def _create_appearance_page(self) -> QWidget:
         page = QWidget()
@@ -584,7 +634,8 @@ class SettingsWindow(QMainWindow):
 
         def _on_size_changed(idx: int) -> None:
             r_map = {0: 140, 1: 180, 2: 230}
-            self.settings_service.set("radius", r_map.get(idx, 180))
+            val = r_map.get(idx, 180)
+            self._publish_config_change("radius", val)
 
         size_combo.currentIndexChanged.connect(_on_size_changed)
         form.addRow("Menü Boyutu:", size_combo)
@@ -593,7 +644,7 @@ class SettingsWindow(QMainWindow):
         opacity_spin.setRange(0.2, 1.0)
         opacity_spin.setSingleStep(0.05)
         opacity_spin.setValue(self.settings_service.get("opacity", 0.9))
-        opacity_spin.valueChanged.connect(lambda v: self.settings_service.set("opacity", v))
+        opacity_spin.valueChanged.connect(lambda v: self._publish_config_change("opacity", v))
         form.addRow("Saydamlık Seviyesi:", opacity_spin)
 
         anim_combo = QComboBox()
@@ -608,14 +659,15 @@ class SettingsWindow(QMainWindow):
 
         def _on_anim_changed(idx: int) -> None:
             s_map = {0: 150, 1: 240, 2: 380}
-            self.settings_service.set("animation_speed", s_map.get(idx, 240))
+            val = s_map.get(idx, 240)
+            self._publish_config_change("animation_speed", val)
 
         anim_combo.currentIndexChanged.connect(_on_anim_changed)
         form.addRow("Açılış Animasyonu Hızı:", anim_combo)
 
         blur_check = QCheckBox("Arka Planı Bulanıklaştır (Cam Efekti)")
         blur_check.setChecked(self.settings_service.get("blur_effect", True))
-        blur_check.toggled.connect(lambda c: self.settings_service.set("blur_effect", c))
+        blur_check.toggled.connect(lambda c: self._publish_config_change("blur_effect", c))
         form.addRow(blur_check)
 
         layout.addWidget(group)

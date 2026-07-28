@@ -6642,3 +6642,1026 @@
 [17:09:50] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Sistem Araçları'
 [17:09:53] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent ring
 [17:09:54] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[12:34:15] [INFO] [orbit] Initializing Orbit Radial Menu Application...
+[12:34:15] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[12:34:15] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[12:34:15] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[12:34:15] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[12:34:15] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[12:34:15] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[12:34:15] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[12:34:15] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[12:34:15] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[12:34:15] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[12:34:15] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[12:34:15] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[12:34:15] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[12:34:15] [INFO] [orbit.ui.system_tray] System Tray initialized.
+[12:34:15] [INFO] [orbit] Orbit application running in system tray. Press Mouse 4 or Ctrl+Space to activate radial menu.
+[12:34:16] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1256, 500)
+[12:34:16] [INFO] [orbit] Hotkey triggered at (1005, 400) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:34:16] [INFO] [orbit] Hotkey released after 0.15s
+[12:34:16] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:34:23] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pano Geçmişi'
+[12:34:24] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent ring
+[12:34:26] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[12:34:40] [INFO] [orbit.services.clipboard] Clipboard captured: 'Tamamlandı...'
+[12:34:40] [INFO] [orbit.services.clipboard] Clipboard captured: 'Planlamada...'
+[12:34:41] [INFO] [orbit.services.clipboard] Clipboard captured: 'Yapılıyor...'
+[12:34:42] [INFO] [orbit.services.clipboard] Clipboard captured: 'İşlem ...'
+[12:34:43] [INFO] [orbit.services.clipboard] Clipboard captured: 'Bekliyor...'
+[12:34:44] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (605, 476)
+[12:34:44] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:34:44] [INFO] [orbit] Hotkey triggered at (484, 381) for active app 'brave.exe' using profile 'Web Browser'
+[12:34:44] [INFO] [orbit] Hotkey released after 0.17s
+[12:34:44] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:34:47] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[12:34:48] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[12:34:49] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-43, -2)
+[12:34:49] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (0, 18)
+[12:34:49] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:34:49] [INFO] [orbit] Hotkey triggered at (175, 175) for active app 'brave.exe' using profile 'Web Browser'
+[12:34:53] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[12:34:55] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pano Geçmişi'
+[12:34:56] [INFO] [orbit] Executing selected slice action: Tamamlandı
+[12:34:56] [INFO] [orbit.services.action] Executing action 'Tamamlandı' (ID: act_clip_4)
+[12:34:56] [INFO] [orbit.actions.clipboard] ClipboardAction successfully pasted (10 chars): 'Tamamlandı...'
+[12:34:56] [INFO] [orbit.services.clipboard] Clipboard captured: 'Tamamlandı...'
+[12:34:58] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-87, -32)
+[12:34:58] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (0, 25)
+[12:34:58] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:34:58] [INFO] [orbit] Hotkey triggered at (175, 175) for active app 'brave.exe' using profile 'Web Browser'
+[12:34:59] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[12:35:00] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pano Geçmişi'
+[12:35:01] [INFO] [orbit] Executing selected slice action: Bekliyor
+[12:35:01] [INFO] [orbit.services.action] Executing action 'Bekliyor' (ID: act_clip_1)
+[12:35:01] [INFO] [orbit.actions.clipboard] ClipboardAction successfully pasted (8 chars): 'Bekliyor...'
+[12:35:01] [INFO] [orbit.services.clipboard] Clipboard captured: 'Bekliyor...'
+[12:35:03] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (5, -33)
+[12:35:03] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (38, 0)
+[12:35:03] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:35:03] [INFO] [orbit] Hotkey triggered at (175, 175) for active app 'brave.exe' using profile 'Web Browser'
+[12:35:03] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[12:35:04] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pano Geçmişi'
+[12:35:07] [INFO] [orbit] Executing selected slice action: Bekliyor
+[12:35:07] [INFO] [orbit.services.action] Executing action 'Bekliyor' (ID: act_clip_0)
+[12:35:07] [INFO] [orbit.actions.clipboard] ClipboardAction successfully pasted (8 chars): 'Bekliyor...'
+[12:35:53] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (5, -3)
+[12:35:53] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (21, 0)
+[12:35:53] [INFO] [orbit] Hotkey triggered at (175, 175) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:35:58] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[12:37:08] [INFO] [orbit] Initializing Orbit Radial Menu Application...
+[12:37:08] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[12:37:08] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[12:37:08] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[12:37:08] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[12:37:08] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[12:37:08] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[12:37:08] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[12:37:08] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[12:37:08] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[12:37:08] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[12:37:08] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[12:37:08] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[12:37:08] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[12:37:08] [INFO] [orbit.ui.system_tray] System Tray initialized.
+[12:37:08] [INFO] [orbit] Orbit application running in system tray. Press Mouse 4 or Ctrl+Space to activate radial menu.
+[12:37:09] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1663, 527)
+[12:37:09] [INFO] [orbit] Hotkey triggered at (1330, 422) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:37:09] [INFO] [orbit.hooks.hotkey] Mouse gesture swipe detected: DOWN (dist: 48.5px)
+[12:37:09] [INFO] [orbit] Mouse gesture swipe detected in main: DOWN
+[12:37:09] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[12:37:09] [INFO] [orbit.services.action] Executing action 'Pencereyi Küçült' (ID: g_down)
+[12:37:09] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'minimize'
+[12:37:09] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+down
+[12:37:10] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1722, 788)
+[12:37:10] [INFO] [orbit] Hotkey triggered at (1378, 630) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:37:10] [INFO] [orbit.hooks.hotkey] Mouse gesture swipe detected: UP (dist: 47.4px)
+[12:37:10] [INFO] [orbit] Mouse gesture swipe detected in main: UP
+[12:37:10] [INFO] [orbit.services.action] Executing action 'Büyüt / Ekranı Kapla' (ID: g_up)
+[12:37:10] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'maximize'
+[12:37:10] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+up
+[12:37:12] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1632, 445)
+[12:37:12] [INFO] [orbit] Hotkey triggered at (1306, 356) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:37:12] [INFO] [orbit.hooks.hotkey] Mouse gesture swipe detected: LEFT (dist: 46.0px)
+[12:37:12] [INFO] [orbit] Mouse gesture swipe detected in main: LEFT
+[12:37:12] [INFO] [orbit.services.action] Executing action 'Sola Yasla' (ID: g_left)
+[12:37:12] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'snap_left'
+[12:37:12] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+left
+[12:37:13] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1056, 485)
+[12:37:13] [INFO] [orbit] Hotkey triggered at (847, 387) for active app 'explorer.exe' using profile 'Varsayılan'
+[12:37:13] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[12:37:15] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (912, 665)
+[12:37:15] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:37:15] [INFO] [orbit] Hotkey triggered at (730, 532) for active app 'brave.exe' using profile 'Web Browser'
+[12:37:15] [INFO] [orbit.hooks.hotkey] Mouse gesture swipe detected: UP (dist: 50.0px)
+[12:37:15] [INFO] [orbit] Mouse gesture swipe detected in main: UP
+[12:37:15] [INFO] [orbit.services.action] Executing action 'Büyüt / Ekranı Kapla' (ID: g_up)
+[12:37:15] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'maximize'
+[12:37:15] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+up
+[12:37:16] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (883, 571)
+[12:37:16] [INFO] [orbit] Hotkey triggered at (706, 457) for active app 'explorer.exe' using profile 'Varsayılan'
+[12:37:16] [INFO] [orbit.hooks.hotkey] Mouse gesture swipe detected: UP (dist: 81.8px)
+[12:37:16] [INFO] [orbit] Mouse gesture swipe detected in main: UP
+[12:37:16] [INFO] [orbit.services.action] Executing action 'Büyüt / Ekranı Kapla' (ID: g_up)
+[12:37:16] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'maximize'
+[12:37:16] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+up
+[12:37:29] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1262, 475)
+[12:37:29] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:37:29] [INFO] [orbit] Hotkey triggered at (1010, 380) for active app 'brave.exe' using profile 'Web Browser'
+[12:37:29] [INFO] [orbit.hooks.hotkey] Mouse gesture swipe detected: UP (dist: 45.3px)
+[12:37:29] [INFO] [orbit] Mouse gesture swipe detected in main: UP
+[12:37:29] [INFO] [orbit.services.action] Executing action 'Büyüt / Ekranı Kapla' (ID: g_up)
+[12:37:29] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'maximize'
+[12:37:29] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+up
+[12:37:30] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1182, 466)
+[12:37:30] [INFO] [orbit] Hotkey triggered at (946, 373) for active app '' using profile 'Varsayılan'
+[12:37:30] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[12:37:32] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1328, 449)
+[12:37:32] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:37:32] [INFO] [orbit] Hotkey triggered at (1062, 359) for active app 'brave.exe' using profile 'Web Browser'
+[12:37:32] [INFO] [orbit.hooks.hotkey] Mouse gesture swipe detected: UP (dist: 45.4px)
+[12:37:32] [INFO] [orbit] Mouse gesture swipe detected in main: UP
+[12:37:32] [INFO] [orbit.services.action] Executing action 'Büyüt / Ekranı Kapla' (ID: g_up)
+[12:37:32] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'maximize'
+[12:37:32] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+up
+[12:37:33] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1347, 5)
+[12:37:33] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:37:33] [INFO] [orbit] Hotkey triggered at (1078, 175) for active app 'brave.exe' using profile 'Web Browser'
+[12:37:33] [INFO] [orbit.hooks.hotkey] Mouse gesture swipe detected: DOWN (dist: 51.0px)
+[12:37:33] [INFO] [orbit] Mouse gesture swipe detected in main: DOWN
+[12:37:33] [INFO] [orbit.services.action] Executing action 'Pencereyi Küçült' (ID: g_down)
+[12:37:33] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'minimize'
+[12:37:33] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+down
+[12:37:35] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (939, 579)
+[12:37:35] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:37:35] [INFO] [orbit] Hotkey triggered at (751, 463) for active app 'brave.exe' using profile 'Web Browser'
+[12:37:35] [INFO] [orbit.hooks.hotkey] Mouse gesture swipe detected: RIGHT (dist: 46.6px)
+[12:37:35] [INFO] [orbit] Mouse gesture swipe detected in main: RIGHT
+[12:37:35] [INFO] [orbit.services.action] Executing action 'Sağa Yasla' (ID: g_right)
+[12:37:35] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'snap_right'
+[12:37:35] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+right
+[12:37:36] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1728, 445)
+[12:37:36] [INFO] [orbit] Hotkey triggered at (1382, 356) for active app '' using profile 'Varsayılan'
+[12:37:36] [INFO] [orbit.hooks.hotkey] Mouse gesture swipe detected: LEFT (dist: 46.2px)
+[12:37:36] [INFO] [orbit] Mouse gesture swipe detected in main: LEFT
+[12:37:36] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[12:37:36] [INFO] [orbit.services.action] Executing action 'Sola Yasla' (ID: g_left)
+[12:37:36] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'snap_left'
+[12:37:36] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+left
+[12:39:23] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1227, 677)
+[12:39:23] [INFO] [orbit] Hotkey triggered at (982, 542) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:39:23] [INFO] [orbit] Hotkey released after 0.12s
+[12:39:23] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:39:25] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pencere Yönetimi'
+[12:39:27] [INFO] [orbit] Executing selected slice action: Görev Görünümü
+[12:39:27] [INFO] [orbit.services.action] Executing action 'Görev Görünümü' (ID: wa5)
+[12:39:27] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'task_view'
+[12:39:27] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+tab
+[12:40:59] [INFO] [orbit] Initializing Orbit Radial Menu Application...
+[12:40:59] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[12:40:59] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[12:40:59] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[12:40:59] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[12:40:59] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[12:40:59] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[12:40:59] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[12:40:59] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[12:40:59] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[12:40:59] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[12:40:59] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[12:40:59] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[12:41:00] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[12:41:00] [INFO] [orbit.ui.system_tray] System Tray initialized.
+[12:41:00] [INFO] [orbit] Orbit application running in system tray. Press Mouse 4 or Ctrl+Space to activate radial menu.
+[12:41:01] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1670, 525)
+[12:41:01] [INFO] [orbit] Hotkey triggered at (1336, 420) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:41:02] [INFO] [orbit] Hotkey released after 0.16s
+[12:41:02] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:41:02] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pencere Yönetimi'
+[12:41:04] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Açık Pencereler'
+[12:41:09] [INFO] [orbit] Executing selected slice action: Ayarlar
+[12:41:09] [INFO] [orbit.services.action] Executing action 'Ayarlar' (ID: act_win_switch_4)
+[12:41:09] [INFO] [orbit.actions.window_switch] Switching focus to window: 'Ayarlar' (hwnd=393936)
+[12:41:09] [INFO] [orbit.services.active_window] Successfully activated window handle: 393936
+[12:41:11] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1414, 476)
+[12:41:11] [INFO] [orbit] Hotkey triggered at (1131, 381) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:41:11] [INFO] [orbit] Hotkey released after 0.14s
+[12:41:11] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:41:11] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pencere Yönetimi'
+[12:41:13] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Açık Pencereler'
+[12:41:14] [INFO] [orbit] Executing selected slice action: bilgiislem.manis...
+[12:41:14] [INFO] [orbit.services.action] Executing action 'bilgiislem.manis...' (ID: act_win_switch_1)
+[12:41:14] [INFO] [orbit.actions.window_switch] Switching focus to window: 'bilgiislem.manis...' (hwnd=197080)
+[12:41:14] [INFO] [orbit.services.active_window] Successfully activated window handle: 197080
+[12:41:15] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1214, 272)
+[12:41:15] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:41:15] [INFO] [orbit] Hotkey triggered at (971, 218) for active app 'brave.exe' using profile 'Web Browser'
+[12:41:15] [INFO] [orbit] Hotkey released after 0.16s
+[12:41:15] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:41:18] [INFO] [orbit] Executing selected slice action: Yenile
+[12:41:18] [INFO] [orbit.services.action] Executing action 'Yenile' (ID: ba3)
+[12:41:18] [INFO] [orbit.actions.shortcut] Simulated shortcut: f5
+[12:41:19] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1316, 354)
+[12:41:19] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:41:19] [INFO] [orbit] Hotkey triggered at (1053, 283) for active app 'brave.exe' using profile 'Web Browser'
+[12:41:19] [INFO] [orbit] Hotkey released after 0.19s
+[12:41:19] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:41:21] [INFO] [orbit] Executing selected slice action: Sonraki Sekme
+[12:41:21] [INFO] [orbit.services.action] Executing action 'Sonraki Sekme' (ID: ba5)
+[12:41:21] [INFO] [orbit.actions.shortcut] Simulated shortcut: ctrl+tab
+[12:41:21] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1250, 469)
+[12:41:21] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:41:21] [INFO] [orbit] Hotkey triggered at (1000, 375) for active app 'brave.exe' using profile 'Web Browser'
+[12:41:22] [INFO] [orbit] Hotkey released after 0.13s
+[12:41:22] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:41:22] [INFO] [orbit] Executing selected slice action: Önceki Sekme
+[12:41:22] [INFO] [orbit.services.action] Executing action 'Önceki Sekme' (ID: ba6)
+[12:41:22] [INFO] [orbit.actions.shortcut] Simulated shortcut: ctrl+shift+tab
+[12:41:23] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1422, 356)
+[12:41:23] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:41:23] [INFO] [orbit] Hotkey triggered at (1138, 285) for active app 'brave.exe' using profile 'Web Browser'
+[12:41:23] [INFO] [orbit] Hotkey released after 0.14s
+[12:41:23] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:41:23] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[12:41:25] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pencere Yönetimi'
+[12:41:26] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Açık Pencereler'
+[12:41:31] [INFO] [orbit] Executing selected slice action: Windows Giriş De...
+[12:41:31] [INFO] [orbit.services.action] Executing action 'Windows Giriş De...' (ID: act_win_switch_3)
+[12:41:31] [INFO] [orbit.actions.window_switch] Switching focus to window: 'Windows Giriş De...' (hwnd=132280)
+[12:41:31] [INFO] [orbit.services.active_window] Successfully activated window handle: 132280
+[12:41:33] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1321, 442)
+[12:41:33] [INFO] [orbit] Hotkey triggered at (1057, 354) for active app '' using profile 'Varsayılan'
+[12:41:33] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[12:41:33] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1351, 374)
+[12:41:33] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:41:33] [INFO] [orbit] Hotkey triggered at (1081, 299) for active app 'brave.exe' using profile 'Web Browser'
+[12:41:33] [INFO] [orbit] Hotkey released after 0.12s
+[12:41:33] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:41:34] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[12:41:35] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pencere Yönetimi'
+[12:41:36] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Açık Pencereler'
+[12:41:38] [INFO] [orbit] Executing selected slice action: orbit - Antigrav...
+[12:41:38] [INFO] [orbit.services.action] Executing action 'orbit - Antigrav...' (ID: act_win_switch_2)
+[12:41:38] [INFO] [orbit.actions.window_switch] Switching focus to window: 'orbit - Antigrav...' (hwnd=657300)
+[12:41:38] [INFO] [orbit.services.active_window] Successfully activated window handle: 657300
+[12:41:49] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1267, 519)
+[12:41:49] [INFO] [orbit] Hotkey triggered at (1014, 415) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:41:49] [INFO] [orbit] Hotkey released after 0.14s
+[12:41:49] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:41:50] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pencere Yönetimi'
+[12:41:52] [INFO] [orbit] Executing selected slice action: Görev Görünümü
+[12:41:52] [INFO] [orbit.services.action] Executing action 'Görev Görünümü' (ID: wa5)
+[12:41:52] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'task_view'
+[12:41:52] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+tab
+[12:41:55] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1387, 428)
+[12:41:55] [INFO] [orbit] Hotkey triggered at (1110, 342) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:41:55] [INFO] [orbit] Hotkey released after 0.14s
+[12:41:55] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:41:57] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[12:42:04] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1380, 450)
+[12:42:04] [INFO] [orbit] Hotkey triggered at (1104, 360) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:42:04] [INFO] [orbit] Hotkey released after 0.12s
+[12:42:04] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:42:05] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pencere Yönetimi'
+[12:42:12] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[12:43:51] [INFO] [orbit] Initializing Orbit Radial Menu Application...
+[12:43:51] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[12:43:51] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[12:43:51] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[12:43:51] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[12:43:51] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[12:43:51] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[12:43:51] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[12:43:51] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[12:43:51] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[12:43:51] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[12:43:51] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[12:43:51] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[12:43:51] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[12:43:51] [INFO] [orbit.ui.system_tray] System Tray initialized.
+[12:43:51] [INFO] [orbit] Orbit application running in system tray. Press Mouse 4 or Ctrl+Space to activate radial menu.
+[12:43:52] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1271, 477)
+[12:43:52] [INFO] [orbit] Hotkey triggered at (1017, 382) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:43:52] [INFO] [orbit] Hotkey released after 0.12s
+[12:43:52] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:43:53] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pencere Yönetimi'
+[12:43:56] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Açık Pencereler'
+[12:43:57] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent ring
+[12:43:59] [INFO] [orbit] Executing selected slice action: Hızlı Alt-Tab
+[12:43:59] [INFO] [orbit.services.action] Executing action 'Hızlı Alt-Tab' (ID: wa1_alt_tab)
+[12:43:59] [INFO] [orbit.actions.shortcut] Simulated shortcut: alt+tab
+[12:44:02] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1251, 1219)
+[12:44:02] [INFO] [orbit] Hotkey triggered at (1001, 975) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:44:02] [INFO] [orbit] Hotkey released after 0.19s
+[12:44:02] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:44:04] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pencere Yönetimi'
+[12:44:06] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Açık Pencereler'
+[12:44:06] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent ring
+[12:44:07] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Açık Pencereler'
+[12:44:08] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent ring
+[12:44:10] [INFO] [orbit] Executing selected slice action: Görev Görünümü
+[12:44:10] [INFO] [orbit.services.action] Executing action 'Görev Görünümü' (ID: wa2_task)
+[12:44:10] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'task_view'
+[12:44:10] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+tab
+[12:44:40] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1149, 524)
+[12:44:40] [INFO] [orbit] Hotkey triggered at (919, 419) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:44:40] [INFO] [orbit] Hotkey released after 0.15s
+[12:44:40] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:44:41] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pencere Yönetimi'
+[12:44:41] [INFO] [orbit] Executing selected slice action: Hızlı Alt-Tab
+[12:44:41] [INFO] [orbit.services.action] Executing action 'Hızlı Alt-Tab' (ID: wa1_alt_tab)
+[12:44:41] [INFO] [orbit.actions.shortcut] Simulated shortcut: alt+tab
+[12:44:42] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1229, 438)
+[12:44:42] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:44:42] [INFO] [orbit] Hotkey triggered at (983, 350) for active app 'brave.exe' using profile 'Web Browser'
+[12:44:42] [INFO] [orbit] Hotkey released after 0.15s
+[12:44:42] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:44:43] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[12:44:45] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pencere Yönetimi'
+[12:44:46] [INFO] [orbit] Executing selected slice action: Hızlı Alt-Tab
+[12:44:46] [INFO] [orbit.services.action] Executing action 'Hızlı Alt-Tab' (ID: wa1_alt_tab)
+[12:44:46] [INFO] [orbit.actions.shortcut] Simulated shortcut: alt+tab
+[12:46:12] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1154, 607)
+[12:46:12] [INFO] [orbit] Hotkey triggered at (923, 486) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:46:12] [INFO] [orbit] Hotkey released after 0.13s
+[12:46:12] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:46:17] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Sistem Araçları'
+[12:46:29] [INFO] [orbit] Executing selected slice action: Görev Yöneticisi
+[12:46:29] [INFO] [orbit.services.action] Executing action 'Görev Yöneticisi' (ID: ta2)
+[12:46:29] [INFO] [orbit.actions.system_tool] Executing SystemToolAction 'task_manager'
+[12:46:29] [INFO] [orbit.actions.shortcut] Simulated shortcut: ctrl+shift+esc
+[12:47:38] [INFO] [orbit] Initializing Orbit Radial Menu Application...
+[12:47:38] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[12:47:38] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[12:47:38] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (7 items)
+[12:47:38] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[12:47:38] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[12:47:38] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (7 items)
+[12:47:38] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[12:47:38] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[12:47:38] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[12:47:38] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[12:47:38] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[12:47:38] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[12:47:38] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[12:47:38] [INFO] [orbit.ui.system_tray] System Tray initialized.
+[12:47:38] [INFO] [orbit] Orbit application running in system tray. Press Mouse 4 or Ctrl+Space to activate radial menu.
+[12:47:39] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1328, 682)
+[12:47:39] [INFO] [orbit] Hotkey triggered at (1062, 546) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:47:40] [INFO] [orbit] Hotkey released after 0.10s
+[12:47:40] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:47:42] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Akıllı Metin İşlemleri'
+[12:47:44] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent ring
+[12:47:47] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pencere Yönetimi'
+[12:47:48] [INFO] [orbit] Executing selected slice action: Alt-Tab Görünümü
+[12:47:48] [INFO] [orbit.services.action] Executing action 'Alt-Tab Görünümü' (ID: wa1_alt_tab)
+[12:47:48] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'alt_tab'
+[12:47:48] [INFO] [orbit.actions.shortcut] Simulated shortcut: ctrl+alt+tab
+[12:47:49] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1369, 387)
+[12:47:49] [INFO] [orbit] Hotkey triggered at (1095, 310) for active app 'explorer.exe' using profile 'Varsayılan'
+[12:47:49] [INFO] [orbit] Hotkey released after 0.16s
+[12:47:49] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:47:50] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pencere Yönetimi'
+[12:47:51] [INFO] [orbit] Executing selected slice action: Görev Görünümü
+[12:47:51] [INFO] [orbit.services.action] Executing action 'Görev Görünümü' (ID: wa2_task)
+[12:47:51] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'task_view'
+[12:47:51] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+tab
+[12:47:53] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1305, 507)
+[12:47:53] [INFO] [orbit] Hotkey triggered at (1044, 406) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:47:53] [INFO] [orbit] Hotkey released after 0.15s
+[12:47:53] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:47:56] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Sistem Araçları'
+[12:47:58] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent ring
+[12:48:37] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1310, 243)
+[12:48:37] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:48:37] [INFO] [orbit] Hotkey triggered at (1048, 194) for active app 'brave.exe' using profile 'Web Browser'
+[12:48:37] [INFO] [orbit] Hotkey released after 0.12s
+[12:48:37] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:48:38] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[12:48:40] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Akıllı Metin İşlemleri'
+[12:48:42] [INFO] [orbit] Executing selected slice action: Metni Temizle
+[12:48:42] [INFO] [orbit.services.action] Executing action 'Metni Temizle' (ID: act_st_strip)
+[12:48:42] [INFO] [orbit.actions.smart_text] Executing SmartTextAction with mode: 'strip'
+[12:48:42] [INFO] [orbit.actions.smart_text] SmartTextAction 'strip' executed successfully (8 chars)
+[12:48:42] [INFO] [orbit.services.clipboard] Clipboard captured: 'Bekliyor...'
+[12:48:44] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (668, 524)
+[12:48:44] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:48:44] [INFO] [orbit] Hotkey triggered at (534, 419) for active app 'brave.exe' using profile 'Web Browser'
+[12:48:45] [INFO] [orbit] Hotkey released after 0.12s
+[12:48:45] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:48:46] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[12:48:46] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Akıllı Metin İşlemleri'
+[12:48:47] [INFO] [orbit] Executing selected slice action: Metni Temizle
+[12:48:47] [INFO] [orbit.services.action] Executing action 'Metni Temizle' (ID: act_st_strip)
+[12:48:47] [INFO] [orbit.actions.smart_text] Executing SmartTextAction with mode: 'strip'
+[12:48:47] [INFO] [orbit.actions.smart_text] SmartTextAction 'strip' executed successfully (8 chars)
+[12:48:47] [INFO] [orbit.services.clipboard] Clipboard captured: 'hasan kır...'
+[12:50:20] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1324, 704)
+[12:50:20] [INFO] [orbit] Hotkey triggered at (1059, 563) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:50:20] [INFO] [orbit] Hotkey released after 0.13s
+[12:50:20] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:50:21] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[12:50:26] [INFO] [orbit] Initializing Orbit Radial Menu Application...
+[12:50:26] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[12:50:26] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[12:50:26] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[12:50:26] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[12:50:26] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[12:50:26] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[12:50:26] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[12:50:26] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[12:50:26] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[12:50:26] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[12:50:26] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[12:50:26] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[12:50:26] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[12:50:26] [INFO] [orbit.ui.system_tray] System Tray initialized.
+[12:50:26] [INFO] [orbit] Orbit application running in system tray. Press Mouse 4 or Ctrl+Space to activate radial menu.
+[12:50:27] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1137, 1238)
+[12:50:27] [INFO] [orbit] Hotkey triggered at (910, 976) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:50:27] [INFO] [orbit] Hotkey released after 0.14s
+[12:50:27] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:50:30] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Sistem Araçları'
+[12:50:31] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent ring
+[12:50:33] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pencere Yönetimi'
+[12:50:35] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent ring
+[12:50:37] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[12:52:10] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1179, 1201)
+[12:52:10] [INFO] [orbit] Hotkey triggered at (943, 961) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:52:10] [INFO] [orbit] Hotkey released after 0.15s
+[12:52:10] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:52:11] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Sistem Araçları'
+[12:52:13] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent ring
+[12:54:16] [INFO] [orbit] Initializing Orbit Radial Menu Application...
+[12:54:16] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[12:54:16] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[12:54:16] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[12:54:16] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[12:54:16] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[12:54:16] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[12:54:16] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[12:54:16] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[12:54:16] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[12:54:16] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[12:54:16] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[12:54:16] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[12:54:16] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[12:54:16] [INFO] [orbit.ui.system_tray] System Tray initialized.
+[12:54:16] [INFO] [orbit] Orbit application running in system tray. Press Mouse 4 or Ctrl+Space to activate radial menu.
+[12:54:26] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1213, 585)
+[12:54:26] [INFO] [orbit] Hotkey triggered at (970, 468) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:54:26] [INFO] [orbit] Hotkey released after 0.14s
+[12:54:26] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:54:28] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Medya & Ses'
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:30] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:31] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:31] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[12:54:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[12:54:34] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent ring
+[12:54:35] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pencere Yönetimi'
+[12:54:37] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent ring
+[12:54:38] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Sistem Araçları'
+[12:54:40] [INFO] [orbit] Executing selected slice action: Pano Geçmişi
+[12:54:40] [INFO] [orbit.services.action] Executing action 'Pano Geçmişi' (ID: ta1_clip)
+[12:54:40] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+v
+[12:54:49] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1160, 464)
+[12:54:49] [INFO] [orbit] Hotkey triggered at (928, 371) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:54:49] [INFO] [orbit] Hotkey released after 0.13s
+[12:54:49] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:54:53] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pano Geçmişi'
+[12:54:54] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent ring
+[12:54:55] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Sistem Araçları'
+[12:54:56] [INFO] [orbit] Executing selected slice action: Pano Geçmişi
+[12:54:56] [INFO] [orbit.services.action] Executing action 'Pano Geçmişi' (ID: ta1_clip)
+[12:54:56] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+v
+[12:55:13] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1080, 346)
+[12:55:13] [INFO] [orbit] Hotkey triggered at (864, 277) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:55:13] [INFO] [orbit] Hotkey released after 0.14s
+[12:55:13] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:55:36] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[12:56:26] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1935, 455)
+[12:56:26] [INFO] [orbit.services.profile] Matched profile 'Web Browser' for app 'brave.exe'
+[12:56:26] [INFO] [orbit] Hotkey triggered at (1548, 364) for active app 'brave.exe' using profile 'Web Browser'
+[12:56:26] [INFO] [orbit] Hotkey released after 0.08s
+[12:56:26] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:56:27] [INFO] [orbit.ui.radial_view] Center Genel Menü clicked -> Opening General Profile
+[12:56:28] [INFO] [orbit] Executing selected slice action: Ekran Alıntısı
+[12:56:28] [INFO] [orbit.services.action] Executing action 'Ekran Alıntısı' (ID: a1_snip)
+[12:56:28] [INFO] [orbit.actions.system_tool] Executing SystemToolAction 'snipping_tool'
+[12:56:28] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+shift+s
+[12:56:35] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (2156, 1284)
+[12:56:35] [INFO] [orbit] Hotkey triggered at (1725, 976) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[12:56:35] [INFO] [orbit] Hotkey released after 0.10s
+[12:56:35] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[12:56:36] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Pano Geçmişi'
+[12:56:37] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent ring
+[12:56:38] [INFO] [orbit.ui.radial_view] Opening sub-ring 'Sistem Araçları'
+[12:56:38] [INFO] [orbit] Executing selected slice action: Pano Geçmişi
+[12:56:38] [INFO] [orbit.services.action] Executing action 'Pano Geçmişi' (ID: ta1_clip)
+[12:56:38] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+v
+[13:00:15] [INFO] [orbit] Initializing Orbit Radial Menu Application...
+[13:00:15] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[13:00:15] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[13:00:15] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[13:00:15] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[13:00:15] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[13:00:15] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[13:00:15] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[13:00:15] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[13:00:15] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[13:00:15] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[13:00:15] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[13:00:15] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[13:00:15] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[13:00:15] [INFO] [orbit.ui.system_tray] System Tray initialized.
+[13:00:15] [INFO] [orbit] Orbit application running in system tray. Press Mouse 4 or Ctrl+Space to activate radial menu.
+[13:00:16] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1278, 585)
+[13:00:16] [INFO] [orbit] Hotkey triggered at (1022, 468) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:00:16] [INFO] [orbit] Hotkey released after 0.15s
+[13:00:16] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:00:19] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:00:21] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:00:23] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:00:24] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1391, 598)
+[13:00:24] [INFO] [orbit] Hotkey triggered at (1113, 478) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:00:24] [INFO] [orbit] Hotkey released after 0.16s
+[13:00:24] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:00:26] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:00:27] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:00:30] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:00:31] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:00:32] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:00:42] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1474, 652)
+[13:00:42] [INFO] [orbit] Hotkey triggered at (1179, 522) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:00:42] [INFO] [orbit] Hotkey released after 0.11s
+[13:00:42] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:00:43] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pano Geçmişi' from level 0
+[13:00:45] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1374, 664)
+[13:00:45] [INFO] [orbit] Hotkey triggered at (1099, 531) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:00:45] [INFO] [orbit] Hotkey released after 0.12s
+[13:00:45] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:00:46] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:00:54] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent spiral layer
+[13:00:56] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:00:57] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:01:24] [INFO] [orbit.services.clipboard] Clipboard captured: '[13:00:24] [INFO] [o...'
+[13:02:32] [INFO] [orbit] Initializing Orbit Radial Menu Application...
+[13:02:32] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[13:02:32] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[13:02:32] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[13:02:32] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[13:02:32] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[13:02:32] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[13:02:32] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[13:02:32] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[13:02:32] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[13:02:32] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[13:02:32] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[13:02:32] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[13:02:32] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[13:02:32] [INFO] [orbit.ui.system_tray] System Tray initialized.
+[13:02:32] [INFO] [orbit] Orbit application running in system tray. Press Mouse 4 or Ctrl+Space to activate radial menu.
+[13:02:33] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1239, 590)
+[13:02:33] [INFO] [orbit] Hotkey triggered at (991, 472) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:02:33] [INFO] [orbit] Hotkey released after 0.12s
+[13:02:33] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:02:34] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:02:34] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:02:35] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:02:36] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1352, 612)
+[13:02:36] [INFO] [orbit] Hotkey triggered at (1082, 490) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:02:36] [INFO] [orbit] Hotkey released after 0.11s
+[13:02:36] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:02:37] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:02:37] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:02:38] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:02:40] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1454, 612)
+[13:02:40] [INFO] [orbit] Hotkey triggered at (1163, 490) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:02:40] [INFO] [orbit] Hotkey released after 0.15s
+[13:02:40] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:02:40] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:46] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:47] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:48] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:48] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:48] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:48] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:02:48] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:48] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:48] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:48] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:48] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:48] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:48] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:48] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:48] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:02:50] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:02:51] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:02:51] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:02:52] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:02:52] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:02:52] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:02:53] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:02:54] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pencere Yönetimi' from level 0
+[13:02:54] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:02:54] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:02:55] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:02:55] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pencere Yönetimi' from level 0
+[13:02:55] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pano Geçmişi' from level 0
+[13:02:57] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pencere Yönetimi' from level 0
+[13:02:58] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:02:58] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pencere Yönetimi' from level 0
+[13:02:59] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:03:01] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:03:02] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:03:03] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:03:04] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pencere Yönetimi' from level 0
+[13:03:04] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:03:12] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:03:13] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:03:13] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:03:16] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:03:30] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:03:30] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:03:32] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:03:32] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:03:36] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:03:36] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:03:40] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:03:41] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pencere Yönetimi' from level 0
+[13:03:42] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pano Geçmişi' from level 0
+[13:03:43] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent spiral layer
+[13:03:45] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[13:04:05] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1282, 481)
+[13:04:05] [INFO] [orbit] Hotkey triggered at (1026, 385) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:04:05] [INFO] [orbit] Hotkey released after 0.13s
+[13:04:05] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:04:06] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:04:07] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:04:08] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:08] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:08] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:08] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:08] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:04:08] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:04:08] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:04:08] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:04:08] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:08] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:08] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:08] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:09] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:12] [INFO] [orbit] Executing selected slice action: Tekerlek Ses Modu
+[13:04:12] [INFO] [orbit.services.action] Executing action 'Tekerlek Ses Modu' (ID: ma5)
+[13:04:12] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:04:56] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-22, -22)
+[13:04:56] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (21, 0)
+[13:04:56] [INFO] [orbit.hooks.hotkey] Mouse gesture swipe detected: LEFT (dist: 48.3px)
+[13:04:56] [INFO] [orbit] Hotkey triggered at (175, 175) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:04:56] [INFO] [orbit] Mouse gesture swipe detected in main: LEFT
+[13:04:56] [INFO] [orbit.services.action] Executing action 'Sola Yasla' (ID: g_left)
+[13:04:56] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'snap_left'
+[13:04:56] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+left
+[13:05:01] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1516, 547)
+[13:05:01] [INFO] [orbit] Hotkey triggered at (1213, 438) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:05:01] [INFO] [orbit.hooks.hotkey] Mouse gesture swipe detected: LEFT (dist: 55.1px)
+[13:05:01] [INFO] [orbit] Mouse gesture swipe detected in main: LEFT
+[13:05:01] [INFO] [orbit.services.action] Executing action 'Sola Yasla' (ID: g_left)
+[13:05:01] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'snap_left'
+[13:05:01] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+left
+[13:05:03] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1024, 501)
+[13:05:03] [INFO] [orbit] Hotkey triggered at (819, 401) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:05:04] [INFO] [orbit] Hotkey released after 0.13s
+[13:05:04] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:05:05] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (950, 466)
+[13:05:05] [INFO] [orbit] Hotkey triggered at (760, 373) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:05:05] [INFO] [orbit.hooks.hotkey] Mouse gesture swipe detected: RIGHT (dist: 45.5px)
+[13:05:05] [INFO] [orbit] Mouse gesture swipe detected in main: RIGHT
+[13:05:05] [INFO] [orbit.services.action] Executing action 'Sağa Yasla' (ID: g_right)
+[13:05:05] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'snap_right'
+[13:05:05] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+right
+[13:05:07] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1656, 675)
+[13:05:07] [INFO] [orbit] Hotkey triggered at (1325, 540) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:05:07] [INFO] [orbit.hooks.hotkey] Mouse gesture swipe detected: UP (dist: 46.4px)
+[13:05:07] [INFO] [orbit] Mouse gesture swipe detected in main: UP
+[13:05:07] [INFO] [orbit.services.action] Executing action 'Büyüt / Ekranı Kapla' (ID: g_up)
+[13:05:07] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'maximize'
+[13:05:07] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+up
+[13:05:18] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1547, 680)
+[13:05:18] [INFO] [orbit] Hotkey triggered at (1238, 544) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:05:18] [INFO] [orbit] Hotkey released after 0.11s
+[13:05:18] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:05:25] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:05:27] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pencere Yönetimi' from level 0
+[13:05:30] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pano Geçmişi' from level 0
+[13:05:39] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:05:42] [INFO] [orbit] Executing selected slice action: Pano Geçmişi
+[13:05:42] [INFO] [orbit.services.action] Executing action 'Pano Geçmişi' (ID: ta1_clip)
+[13:05:42] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+v
+[13:06:47] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1019, 720)
+[13:06:47] [INFO] [orbit] Hotkey triggered at (815, 576) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:06:47] [INFO] [orbit] Hotkey released after 0.10s
+[13:06:47] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:06:49] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pencere Yönetimi' from level 0
+[13:06:51] [INFO] [orbit] Executing selected slice action: Alt-Tab Görünümü
+[13:06:51] [INFO] [orbit.services.action] Executing action 'Alt-Tab Görünümü' (ID: wa1_alt_tab)
+[13:06:51] [INFO] [orbit.actions.window_control] Executing WindowControlAction 'alt_tab'
+[13:06:51] [INFO] [orbit.actions.shortcut] Simulated shortcut: ctrl+alt+tab
+[13:06:53] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1095, 522)
+[13:06:53] [INFO] [orbit] Hotkey triggered at (876, 418) for active app '' using profile 'Varsayılan'
+[13:06:53] [INFO] [orbit] Hotkey released after 0.14s
+[13:06:53] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:06:57] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[13:07:52] [INFO] [orbit.hooks.hotkey] Mouse gesture options updated -> Enabled: True, Threshold: 40.0px
+[13:07:52] [INFO] [orbit.hooks.hotkey] Mouse gesture options updated -> Enabled: True, Threshold: 35.0px
+[13:07:52] [INFO] [orbit.hooks.hotkey] Mouse gesture options updated -> Enabled: True, Threshold: 30.0px
+[13:07:53] [INFO] [orbit.hooks.hotkey] Mouse gesture options updated -> Enabled: True, Threshold: 35.0px
+[13:07:54] [INFO] [orbit.hooks.hotkey] Mouse gesture options updated -> Enabled: True, Threshold: 40.0px
+[13:07:59] [INFO] [orbit.hooks.hotkey] Mouse gesture options updated -> Enabled: False, Threshold: 40.0px
+[13:08:02] [INFO] [orbit.hooks.hotkey] Hold options updated -> Enabled: True, Duration: 1.0s
+[13:08:03] [INFO] [orbit.hooks.hotkey] Hold options updated -> Enabled: False, Duration: 1.0s
+[13:08:04] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-31, -27)
+[13:08:04] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (22, 0)
+[13:08:04] [INFO] [orbit] Hotkey triggered at (175, 175) for active app 'python.exe' using profile 'Varsayılan'
+[13:08:12] [INFO] [orbit] Live updated radial menu radius to 180.0
+[13:08:13] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-12, -29)
+[13:08:13] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (70, 0)
+[13:08:13] [INFO] [orbit] Hotkey triggered at (215.0, 215.0) for active app 'python.exe' using profile 'Varsayılan'
+[13:08:14] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[13:08:15] [INFO] [orbit] Live updated radial menu radius to 230.0
+[13:08:15] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (11, -25)
+[13:08:15] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (82, 0)
+[13:08:15] [INFO] [orbit] Hotkey triggered at (265.0, 265.0) for active app 'python.exe' using profile 'Varsayılan'
+[13:08:17] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[13:08:19] [INFO] [orbit] Live updated radial menu radius to 140.0
+[13:08:19] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-20, -10)
+[13:08:19] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (61, 16)
+[13:08:19] [INFO] [orbit] Hotkey triggered at (175.0, 175.0) for active app 'python.exe' using profile 'Varsayılan'
+[13:08:21] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[13:10:59] [INFO] [orbit] Initializing Orbit Radial Menu Application...
+[13:10:59] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[13:10:59] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[13:10:59] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[13:10:59] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[13:10:59] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[13:10:59] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[13:10:59] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[13:10:59] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[13:10:59] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[13:10:59] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[13:10:59] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[13:10:59] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[13:10:59] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[13:10:59] [INFO] [orbit.ui.system_tray] System Tray initialized.
+[13:10:59] [INFO] [orbit] Orbit application running in system tray. Press Mouse 4 or Ctrl+Space to activate radial menu.
+[13:11:00] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1224, 492)
+[13:11:00] [INFO] [orbit] Hotkey triggered at (979, 394) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:11:00] [INFO] [orbit] Hotkey released after 0.12s
+[13:11:00] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:11:01] [INFO] [orbit] Executing selected slice action: Pano Geçmişi
+[13:11:01] [INFO] [orbit.services.action] Executing action 'Pano Geçmişi' (ID: a5_clip)
+[13:11:01] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+v
+[13:11:03] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1127, 515)
+[13:11:03] [INFO] [orbit] Hotkey triggered at (902, 412) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:11:03] [INFO] [orbit] Hotkey released after 0.12s
+[13:11:03] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:11:03] [INFO] [orbit] Executing selected slice action: Pano Geçmişi
+[13:11:03] [INFO] [orbit.services.action] Executing action 'Pano Geçmişi' (ID: a5_clip)
+[13:11:03] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+v
+[13:11:05] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1286, 426)
+[13:11:05] [INFO] [orbit] Hotkey triggered at (1029, 341) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:11:06] [INFO] [orbit] Hotkey released after 0.15s
+[13:11:06] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:11:06] [INFO] [orbit] Executing selected slice action: Pano Geçmişi
+[13:11:06] [INFO] [orbit.services.action] Executing action 'Pano Geçmişi' (ID: a5_clip)
+[13:11:06] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+v
+[13:11:08] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1442, 517)
+[13:11:08] [INFO] [orbit] Hotkey triggered at (1154, 414) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:11:08] [INFO] [orbit] Hotkey released after 0.12s
+[13:11:08] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:11:08] [INFO] [orbit] Executing selected slice action: Pano Geçmişi
+[13:11:08] [INFO] [orbit.services.action] Executing action 'Pano Geçmişi' (ID: a5_clip)
+[13:11:08] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+v
+[13:11:10] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1700, 722)
+[13:11:10] [INFO] [orbit] Hotkey triggered at (1360, 578) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:11:10] [INFO] [orbit] Hotkey released after 0.12s
+[13:11:10] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:12:21] [INFO] [orbit] Initializing Orbit Radial Menu Application...
+[13:12:21] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[13:12:21] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[13:12:21] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[13:12:21] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[13:12:21] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[13:12:21] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[13:12:21] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[13:12:21] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[13:12:21] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[13:12:21] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[13:12:21] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[13:12:21] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[13:12:21] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[13:12:21] [INFO] [orbit.ui.system_tray] System Tray initialized.
+[13:12:21] [INFO] [orbit] Orbit application running in system tray. Press Mouse 4 or Ctrl+Space to activate radial menu.
+[13:12:21] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1308, 612)
+[13:12:21] [INFO] [orbit] Hotkey triggered at (1046, 490) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:12:21] [INFO] [orbit] Hotkey released after 0.07s
+[13:12:21] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:12:29] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (957, 668)
+[13:12:29] [INFO] [orbit] Hotkey triggered at (766, 534) for active app 'antigravity ide.exe' using profile 'Varsayılan'
+[13:12:29] [INFO] [orbit] Hotkey released after 0.13s
+[13:12:29] [INFO] [orbit] Keeping radial menu open until click or dismiss.
+[13:12:30] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:12:31] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:12:31] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:12:31] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:12:31] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:12:31] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:12:31] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:12:31] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:12:31] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:12:31] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:12:31] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:12:31] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:12:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled UP (mode=volume)
+[13:12:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:12:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:12:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:12:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:12:32] [INFO] [orbit.actions.wheel] WheelAction 'Tekerlek Ses Modu' scrolled DOWN (mode=volume)
+[13:12:33] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[13:12:41] [INFO] [orbit] Live updated radial menu radius to 180.0
+[13:12:41] [INFO] [orbit] Config updated event: radius = 180
+[13:12:41] [INFO] [orbit] Live updated radial menu radius to 180.0
+[13:12:41] [INFO] [orbit] Config updated event: radius = 180
+[13:12:41] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (14, -5)
+[13:12:41] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (20, 0)
+[13:12:41] [INFO] [orbit] Hotkey triggered at (215.0, 215.0) for active app 'python.exe' using profile 'Varsayılan'
+[13:12:43] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[13:12:43] [INFO] [orbit] Live updated radial menu radius to 230.0
+[13:12:43] [INFO] [orbit] Config updated event: radius = 230
+[13:12:43] [INFO] [orbit] Live updated radial menu radius to 230.0
+[13:12:43] [INFO] [orbit] Config updated event: radius = 230
+[13:12:44] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-24, -20)
+[13:12:44] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (47, 0)
+[13:12:44] [INFO] [orbit] Hotkey triggered at (265.0, 265.0) for active app 'python.exe' using profile 'Varsayılan'
+[13:12:49] [INFO] [orbit] Executing selected slice action: Pano Geçmişi
+[13:12:49] [INFO] [orbit.services.action] Executing action 'Pano Geçmişi' (ID: a5_clip)
+[13:12:49] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+v
+[13:12:50] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (8, -59)
+[13:12:50] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (59, 0)
+[13:12:50] [INFO] [orbit] Hotkey triggered at (265.0, 265.0) for active app 'python.exe' using profile 'Varsayılan'
+[13:12:53] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (0, 0)
+[13:12:53] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (0, 0)
+[13:12:53] [INFO] [orbit] Hotkey triggered at (265.0, 265.0) for active app 'python.exe' using profile 'Varsayılan'
+[13:12:54] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:12:56] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:12:57] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pencere Yönetimi' from level 0
+[13:12:57] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:12:58] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:12:58] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pencere Yönetimi' from level 0
+[13:12:59] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:12:59] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:12:59] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:13:00] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:13:00] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:13:01] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent spiral layer
+[13:13:07] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:13:09] [INFO] [orbit] Executing selected slice action: Dosya Gezgini
+[13:13:09] [INFO] [orbit.services.action] Executing action 'Dosya Gezgini' (ID: ta3)
+[13:13:09] [INFO] [orbit.actions.system_tool] Executing SystemToolAction 'file_explorer'
+[13:13:09] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+e
+[13:13:15] [INFO] [orbit] Config updated event: blur_effect = True
+[13:13:15] [INFO] [orbit] Config updated event: blur_effect = True
+[13:13:16] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-45, -53)
+[13:13:16] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (29, 0)
+[13:13:16] [INFO] [orbit] Hotkey triggered at (265.0, 265.0) for active app 'python.exe' using profile 'Varsayılan'
+[13:13:17] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:13:19] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:13:20] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pencere Yönetimi' from level 0
+[13:13:20] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:13:21] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:13:21] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:13:22] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pencere Yönetimi' from level 0
+[13:13:22] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:13:22] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:13:23] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:13:23] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pencere Yönetimi' from level 0
+[13:13:23] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:13:24] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:13:24] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:13:24] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pencere Yönetimi' from level 0
+[13:13:25] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:13:25] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:13:26] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:13:27] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Pencere Yönetimi' from level 0
+[13:13:27] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:13:28] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Medya & Ses' from level 0
+[13:13:56] [INFO] [orbit.ui.radial_view] Center Back clicked -> Returning to parent spiral layer
+[13:14:00] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss

@@ -77,27 +77,82 @@ class ActiveWindowService:
             return "", ""
 
     @staticmethod
-    def _get_linux_window_info() -> Tuple[str, str]:
-        try:
-            import subprocess
-            pid_out = subprocess.check_output(["xdotool", "getactivewindow", "getwindowpid"], stderr=subprocess.DEVNULL).strip()
-            pid = int(pid_out)
-            exe_path = os.readlink(f"/proc/{pid}/exe")
-            exe_name = os.path.basename(exe_path).lower()
+    def get_open_windows() -> list:
+        """
+        Returns a list of tuples: [(hwnd, exe_name, window_title), ...]
+        Enumerates visible main desktop windows.
+        """
+        if sys.platform != "win32":
+            return []
 
-            title_out = subprocess.check_output(["xdotool", "getactivewindow", "getwindowname"], stderr=subprocess.DEVNULL).decode("utf-8", errors="ignore").strip()
-            return exe_name, title_out
-        except Exception:
-            return "", ""
+        try:
+            user32 = ctypes.windll.user32
+            kernel32 = ctypes.windll.kernel32
+            current_pid = os.getpid()
+            results = []
+
+            WNDENUMPROC = ctypes.WINFUNCTYPE(ctypes.c_bool, ctypes.c_void_p, ctypes.c_void_p)
+
+            def enum_cb(hwnd, lparam):
+                if not user32.IsWindowVisible(hwnd):
+                    return True
+
+                ex_style = user32.GetWindowLongW(hwnd, -20)  # GWL_EXSTYLE
+                # Ignore WS_EX_TOOLWINDOW unless WS_EX_APPWINDOW is set
+                if (ex_style & 0x00000080) and not (ex_style & 0x00040000):
+                    return True
+
+                length = user32.GetWindowTextLengthW(hwnd)
+                if length == 0:
+                    return True
+
+                title_buf = ctypes.create_unicode_buffer(length + 1)
+                user32.GetWindowTextW(hwnd, title_buf, length + 1)
+                title = title_buf.value.strip()
+
+                if not title or title in ("Program Manager", "Settings", "NVIDIA GeForce Overlay", "MSCTFIME UI"):
+                    return True
+
+                pid = ctypes.c_ulong()
+                user32.GetWindowThreadProcessId(hwnd, ctypes.byref(pid))
+                if pid.value == current_pid:
+                    return True  # Skip Orbit's own windows
+
+                exe_name = ""
+                h_process = kernel32.OpenProcess(0x1000, False, pid.value)
+                if h_process:
+                    buf_size = ctypes.c_ulong(1024)
+                    buf = ctypes.create_unicode_buffer(1024)
+                    if kernel32.QueryFullProcessImageNameW(h_process, 0, buf, ctypes.byref(buf_size)):
+                        exe_name = os.path.basename(buf.value).lower()
+                    kernel32.CloseHandle(h_process)
+
+                results.append((int(hwnd), exe_name, title))
+                return True
+
+            cb = WNDENUMPROC(enum_cb)
+            user32.EnumWindows(cb, 0)
+            return results
+        except Exception as e:
+            logger.error(f"Error enumerating open windows: {e}")
+            return []
 
     @staticmethod
-    def _get_mac_window_info() -> Tuple[str, str]:
+    def activate_window(hwnd: int) -> bool:
+        """Restores and brings target window handle (hwnd) to the foreground."""
+        if sys.platform != "win32" or not hwnd:
+            return False
+
         try:
-            from AppKit import NSWorkspace
-            curr_app = NSWorkspace.sharedWorkspace().frontmostApplication()
-            if curr_app:
-                name = curr_app.localizedName() or ""
-                return name.lower(), name
-            return "", ""
-        except Exception:
-            return "", ""
+            user32 = ctypes.windll.user32
+            # If window is minimized (IsIconic), restore it (SW_RESTORE = 9)
+            if user32.IsIconic(hwnd):
+                user32.ShowWindow(hwnd, 9)
+
+            user32.SetForegroundWindow(hwnd)
+            user32.BringWindowToTop(hwnd)
+            logger.info(f"Successfully activated window handle: {hwnd}")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to activate window handle {hwnd}: {e}")
+            return False

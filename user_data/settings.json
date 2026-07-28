@@ -3,13 +3,53 @@
     "accent_color": "#2ED573",
     "opacity": 0.25,
     "animation_speed": 240,
-    "radius": 140,
+    "radius": 230,
     "hotkey": "<ctrl>+<space>",
     "mouse_hotkey": "button4",
     "language": "en",
     "slices_count": 8,
-    "blur_effect": false,
+    "blur_effect": true,
     "autostart": false,
+    "enable_mouse_gestures": false,
+    "gesture_drag_threshold": 40.0,
+    "gestures": {
+        "up": {
+            "type": "WindowControlAction",
+            "id": "g_up",
+            "label": "B\u00fcy\u00fct / Ekran\u0131 Kapla",
+            "icon": "square",
+            "params": {
+                "command": "maximize"
+            }
+        },
+        "down": {
+            "type": "WindowControlAction",
+            "id": "g_down",
+            "label": "Pencereyi K\u00fc\u00e7\u00fclt",
+            "icon": "minus",
+            "params": {
+                "command": "minimize"
+            }
+        },
+        "left": {
+            "type": "WindowControlAction",
+            "id": "g_left",
+            "label": "Sola Yasla",
+            "icon": "arrow-left",
+            "params": {
+                "command": "snap_left"
+            }
+        },
+        "right": {
+            "type": "WindowControlAction",
+            "id": "g_right",
+            "label": "Sa\u011fa Yasla",
+            "icon": "arrow-right",
+            "params": {
+                "command": "snap_right"
+            }
+        }
+    },
     "enable_mouse4": false,
     "middle_hold_seconds": 2.0,
     "primary_hotkey": "ctrl+space",

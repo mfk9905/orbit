@@ -198,76 +198,61 @@
                 "items": [
                     {
                         "id": "w1",
-                        "label": "Küçült",
-                        "icon": "minus",
+                        "label": "Alt-Tab Görünümü",
+                        "icon": "layout",
                         "color": "#9B59B6",
-                        "tooltip": "Pencereyi Küçült",
+                        "tooltip": "Windows Alt-Tab Ekranını Aç (Ctrl+Alt+Tab)",
                         "action": {
                             "type": "WindowControlAction",
-                            "id": "wa1",
-                            "label": "Küçült",
+                            "id": "wa1_alt_tab",
+                            "label": "Alt-Tab Görünümü",
                             "params": {
-                                "command": "minimize"
+                                "command": "alt_tab"
                             }
                         }
                     },
                     {
                         "id": "w2",
-                        "label": "Büyüt",
-                        "icon": "square",
-                        "color": "#9B59B6",
-                        "tooltip": "Ekranı Kapla",
-                        "action": {
-                            "type": "WindowControlAction",
-                            "id": "wa2",
-                            "label": "Büyüt",
-                            "params": {
-                                "command": "maximize"
-                            }
-                        }
-                    },
-                    {
-                        "id": "w3",
-                        "label": "Sola Yasla",
-                        "icon": "arrow-left",
-                        "color": "#9B59B6",
-                        "tooltip": "Pencereyi Sola Yasla",
-                        "action": {
-                            "type": "WindowControlAction",
-                            "id": "wa3",
-                            "label": "Sola Yasla",
-                            "params": {
-                                "command": "snap_left"
-                            }
-                        }
-                    },
-                    {
-                        "id": "w4",
-                        "label": "Sağa Yasla",
-                        "icon": "arrow-right",
-                        "color": "#9B59B6",
-                        "tooltip": "Pencereyi Sağa Yasla",
-                        "action": {
-                            "type": "WindowControlAction",
-                            "id": "wa4",
-                            "label": "Sağa Yasla",
-                            "params": {
-                                "command": "snap_right"
-                            }
-                        }
-                    },
-                    {
-                        "id": "w5",
                         "label": "Görev Görünümü",
                         "icon": "layers",
                         "color": "#9B59B6",
                         "tooltip": "Tüm Pencereleri Gör (Win+Tab)",
                         "action": {
                             "type": "WindowControlAction",
-                            "id": "wa5",
+                            "id": "wa2_task",
                             "label": "Görev Görünümü",
                             "params": {
                                 "command": "task_view"
+                            }
+                        }
+                    },
+                    {
+                        "id": "w3",
+                        "label": "Sonraki Masaüstü",
+                        "icon": "arrow-right",
+                        "color": "#9B59B6",
+                        "tooltip": "Sonraki Sanal Masaüstüne Geç (Ctrl+Win+Right)",
+                        "action": {
+                            "type": "ShortcutAction",
+                            "id": "wa3_next_desk",
+                            "label": "Sonraki Masaüstü",
+                            "params": {
+                                "keys": "ctrl+super+right"
+                            }
+                        }
+                    },
+                    {
+                        "id": "w4",
+                        "label": "Önceki Masaüstü",
+                        "icon": "arrow-left",
+                        "color": "#9B59B6",
+                        "tooltip": "Önceki Sanal Masaüstüne Geç (Ctrl+Win+Left)",
+                        "action": {
+                            "type": "ShortcutAction",
+                            "id": "wa4_prev_desk",
+                            "label": "Önceki Masaüstü",
+                            "params": {
+                                "keys": "ctrl+super+left"
                             }
                         }
                     }
@@ -279,13 +264,15 @@
             "label": "Pano Geçmişi",
             "icon": "clipboard",
             "color": "#FFA502",
-            "tooltip": "Son Kopyalanan Metinler Alt Menüsü",
+            "tooltip": "Windows Pano Geçmişini Aç (Win+V)",
             "action": {
-                "type": "ClipboardSubRingAction",
+                "type": "ShortcutAction",
                 "id": "a5_clip",
                 "label": "Pano Geçmişi",
                 "icon": "clipboard",
-                "params": {}
+                "params": {
+                    "keys": "cmd+v"
+                }
             }
         },
         {

@@ -2,7 +2,7 @@ from typing import List
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtWidgets import QApplication
 from app.models.profile import SliceItem
-from app.models.actions import TextAction
+from app.models.actions import ClipboardAction, TextAction
 from app.core.logging.logger import get_logger
 
 logger = get_logger("orbit.services.clipboard")
@@ -47,6 +47,11 @@ class ClipboardService:
         except Exception as e:
             logger.error(f"Error reading clipboard: {e}")
 
+    def clear_history(self) -> None:
+        """Clears captured clipboard history."""
+        self.history.clear()
+        logger.info("Clipboard history cleared.")
+
     def get_slice_items(self) -> List[SliceItem]:
         items = []
         if not self.history:
@@ -63,19 +68,22 @@ class ClipboardService:
             return items
 
         for i, text in enumerate(self.history):
-            short_text = text[:12] + "..." if len(text) > 12 else text
+            # Clean up single line summary for slice label
+            clean_text = " ".join(text.split())
+            short_label = clean_text[:18] + "..." if len(clean_text) > 18 else clean_text
             slice_item = SliceItem(
                 slice_id=f"clip_{i}",
-                label=short_text,
+                label=short_label,
                 icon="copy",
                 color="#FFA502",
-                action=TextAction(
+                action=ClipboardAction(
                     action_id=f"act_clip_{i}",
-                    label=short_text,
+                    label=short_label,
                     icon="copy",
                     params={"text": text}
                 ),
-                tooltip=f"Panodan Yazdır: {text[:40]}"
+                tooltip=f"Panodan Yapıştır: {clean_text[:50]}"
             )
             items.append(slice_item)
         return items
+

@@ -181,7 +181,7 @@ def test_icon_manager():
 
 
 def test_clipboard_and_keyboard_actions():
-    from app.models.actions import KeyboardAction, ClipboardSubRingAction, action_factory
+    from app.models.actions import KeyboardAction, ClipboardSubRingAction, ClipboardAction, action_factory
     from app.services.clipboard_service import ClipboardService
 
     # 1. KeyboardAction test
@@ -190,13 +190,29 @@ def test_clipboard_and_keyboard_actions():
     recreated_kb = action_factory(kb_dict)
     assert isinstance(recreated_kb, KeyboardAction)
 
-    # 2. ClipboardSubRingAction test
+    # 2. ClipboardAction test
+    clip_action = ClipboardAction("ca1", "Paste Snippet", params={"text": "Hello Orbit World"})
+    assert clip_action.params["text"] == "Hello Orbit World"
+    ca_dict = clip_action.to_dict()
+    recreated_ca = action_factory(ca_dict)
+    assert isinstance(recreated_ca, ClipboardAction)
+    assert recreated_ca.params["text"] == "Hello Orbit World"
+
+    # 3. ClipboardSubRingAction test & ClipboardService history
     clip_act = ClipboardSubRingAction("c1", "ClipHistory")
     clip_svc = ClipboardService.get_instance()
-    clip_svc.history = ["Test 1", "Test 2"]
+    clip_svc.history = ["Test 1", "Multi Line\nTest 2"]
     sub_items = clip_act.sub_items
     assert len(sub_items) == 2
     assert sub_items[0].label == "Test 1"
+    assert isinstance(sub_items[0].action, ClipboardAction)
+    assert sub_items[1].label == "Multi Line Test 2"
+
+    clip_svc.clear_history()
+    assert len(clip_svc.history) == 0
+    empty_items = clip_act.sub_items
+    assert len(empty_items) == 1
+    assert empty_items[0].label == "Pano Boş"
 
 
 def test_phase1_live_config_and_profile_reload(tmp_path: Path):
@@ -358,6 +374,104 @@ def test_ping_tool_dialog_and_action():
     from app.models.actions import ShellAction
     shell_action = ShellAction("act_shell_ping", "Ping Shell", params={"command": "cmd.exe /k ping -t -a"})
     assert shell_action.execute() is True
+
+
+def test_mouse_gestures():
+    from app.core.hooks.hotkey_manager import HotkeyManager
+
+    hk_mgr = HotkeyManager(primary_hotkey="ctrl+space", secondary_hotkey="button4", enable_mouse_gestures=True, gesture_drag_threshold=40.0)
+    assert hk_mgr.enable_mouse_gestures is True
+    assert hk_mgr.gesture_drag_threshold == 40.0
+
+    detected_gestures = []
+    hk_mgr.signals.gesture_detected.connect(lambda d: detected_gestures.append(d))
+
+    # Simulate activation at (100, 100)
+    hk_mgr._is_active = True
+    hk_mgr._drag_start_pos = (100.0, 100.0)
+    hk_mgr._gesture_detected_direction = None
+
+    # 1. Drag Up: (100, 50) -> dy = -50 (dist = 50 >= 40)
+    hk_mgr._on_mouse_move(100.0, 50.0)
+    assert len(detected_gestures) == 1
+    assert detected_gestures[-1] == "up"
+
+    # Reset active state
+    hk_mgr.reset_active_state()
+    hk_mgr._is_active = True
+    hk_mgr._drag_start_pos = (100.0, 100.0)
+
+    # 2. Drag Down: (100, 160) -> dy = +60
+    hk_mgr._on_mouse_move(100.0, 160.0)
+    assert len(detected_gestures) == 2
+    assert detected_gestures[-1] == "down"
+
+    # Reset active state
+    hk_mgr.reset_active_state()
+    hk_mgr._is_active = True
+    hk_mgr._drag_start_pos = (100.0, 100.0)
+
+    # 3. Drag Left: (40, 100) -> dx = -60
+    hk_mgr._on_mouse_move(40.0, 100.0)
+    assert len(detected_gestures) == 3
+    assert detected_gestures[-1] == "left"
+
+    # Reset active state
+    hk_mgr.reset_active_state()
+    hk_mgr._is_active = True
+    hk_mgr._drag_start_pos = (100.0, 100.0)
+
+    # 4. Drag Right: (160, 100) -> dx = +60
+    hk_mgr._on_mouse_move(160.0, 100.0)
+    assert len(detected_gestures) == 4
+    assert detected_gestures[-1] == "right"
+
+
+def test_radial_window_switcher():
+    from app.services.active_window_service import ActiveWindowService
+    from app.models.actions import WindowSwitchAction, WindowSwitcherSubRingAction, action_factory
+
+    # 1. Test WindowSwitchAction execution and serialization
+    ws_act = WindowSwitchAction("ws1", "Focus VS Code", params={"hwnd": 123456})
+    assert ws_act.params["hwnd"] == 123456
+    ws_dict = ws_act.to_dict()
+    recreated_ws = action_factory(ws_dict)
+    assert isinstance(recreated_ws, WindowSwitchAction)
+    assert recreated_ws.params["hwnd"] == 123456
+
+    # 2. Test WindowSwitcherSubRingAction dynamic items generation
+    switcher_subring = WindowSwitcherSubRingAction("wss1", "Açık Pencereler")
+    sub_items = switcher_subring.sub_items
+    assert isinstance(sub_items, list)
+    assert len(sub_items) >= 1
+
+    # 3. Test ActiveWindowService open windows enumeration
+    open_wins = ActiveWindowService.get_open_windows()
+    assert isinstance(open_wins, list)
+    for hwnd, exe, title in open_wins:
+        assert isinstance(hwnd, int)
+        assert isinstance(exe, str)
+        assert isinstance(title, str)
+
+
+def test_smart_text_action():
+    from app.models.actions import SmartTextAction, SmartTextSubRingAction, action_factory
+
+    # 1. Test SmartTextAction serialization & factory
+    st_act = SmartTextAction("st1", "BÜYÜK HARF", params={"mode": "uppercase"})
+    assert st_act.params["mode"] == "uppercase"
+    st_dict = st_act.to_dict()
+    recreated = action_factory(st_dict)
+    assert isinstance(recreated, SmartTextAction)
+    assert recreated.params["mode"] == "uppercase"
+
+    # 2. Test SmartTextSubRingAction items
+    subring = SmartTextSubRingAction("str1", "Akıllı Metin İşlemleri")
+    sub_items = subring.sub_items
+    assert len(sub_items) == 5
+    assert sub_items[0].label == "BÜYÜK HARF"
+    assert sub_items[1].label == "küçük harf"
+    assert sub_items[4].label == "JSON Düzenle"
 
 
 

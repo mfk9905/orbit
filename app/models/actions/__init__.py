@@ -14,6 +14,9 @@ from app.models.actions.window_control_action import WindowControlAction
 from app.models.actions.keyboard_action import KeyboardAction
 from app.models.actions.media_action import MediaAction
 from app.models.actions.system_tool_action import SystemToolAction
+from app.models.actions.clipboard_action import ClipboardAction
+from app.models.actions.window_switch_action import WindowSwitchAction, WindowSwitcherSubRingAction
+from app.models.actions.smart_text_action import SmartTextAction, SmartTextSubRingAction
 from app.models.actions.factory import action_factory
 
 __all__ = [
@@ -24,6 +27,11 @@ __all__ = [
     "TextAction",
     "SubRingAction",
     "ClipboardSubRingAction",
+    "ClipboardAction",
+    "WindowSwitchAction",
+    "WindowSwitcherSubRingAction",
+    "SmartTextAction",
+    "SmartTextSubRingAction",
     "MacroAction",
     "WheelAction",
     "WindowControlAction",
