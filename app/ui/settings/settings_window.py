@@ -457,17 +457,25 @@ class SettingsWindow(QMainWindow):
 
     # --- 2. HOTKEYS PAGE ---
     def _create_hotkeys_page(self) -> QWidget:
-        page = QWidget()
-        layout = QVBoxLayout(page)
+        from PySide6.QtWidgets import QScrollArea
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setStyleSheet("QScrollArea { border: none; background: transparent; }")
 
-        desc = QLabel("Orbit menüsünü ekrana getirmek için kullanacağınız tuşları ve fare yöntemlerini kolayca belirleyin:")
+        container = QWidget()
+        layout = QVBoxLayout(container)
+        layout.setContentsMargins(4, 4, 12, 12)
+        layout.setSpacing(14)
+
+        desc = QLabel("Orbit menüsünü ekrana getirmek için kullanacağınız tuşları ve aktivasyon yöntemlerini belirleyin:")
         desc.setWordWrap(True)
         desc.setStyleSheet("color: #94A3B8; font-size: 13px;")
         layout.addWidget(desc)
 
-        # Primary Shortcut Card
-        group1 = QGroupBox("Ana Aktivasyon Kısayolu")
+        # 1. Primary Shortcut Card
+        group1 = QGroupBox("🎯  Ana Aktivasyon Kısayolu")
         vbox1 = QVBoxLayout(group1)
+        vbox1.setSpacing(10)
 
         p_hk = format_hotkey_display(self.settings_service.get('primary_hotkey', 'ctrl+space'))
         self.lbl_primary_hk = QLabel(f"Şu Anki Tuşunuz:  [ {p_hk} ]")
@@ -481,9 +489,10 @@ class SettingsWindow(QMainWindow):
 
         layout.addWidget(group1)
 
-        # Secondary Shortcut Card
-        group2 = QGroupBox("Yedek (Alternatif) Kısayol Tuşu")
+        # 2. Secondary Shortcut Card
+        group2 = QGroupBox("🖱️  Yedek (Alternatif) Kısayol Tuşu")
         vbox2 = QVBoxLayout(group2)
+        vbox2.setSpacing(10)
 
         s_hk = format_hotkey_display(self.settings_service.get('secondary_hotkey', 'button4'))
         self.lbl_secondary_hk = QLabel(f"Şu Anki Tuşunuz:  [ {s_hk} ]")
@@ -498,12 +507,14 @@ class SettingsWindow(QMainWindow):
 
         layout.addWidget(group2)
 
-        # Mouse & Corner Hotspot Options
-        group_corner = QGroupBox("Fare & Ekran Köşesi Sıcak Noktası (Klavyesiz Orbit'i Aç)")
+        # 3. Corner Hotspot (Mouse-only activation without keyboard)
+        group_corner = QGroupBox("📐  Ekran Köşesi Sıcak Noktası (Klavyesiz Açma)")
         form_corner = QFormLayout(group_corner)
+        form_corner.setSpacing(10)
 
-        self.chk_corner_hotspot = QCheckBox("Ekranın Sol Üst Köşesine Fare Götürüldüğünde Orbit'i Aç")
-        self.chk_corner_hotspot.setChecked(self.settings_service.get("enable_corner_hotspot", False))
+        self.chk_corner_hotspot = QCheckBox("Fareyi Ekranın Sol Üst Köşesine Yaslayarak Orbit'i Aç")
+        self.chk_corner_hotspot.setChecked(self.settings_service.get("enable_corner_hotspot", True))
+        self.chk_corner_hotspot.setFont(QFont("Segoe UI", 10, QFont.Bold))
 
         def _on_corner_toggled(enabled: bool) -> None:
             self.settings_service.set("enable_corner_hotspot", enabled)
@@ -513,49 +524,16 @@ class SettingsWindow(QMainWindow):
         self.chk_corner_hotspot.toggled.connect(_on_corner_toggled)
         form_corner.addRow(self.chk_corner_hotspot)
 
-        # Mouse Gestures (Hold & Drag) Options
-        group_gestures = QGroupBox("🖱️  Fare Jestleri (Basılı Tut + Sürükle Eylemleri)")
-        form_gestures = QFormLayout(group_gestures)
+        lbl_corner_info = QLabel("• Fareyi ekranın en sol üst köşesine götürdüğünüzde dairesel menü otomatik açılır.")
+        lbl_corner_info.setStyleSheet("color: #94A3B8; font-size: 11px; margin-top: 2px;")
+        form_corner.addRow(lbl_corner_info)
 
-        self.chk_enable_gestures = QCheckBox("Tuşa Basılı Tutup Fareyi Sürükleyerek Anlık Jest Çalıştır (Hold & Drag)")
-        self.chk_enable_gestures.setChecked(self.settings_service.get("enable_mouse_gestures", True))
+        layout.addWidget(group_corner)
 
-        self.spin_gesture_thresh = QSpinBox()
-        self.spin_gesture_thresh.setRange(20, 150)
-        self.spin_gesture_thresh.setSingleStep(5)
-        self.spin_gesture_thresh.setSuffix(" px")
-        self.spin_gesture_thresh.setValue(int(self.settings_service.get("gesture_drag_threshold", 45)))
-
-        def _on_gesture_cfg_changed() -> None:
-            g_enabled = self.chk_enable_gestures.isChecked()
-            g_thresh = float(self.spin_gesture_thresh.value())
-            self.settings_service.set("enable_mouse_gestures", g_enabled)
-            self.settings_service.set("gesture_drag_threshold", g_thresh)
-            if self.hotkey_mgr:
-                self.hotkey_mgr.set_gesture_options(g_enabled, g_thresh)
-
-        self.chk_enable_gestures.toggled.connect(_on_gesture_cfg_changed)
-        self.spin_gesture_thresh.valueChanged.connect(_on_gesture_cfg_changed)
-
-        form_gestures.addRow(self.chk_enable_gestures)
-        form_gestures.addRow("Sürükleme Eşik Mesafesi (Hassasiyet):", self.spin_gesture_thresh)
-
-        # Display current gesture direction shortcuts
-        lbl_gestures_summary = QLabel(
-            "📍 **Haritalanmış Jest Yönleri:**\n"
-            "• **Yukarı Sürükle:** Ekranı Kapla / Büyüt\n"
-            "• **Aşağı Sürükle:** Pencereyi Küçült\n"
-            "• **Sola Sürükle:** Pencereyi Sola Yasla\n"
-            "• **Sağa Sürükle:** Pencereyi Sağa Yasla"
-        )
-        lbl_gestures_summary.setStyleSheet("color: #00F2FE; margin-top: 4px;")
-        form_gestures.addRow(lbl_gestures_summary)
-
-        layout.addWidget(group_gestures)
-
-        # Optional Hold Duration Settings Group
-        group_hold = QGroupBox("İsteğe Bağlı Basılı Tutarak Açma Ayarları")
+        # 4. Optional Hold Duration Settings Group
+        group_hold = QGroupBox("⏱️  Basılı Tutarak Açma Ayarları")
         form_hold = QFormLayout(group_hold)
+        form_hold.setSpacing(10)
 
         self.chk_enable_hold = QCheckBox("Kısayol Tuşuna Belirli Süre Basılı Tutulduğunda Menüyü Aç")
         self.chk_enable_hold.setChecked(self.settings_service.get("enable_hold_duration", False))
@@ -571,7 +549,9 @@ class SettingsWindow(QMainWindow):
 
         layout.addWidget(group_hold)
         layout.addStretch()
-        return page
+
+        scroll.setWidget(container)
+        return scroll
 
     def _on_hold_option_changed(self) -> None:
         enabled = self.chk_enable_hold.isChecked()

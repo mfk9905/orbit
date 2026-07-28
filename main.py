@@ -48,8 +48,32 @@ def main() -> int:
     # Pano dinleme servisini başlat
     ClipboardService.get_instance().init_clipboard()
 
-    base_dir = Path(__file__).resolve().parent
+    if getattr(sys, 'frozen', False):
+        # PyInstaller EXE ortamı
+        base_dir = Path(sys.executable).resolve().parent
+        bundle_dir = Path(sys._MEIPASS)
+    else:
+        # Normal Python çalıştırma ortamı
+        base_dir = Path(__file__).resolve().parent
+        bundle_dir = base_dir
+
     config_dir = base_dir / "user_data"
+    config_dir.mkdir(parents=True, exist_ok=True)
+    profiles_dir = config_dir / "profiles"
+    profiles_dir.mkdir(parents=True, exist_ok=True)
+
+    # Gömülü varsayılan profiller yoksa kopyala
+    bundled_profiles = bundle_dir / "user_data" / "profiles"
+    if bundled_profiles.exists():
+        import shutil
+        for prof_file in bundled_profiles.glob("*.json"):
+            target_file = profiles_dir / prof_file.name
+            if not target_file.exists():
+                try:
+                    shutil.copy2(prof_file, target_file)
+                except Exception:
+                    pass
+
     log_file = config_dir / "orbit.log"
 
     logger = setup_logging(log_file=log_file)
@@ -67,7 +91,7 @@ def main() -> int:
     platform = PlatformManager.create_platform()
     container.register_singleton(type(platform), platform)
 
-    profile_service = ProfileService(config_dir / "profiles", event_bus)
+    profile_service = ProfileService(profiles_dir, event_bus)
     container.register_singleton(ProfileService, profile_service)
 
     action_service = ActionService(event_bus)

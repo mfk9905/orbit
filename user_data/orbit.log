@@ -7808,3 +7808,77 @@
 [13:21:40] [INFO] [orbit.ui.ping_dialog] Stopping ping process...
 [13:21:53] [INFO] [orbit.ui.ping_dialog] Stopping ping process...
 [13:22:04] [INFO] [orbit.ui.ping_dialog] Stopping ping process...
+[13:25:10] [INFO] [orbit] Orbit Dairesel Menü Uygulaması Başlatılıyor...
+[13:25:10] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[13:25:10] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[13:25:10] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[13:25:10] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[13:25:10] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[13:25:10] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[13:25:10] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[13:25:10] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[13:25:10] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[13:25:10] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[13:25:10] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[13:25:10] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[13:25:10] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[13:25:10] [INFO] [orbit.ui.system_tray] Sistem Tepsi simgesi başlatıldı.
+[13:25:10] [INFO] [orbit] Orbit dairesel menü arka planda çalışıyor. Fare 4 veya Ctrl+Space ile aktif edebilirsiniz.
+[13:25:11] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-26, -49)
+[13:25:11] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (24, 0)
+[13:25:11] [INFO] [orbit] Kısayol tetiklendi (215, 215). Aktif uygulama: 'antigravity ide.exe', Profil: 'Varsayılan'
+[13:25:12] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[13:25:55] [INFO] [orbit] Orbit Dairesel Menü Uygulaması Başlatılıyor...
+[13:25:55] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[13:25:55] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[13:25:55] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[13:25:55] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[13:25:55] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[13:25:55] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[13:25:55] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[13:25:55] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[13:25:55] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[13:25:55] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[13:25:55] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[13:25:55] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[13:25:55] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[13:25:55] [INFO] [orbit.ui.system_tray] Sistem Tepsi simgesi başlatıldı.
+[13:25:55] [INFO] [orbit] Orbit dairesel menü arka planda çalışıyor. Fare 4 veya Ctrl+Space ile aktif edebilirsiniz.
+[13:26:04] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (1127, 520)
+[13:26:04] [INFO] [orbit] Kısayol tetiklendi (902, 416). Aktif uygulama: 'python.exe', Profil: 'Varsayılan'
+[13:26:05] [INFO] [orbit] Kısayol tuşu 0.18s sonra bırakıldı.
+[13:26:05] [INFO] [orbit] Menü tıklama veya kapatılana kadar açık tutuluyor.
+[13:26:06] [INFO] [orbit] Seçilen dilim eylemi çalıştırılıyor: Ekran Alıntısı
+[13:26:06] [INFO] [orbit.services.action] Executing action 'Ekran Alıntısı' (ID: a1_snip)
+[13:26:06] [INFO] [orbit.actions.system_tool] Executing SystemToolAction 'snipping_tool'
+[13:26:06] [INFO] [orbit.actions.shortcut] Simulated shortcut: cmd+shift+s
+[13:26:39] [INFO] [orbit] Orbit uygulamasından çıkılıyor...
+[13:34:11] [INFO] [orbit] Orbit Dairesel Menü Uygulaması Başlatılıyor...
+[13:34:11] [INFO] [orbit.platform.windows] Initialized WindowsPlatform
+[13:34:11] [INFO] [orbit.services.profile] Loaded profile: Web Browser (8 items)
+[13:34:11] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[13:34:11] [INFO] [orbit.services.profile] Loaded profile: Excel (8 items)
+[13:34:11] [INFO] [orbit.services.profile] Loaded profile: PowerPoint (8 items)
+[13:34:11] [INFO] [orbit.services.profile] Loaded profile: Varsayılan (6 items)
+[13:34:11] [INFO] [orbit.services.profile] Loaded profile: VS Code (8 items)
+[13:34:11] [INFO] [orbit.services.profile] Loaded profile: Word (8 items)
+[13:34:11] [INFO] [orbit.services.profile] Active profile set to 'Varsayılan'
+[13:34:11] [INFO] [orbit.services.plugin] Registered plugin 'Launcher Plugin' (v1.0.0)
+[13:34:11] [INFO] [orbit.services.plugin] Registered plugin 'Media Control Plugin' (v1.0.0)
+[13:34:11] [INFO] [orbit.services.plugin] Registered plugin 'Shell Command Plugin' (v1.0.0)
+[13:34:11] [INFO] [orbit.hooks.hotkey] Global input listeners started (Primary: 'ctrl+space', Secondary: 'button4', Hold: False@1.0s).
+[13:34:11] [INFO] [orbit.ui.system_tray] Sistem Tepsi simgesi başlatıldı.
+[13:34:11] [INFO] [orbit] Orbit dairesel menü arka planda çalışıyor. Fare 4 veya Ctrl+Space ile aktif edebilirsiniz.
+[13:34:12] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-60, -2)
+[13:34:12] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (27, 81)
+[13:34:12] [INFO] [orbit] Kısayol tetiklendi (215, 215). Aktif uygulama: 'antigravity ide.exe', Profil: 'Varsayılan'
+[13:34:13] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss
+[13:47:26] [INFO] [orbit.services.clipboard] Clipboard captured: 'file:///C:/Users/fir...'
+[13:47:33] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (-15, -55)
+[13:47:33] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (50, 0)
+[13:47:33] [INFO] [orbit] Kısayol tetiklendi (215, 215). Aktif uygulama: 'explorer.exe', Profil: 'Varsayılan'
+[13:47:35] [INFO] [orbit.hooks.hotkey] Screen Corner Hotspot triggered at (15, -17)
+[13:47:35] [INFO] [orbit.hooks.hotkey] Hotkey triggered globally at (34, 0)
+[13:47:35] [INFO] [orbit] Kısayol tetiklendi (215, 215). Aktif uygulama: 'explorer.exe', Profil: 'Varsayılan'
+[13:47:36] [INFO] [orbit.ui.radial_view] Opening sub-ring spiral layer 'Sistem Araçları' from level 0
+[13:47:37] [INFO] [orbit.ui.overlay] OverlayWindow lost focus -> requesting dismiss

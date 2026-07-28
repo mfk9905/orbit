@@ -388,6 +388,7 @@ def test_mouse_gestures():
 
     # Simulate activation at (100, 100)
     hk_mgr._is_active = True
+    hk_mgr._currently_pressed_mouse.add("button4")
     hk_mgr._drag_start_pos = (100.0, 100.0)
     hk_mgr._gesture_detected_direction = None
 
@@ -399,6 +400,7 @@ def test_mouse_gestures():
     # Reset active state
     hk_mgr.reset_active_state()
     hk_mgr._is_active = True
+    hk_mgr._currently_pressed_mouse.add("button4")
     hk_mgr._drag_start_pos = (100.0, 100.0)
 
     # 2. Drag Down: (100, 160) -> dy = +60
@@ -409,6 +411,7 @@ def test_mouse_gestures():
     # Reset active state
     hk_mgr.reset_active_state()
     hk_mgr._is_active = True
+    hk_mgr._currently_pressed_mouse.add("button4")
     hk_mgr._drag_start_pos = (100.0, 100.0)
 
     # 3. Drag Left: (40, 100) -> dx = -60
@@ -419,6 +422,7 @@ def test_mouse_gestures():
     # Reset active state
     hk_mgr.reset_active_state()
     hk_mgr._is_active = True
+    hk_mgr._currently_pressed_mouse.add("button4")
     hk_mgr._drag_start_pos = (100.0, 100.0)
 
     # 4. Drag Right: (160, 100) -> dx = +60

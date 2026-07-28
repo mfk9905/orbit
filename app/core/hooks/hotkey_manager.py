@@ -265,14 +265,15 @@ class HotkeyManager:
         if self.enable_corner_hotspot and not self._is_active:
             now = time.time()
             last_dismiss = getattr(self, "_last_dismiss_timestamp", 0.0)
-            if (x <= 15 and y <= 15) and (now - self._last_corner_trigger > 2.0) and (now - last_dismiss > 1.0):
+            if (x <= 30 and y <= 30) and (now - self._last_corner_trigger > 1.2) and (now - last_dismiss > 0.4):
                 self._last_corner_trigger = now
                 logger.info(f"Screen Corner Hotspot triggered at ({x}, {y})")
                 self._activate_menu()
 
         if self._is_active:
-            # Check for Mouse Swipe Gestures
-            if self.enable_mouse_gestures and not self._gesture_detected_direction:
+            # Check for Mouse Swipe Gestures (Only when a key or mouse button is actually held down)
+            is_holding = bool(self._currently_pressed_keys or self._currently_pressed_mouse)
+            if self.enable_mouse_gestures and is_holding and not self._gesture_detected_direction:
                 import math
                 dx = x - self._drag_start_pos[0]
                 dy = y - self._drag_start_pos[1]

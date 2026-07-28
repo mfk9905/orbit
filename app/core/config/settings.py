@@ -22,7 +22,8 @@ DEFAULT_SETTINGS: Dict[str, Any] = {
     "slices_count": 8,
     "blur_effect": True,
     "autostart": False,
-    "enable_mouse_gestures": True,
+    "enable_corner_hotspot": True,
+    "enable_mouse_gestures": False,
     "gesture_drag_threshold": 45.0,
     "gestures": {
         "up": {
