@@ -1,5 +1,5 @@
 """
-System Tray Integration for Orbit (Türkçe).
+Orbit Sistem Tepsisi (System Tray) Entegrasyonu.
 """
 
 from PySide6.QtWidgets import QSystemTrayIcon, QMenu
@@ -11,7 +11,7 @@ logger = get_logger("orbit.ui.system_tray")
 
 
 def create_default_tray_icon() -> QIcon:
-    """Generates a clean programmatic green icon if resources icon is missing."""
+    """Simge dosyası bulunamadığında programatik yeşil ikon oluşturur."""
     pixmap = QPixmap(64, 64)
     pixmap.fill(QColor(0, 0, 0, 0))
     painter = QPainter(pixmap)
@@ -26,7 +26,7 @@ def create_default_tray_icon() -> QIcon:
 
 
 class SystemTrayService:
-    """Manages application system tray icon and context menu actions in Turkish."""
+    """Sistem tepsi simgesini ve Türkçe sağ tık menüsünü yönetir."""
 
     def __init__(
         self,
@@ -40,7 +40,6 @@ class SystemTrayService:
         self.on_reload = on_reload
         self.on_restart = on_restart
         self.on_quit = on_quit
-        self.on_open_editor = on_open_editor
 
         self._tray_icon = QSystemTrayIcon()
         self._tray_icon.setIcon(create_default_tray_icon())
@@ -51,29 +50,24 @@ class SystemTrayService:
         self._tray_icon.setContextMenu(self._menu)
         self._tray_icon.show()
 
-        logger.info("System Tray initialized.")
+        logger.info("Sistem Tepsi simgesi başlatıldı.")
 
     def _setup_menu(self) -> None:
-        """Construct tray menu actions in Turkish."""
-        if self.on_open_editor:
-            editor_action = self._menu.addAction("Görsel Profil Editörü")
-            editor_action.triggered.connect(self.on_open_editor)
-            self._menu.addSeparator()
-
-        settings_action = self._menu.addAction("Ayarları Aç")
+        """Türkçe sistem tepsi menüsünü yapılandırır."""
+        settings_action = self._menu.addAction("⚙️ Kontrol Merkezi & Editör")
         settings_action.triggered.connect(self.on_open_settings)
 
         self._menu.addSeparator()
 
-        reload_action = self._menu.addAction("Yeniden Yükle")
+        reload_action = self._menu.addAction("🔄 Profilleri Yeniden Yükle")
         reload_action.triggered.connect(self.on_reload)
 
-        restart_action = self._menu.addAction("Yeniden Başlat")
+        restart_action = self._menu.addAction("⚡ Uygulamayı Yeniden Başlat")
         restart_action.triggered.connect(self.on_restart)
 
         self._menu.addSeparator()
 
-        quit_action = self._menu.addAction("Çıkış")
+        quit_action = self._menu.addAction("❌ Çıkış")
         quit_action.triggered.connect(self.on_quit)
 
     def hide(self) -> None:

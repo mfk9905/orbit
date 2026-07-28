@@ -454,26 +454,6 @@ def test_radial_window_switcher():
         assert isinstance(title, str)
 
 
-def test_smart_text_action():
-    from app.models.actions import SmartTextAction, SmartTextSubRingAction, action_factory
-
-    # 1. Test SmartTextAction serialization & factory
-    st_act = SmartTextAction("st1", "BÜYÜK HARF", params={"mode": "uppercase"})
-    assert st_act.params["mode"] == "uppercase"
-    st_dict = st_act.to_dict()
-    recreated = action_factory(st_dict)
-    assert isinstance(recreated, SmartTextAction)
-    assert recreated.params["mode"] == "uppercase"
-
-    # 2. Test SmartTextSubRingAction items
-    subring = SmartTextSubRingAction("str1", "Akıllı Metin İşlemleri")
-    sub_items = subring.sub_items
-    assert len(sub_items) == 5
-    assert sub_items[0].label == "BÜYÜK HARF"
-    assert sub_items[1].label == "küçük harf"
-    assert sub_items[4].label == "JSON Düzenle"
-
-
 
 
 

@@ -3,6 +3,7 @@ Radial Menu ViewModel (MVVM Architecture).
 Encapsulates state logic, slice geometry calculations, and hover detection.
 """
 
+from app.core.config.settings import logger
 import math
 from typing import List, Optional, Tuple
 from PySide6.QtCore import QObject, Signal, QPointF

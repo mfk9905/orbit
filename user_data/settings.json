@@ -3,7 +3,7 @@
     "accent_color": "#2ED573",
     "opacity": 0.25,
     "animation_speed": 240,
-    "radius": 230,
+    "radius": 180,
     "hotkey": "<ctrl>+<space>",
     "mouse_hotkey": "button4",
     "language": "en",

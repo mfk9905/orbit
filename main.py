@@ -1,13 +1,13 @@
 """
-Orbit - Modern Cross-Platform Radial Menu Application
-Main Entry Point.
+Orbit - Modern Çapraz Platform Dairesel Menü Uygulaması
+Ana Giriş Noktası (Application Entry Point).
 """
 
 import sys
 import os
 from pathlib import Path
 from PySide6.QtWidgets import QApplication
-from PySide6.QtCore import Qt, QTimer, QProcess
+from PySide6.QtCore import Qt, QProcess
 
 from app.core.container import ServiceContainer
 from app.core.logging.logger import setup_logging, get_logger
@@ -31,15 +31,12 @@ from app.ui.overlay.overlay_window import OverlayWindow
 from app.ui.radial_menu.radial_menu_model import RadialMenuViewModel
 from app.ui.radial_menu.radial_menu_view import RadialMenuView
 from app.ui.settings.settings_window import SettingsWindow
-from app.ui.editor.profile_editor_window import ProfileEditorWindow
 from app.models.profile import SliceItem
-
-
-
 from app.services.clipboard_service import ClipboardService
 
+
 def main() -> int:
-    """Orbit Application Entry Point."""
+    """Orbit Ana Uygulama Başlatma Fonksiyonu."""
     QApplication.setHighDpiScaleFactorRoundingPolicy(
         Qt.HighDpiScaleFactorRoundingPolicy.PassThrough
     )
@@ -48,7 +45,7 @@ def main() -> int:
     app.setApplicationName("Orbit")
     app.setOrganizationName("Antigravity")
 
-    # Initialize Clipboard monitoring
+    # Pano dinleme servisini başlat
     ClipboardService.get_instance().init_clipboard()
 
     base_dir = Path(__file__).resolve().parent
@@ -56,7 +53,7 @@ def main() -> int:
     log_file = config_dir / "orbit.log"
 
     logger = setup_logging(log_file=log_file)
-    logger.info("Initializing Orbit Radial Menu Application...")
+    logger.info("Orbit Dairesel Menü Uygulaması Başlatılıyor...")
 
     container = ServiceContainer.get_instance()
 
@@ -101,23 +98,23 @@ def main() -> int:
                 radius = r
                 view_model.set_radius(r)
                 radial_view.set_radius(r)
-                logger.info(f"Live updated radial menu radius to {r}")
+                logger.info(f"Dairesel menü yarıçapı canlı güncellendi: {r}")
             except Exception as e:
-                logger.error(f"Failed live update radius: {e}")
+                logger.error(f"Canlı yarıçap güncelleme hatası: {e}")
         elif event.key == "opacity":
             try:
                 op = float(event.value)
                 radial_view.setWindowOpacity(op)
-                logger.info(f"Live updated window opacity to {op}")
+                logger.info(f"Pencere saydamlığı canlı güncellendi: {op}")
             except Exception as e:
-                logger.error(f"Failed live update opacity: {e}")
+                logger.error(f"Canlı saydamlık güncelleme hatası: {e}")
         elif event.key == "animation_speed":
             try:
                 sp = int(event.value)
                 radial_view.set_animation_speed(sp)
-                logger.info(f"Live updated animation speed to {sp}ms")
+                logger.info(f"Animasyon hızı canlı güncellendi: {sp}ms")
             except Exception as e:
-                logger.error(f"Failed live update animation speed: {e}")
+                logger.error(f"Canlı animasyon hızı güncelleme hatası: {e}")
 
     event_bus.subscribe(ConfigUpdatedEvent, on_config_updated)
 
@@ -147,14 +144,14 @@ def main() -> int:
         hotkey_mgr.reset_active_state()
 
     def execute_slice(item: SliceItem) -> None:
-        logger.info(f"Executing selected slice action: {item.label}")
+        logger.info(f"Seçilen dilim eylemi çalıştırılıyor: {item.label}")
         dismiss_menu()
         action_service.execute(item.action)
 
     def on_hotkey_trigger(raw_x: int, raw_y: int) -> None:
-        """Called when hotkey is pressed."""
+        """Kısayol tuşuna basıldığında tetiklenir."""
         if overlay_window.isVisible():
-            logger.info("Hotkey pressed while active -> dismissing menu.")
+            logger.info("Menü açıkken kısayol basıldı -> kapatılıyor.")
             dismiss_menu()
             return
 
@@ -171,7 +168,7 @@ def main() -> int:
         matched_profile = profile_service.get_profile_for_app(active_exe)
         view_model.set_profile(matched_profile)
 
-        logger.info(f"Hotkey triggered at ({cx}, {cy}) for active app '{active_exe}' using profile '{matched_profile.name}'")
+        logger.info(f"Kısayol tetiklendi ({cx}, {cy}). Aktif uygulama: '{active_exe}', Profil: '{matched_profile.name}'")
         overlay_window.show_at_screen()
 
         radial_view.setGeometry(overlay_window.rect())
@@ -181,32 +178,31 @@ def main() -> int:
         radial_view.show_menu()
 
     def on_hotkey_release(duration: float) -> None:
-        """Called when hotkey is released."""
-        logger.info(f"Hotkey released after {duration:.2f}s")
+        """Kısayol tuşu bırakıldığında tetiklenir."""
+        logger.info(f"Kısayol tuşu {duration:.2f}s sonra bırakıldı.")
         selected_item = view_model.hovered_item
 
         if selected_item:
             from app.models.actions import WheelAction
             if isinstance(selected_item.action, WheelAction):
-                logger.info("Selected item is WheelAction -> keeping radial menu open for interactive scrolling.")
+                logger.info("Seçili öğe WheelAction -> Dairesel menü etkileşimli kaydırma için açık tutuluyor.")
                 return
 
         if duration >= 0.2 and selected_item:
             execute_slice(selected_item)
         else:
-            logger.info("Keeping radial menu open until click or dismiss.")
-
+            logger.info("Menü tıklama veya kapatılana kadar açık tutuluyor.")
 
     def on_cursor_move(cx: int, cy: int) -> None:
-        """Cursor tracking update."""
+        """İmleç konum güncelemesi."""
         if radial_view.isVisible():
             from PySide6.QtGui import QCursor
             pos = QCursor.pos()
             view_model.update_cursor_position(pos.x(), pos.y())
 
     def on_gesture_detected(direction: str) -> None:
-        """Called when a mouse drag gesture swipe is detected."""
-        logger.info(f"Mouse gesture swipe detected in main: {direction.upper()}")
+        """Fare sürükleme kaydırması tespit edildiğinde tetiklenir."""
+        logger.info(f"Fare jesti algılandı: {direction.upper()}")
         dismiss_menu()
 
         gestures_cfg = settings_service.get("gestures", {})
@@ -215,8 +211,6 @@ def main() -> int:
             from app.models.actions import action_factory
             action = action_factory(act_dict)
             action_service.execute(action)
-        else:
-            logger.warning(f"No gesture action configured for direction '{direction}'")
 
     radial_view.item_selected.connect(execute_slice)
     radial_view.dismiss_requested.connect(dismiss_menu)
@@ -229,7 +223,7 @@ def main() -> int:
     hotkey_mgr.start()
 
     def handle_config_updated(event: ConfigUpdatedEvent) -> None:
-        logger.info(f"Config updated event: {event.key} = {event.value}")
+        logger.info(f"Konfigürasyon canlı güncellendi: {event.key} = {event.value}")
         if event.key == "radius":
             new_r = float(event.value)
             view_model.set_radius(new_r)
@@ -242,19 +236,19 @@ def main() -> int:
     event_bus.subscribe(ConfigUpdatedEvent, handle_config_updated)
 
     def handle_reload() -> None:
-        logger.info("Reloading profiles and configuration...")
+        logger.info("Profiller ve konfigürasyon yeniden yükleniyor...")
         profile_service.load_all_profiles()
         view_model.set_profile(profile_service.get_active_profile())
 
     def handle_restart() -> None:
-        logger.info("Restarting Orbit application...")
+        logger.info("Orbit uygulaması yeniden başlatılıyor...")
         hotkey_mgr.stop()
         plugin_service.shutdown()
         QApplication.quit()
         QProcess.startDetached(sys.executable, sys.argv)
 
     def handle_quit() -> None:
-        logger.info("Quitting Orbit application...")
+        logger.info("Orbit uygulamasından çıkılıyor...")
         hotkey_mgr.stop()
         plugin_service.shutdown()
         tray_service.hide()
@@ -264,12 +258,10 @@ def main() -> int:
         on_open_settings=lambda: settings_window.show(),
         on_reload=handle_reload,
         on_restart=handle_restart,
-        on_quit=handle_quit,
-        on_open_editor=lambda: settings_window.show()
+        on_quit=handle_quit
     )
 
-
-    logger.info("Orbit application running in system tray. Press Mouse 4 or Ctrl+Space to activate radial menu.")
+    logger.info("Orbit dairesel menü arka planda çalışıyor. Fare 4 veya Ctrl+Space ile aktif edebilirsiniz.")
     return app.exec()
 
 

@@ -14,11 +14,10 @@ from app.models.actions.media_action import MediaAction
 from app.models.actions.system_tool_action import SystemToolAction
 from app.models.actions.clipboard_action import ClipboardAction
 from app.models.actions.window_switch_action import WindowSwitchAction, WindowSwitcherSubRingAction
-from app.models.actions.smart_text_action import SmartTextAction, SmartTextSubRingAction
 
 
 def action_factory(data: Dict[str, Any]) -> BaseAction:
-    """Instantiates concrete BaseAction derived instance from dict definition."""
+    """Sözlük verisinden somut BaseAction türevi nesne oluşturur (Eylem Fabrikası)."""
     action_type = data.get("type", "AppAction")
     action_id = data.get("id", "action_id")
     label = data.get("label", "Action")
@@ -37,9 +36,6 @@ def action_factory(data: Dict[str, Any]) -> BaseAction:
     if action_type == "WindowSwitcherSubRingAction":
         return WindowSwitcherSubRingAction(action_id=action_id, label=label, icon=icon, params=params)
 
-    if action_type == "SmartTextSubRingAction":
-        return SmartTextSubRingAction(action_id=action_id, label=label, icon=icon, params=params)
-
     mapping = {
         "AppAction": AppAction,
         "UrlAction": UrlAction,
@@ -56,8 +52,6 @@ def action_factory(data: Dict[str, Any]) -> BaseAction:
         "ClipboardAction": ClipboardAction,
         "WindowSwitchAction": WindowSwitchAction,
         "WindowSwitcherSubRingAction": WindowSwitcherSubRingAction,
-        "SmartTextAction": SmartTextAction,
-        "SmartTextSubRingAction": SmartTextSubRingAction,
     }
 
     cls = mapping.get(action_type, AppAction)
